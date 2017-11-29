@@ -1,0 +1,22 @@
+{
+  "name": "CircuitSDK",
+  "version": "0.1.0",
+  "summary": "Circuit iOS SDK.",
+  "description": "The iOS SDK is the Circuit iOS client, exposing a clear abstracted API for Circuit PaaS. The iOS SDK is built upon the Circuit JS SDK.",
+  "homepage": "https://github.com/circuit/circuit-ios-sdk",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Unify Inc.": "https://www.unify.com"
+  },
+  "source": {
+    "git": "https://github.com/circuit/circuit-ios-sdk.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "Source/Classes/**/*"
+}

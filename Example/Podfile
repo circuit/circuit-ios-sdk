@@ -1,0 +1,6 @@
+use_frameworks!
+target 'CircuitSDK_Tests' do
+  pod 'CircuitSDK', :path => '../'
+
+
+end
