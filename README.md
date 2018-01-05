@@ -19,7 +19,7 @@ it, simply add the following line to your Podfile:
 pod 'CircuitSDK'
 ```
 ## Example
-You can find the sample application in the [iOS Sample App](https://github.com/circuit/circuit-ios-sdk) directory. If you try to run the application, you won’t be able to logon. You must add your client id and client secret and install pods. In the terminal navigate to the CircuitKit folder and run the following command:
+You can find the sample application in the [iOS Sample App](https://github.com/circuit/circuit-ios-sdk/tree/master/Example) directory. If you try to run the application, you won’t be able to logon. You must add your client id and client secret and install pods. In the terminal navigate to the CircuitKit folder and run the following command:
 
 ```ruby
 pod install
@@ -64,7 +64,7 @@ Remember to set your redirectURI you created when registering your application,
 this redirectURI tells AppAuth how to get back to your application after
 authentication has completed.
 
-```objective_c
+```objectivec
 [client initializeSDK:@"ADD CLIENT_ID"
 oAuthClientSecret:@"ADD CLIENT SECRET"
 oAuthScope:@"ADD OAUTH SCOPE"];
@@ -84,9 +84,6 @@ to specific events.
 Event | Type |  Description
 --------- | ----------- | ---------
 CKTNotificationBasicSearchResults | string | Asynchronous search results for startUserSearch or startBasicSearch
-CKTNotificationCallEnded | string | Fired when a call is terminated
-CKTNotificationCallIncoming | string | Fired when an incoming call is received. I.e. client is alerting
-CKTNotificationCallStatus | string | Fired when the call state, or any other call attribute of a local or remote call changes. Use the isRemote property to determine if the call is local or remote. A call is considered remote when a) the call is active on another device, or b) a group call is not joined yet
 CKTNotificationConnectionStateChanged | string | Fired when the connection state changes
 CKTNotificationConversationCreated | string | Fired when a new conversation is created for this user. This can be a brand new conversation, or being added to a conversation
 CKTNotificationConversationUpdated | string | Fired when an existing conversation is updated
