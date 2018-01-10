@@ -66,14 +66,14 @@ authentication has completed.
 
 ```objectivec
 [client initializeSDK:@"ADD CLIENT_ID"
-oAuthClientSecret:@"ADD CLIENT SECRET"
-oAuthScope:@"ADD OAUTH SCOPE"];
+                    oAuthClientSecret:@"ADD CLIENT SECRET"
+                    oAuthScope:@"ADD OAUTH SCOPE"];
 ```
 
 ```swift
 CKTClient().initializeSDK("ADD CLIENT ID",
-oAuthClientSecret:"ADD CLIENT SECRET",
-oAuthScope:"ADD OAUTH SCOPE")
+                            oAuthClientSecret:"ADD CLIENT SECRET",
+                            oAuthScope:"ADD OAUTH SCOPE")
 ```
 
 ### Event Handling
@@ -99,17 +99,15 @@ CKTNotificationUserUpdated | string | Fired when the local user is updated. E.g.
 ### Adding Observers
 
 ```objective_c
-[[NSNotificationCenter defaultCenter]
-addObserver:self
-selector:@selector(itemAddedToConversation)
-name:CKTNotificationItemAdded object:nil];
+[[NSNotificationCenter defaultCenter] addObserver:self
+                                        selector:@selector(itemAddedToConversation)
+                                        name:CKTNotificationItemAdded object:nil];
 ```
 
 ```swift
-NSNotificationCenter.defaultCenter()
-.addObserver(self,
-selector:#selector(itemAddedToConversation),
-name:CKTNotificationItemAdded, object: nil)
+NSNotificationCenter.defaultCenter().addObserver(self,
+                            selector:#selector(itemAddedToConversation),
+                            name:CKTNotificationItemAdded, object: nil)
 
 ```
 

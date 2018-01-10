@@ -195,26 +195,6 @@ Get all the user settings of the logged in user
 
 Required OAuth2 scopes: READ_USER_PROFILE or ALL
 
-## getUserById
-
-```objective_c
-[client getUserById:@"ADD USER ID" completion:^(NSDictionary *user, NSError *error) {
-  // Code goes here
-}];
-```
-
-```swift
-CKTClient().getUserById("ADD USER ID") { (user, error) in
-  // Code goes here
-}
-```
-
-Returns the user in JSON format by the given user id
-
-Parameter | Type |  Description
---------- | ----------- | ---------
-completion | callback | A completion block that takes either user settings or an error and returns void.
-
 ## updateUser
 
 ```objective_c
