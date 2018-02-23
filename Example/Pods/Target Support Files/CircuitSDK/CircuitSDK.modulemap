@@ -1,6 +1,0 @@
-framework module CircuitSDK {
-  umbrella header "CircuitSDK-umbrella.h"
-
-  export *
-  module * { export * }
-}

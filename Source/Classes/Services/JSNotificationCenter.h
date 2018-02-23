@@ -35,6 +35,11 @@ extern NSString *const CKTNotificationUserPresenceChanged;
 extern NSString *const CKTNotificationUserSettingsChanged;
 extern NSString *const CKTNotificationUserUpdated;
 
+// Notificaiton to WebRTC to mute / unmute the speaker
+extern NSString *const NOTIFICATION_AUDIO_SESSION_MUTE_SPEAKER;
+// Notificaiton from WebRTC that Video receive has been lost
+extern NSString *const NOTIFICATION_VIDEO_RECEIVE_STREAM_LOST;
+
 extern NSString *const CKTKeyEmpty;
 extern NSString *const KEY_EVENT_DATA;
 

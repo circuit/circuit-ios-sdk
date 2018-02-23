@@ -14,6 +14,7 @@ build/
 *.xcscmblueprint
 xcschememanagement.plist
 Breakpoints.xcbkptlist
+*.lock
 
 # Note: if you ignore the Pods directory, make sure to uncomment
 # `pod install` in .travis.yml
