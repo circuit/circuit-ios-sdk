@@ -35,6 +35,12 @@ NSString *const CKTNotificationSessionExpires = @"sessionExpires";
 NSString *const CKTNotificationUserPresenceChanged = @"userPresenceChanged";
 NSString *const CKTNotificationUserSettingsChanged = @"userSettingsChanged";
 NSString *const CKTNotificationUserUpdated = @"userUpdated";
+// Notificaiton to WebRTC to mute / unmute the speaker
+NSString *const NOTIFICATION_AUDIO_SESSION_MUTE_SPEAKER = @"circuitkit.notification.AUDIO_SESSION_MUTE_SPEAKER";
+// Notificaiton from WebRTC that Video receive has been lost
+NSString *const NOTIFICATION_VIDEO_RECEIVE_STREAM_LOST =
+    @"circuitkit.notification.VIDEO_RECEIVE_STREAM_LOST";
+
 NSString *const CKTKeyEmpty = @"circuitkit.key.EMPTY";
 
 // KEY_EVENT_DATA is used in the WebRTC library libWebRTC.a, we must use that same naming convention
