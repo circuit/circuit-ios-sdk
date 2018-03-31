@@ -14,23 +14,18 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-//  CKTClient.h
+//  Vibrator.h
 //  CircuitSDK
 //
 //
 
 #import <Foundation/Foundation.h>
-#import "CKTService.h"
-#import "CKTException.h"
+#import "Runnable.h"
 
-@interface CKTClient : CKTService
+@interface Vibrator : NSObject<Runnable>
 
-@property (nonatomic, strong) NSString *clientID;
-
-@property (nonatomic, strong) NSString *clientSecret;
-
-+ (CKTClient *)sharedInstance;
-
-// All client methods are defined in their respective extensions
+- (void)vibrate;
+- (void)scheduledVibrationsWithTimeInterval:(NSUInteger)timeInterval numberOfVibrations:(NSUInteger)numberOfVibrations;
+- (void)cancel;
 
 @end

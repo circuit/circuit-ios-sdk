@@ -31,10 +31,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-
         let client = CKTClient.sharedInstance()
+        let clientID = "ADD CLIENT ID"
+        let clientSecret = "ADD CLIENT SECRET"
+        let scope = "ALL"
 
-        client?.initializeSDK("ADD CLIENT ID", oAuthClientSecret: "ADD CLIENT SECRET", oAuthScope: "ALL")
+        // The example needs to be configured with your own client details.
+        // See: https://github.com/circuit/circuit-ios-sdk/blob/master/README.md
+
+        assert(clientID != "ADD CLIENT ID", "Update clientID with your own client ID." +
+            "Instructions: https://github.com/circuit/circuit-ios-sdk/tree/master/Documentation")
+
+        assert(clientSecret != "ADD CLIENT SECRET", "Update clientSecret with your own client secret." +
+            "Instructions: https://github.com/circuit/circuit-ios-sdk/tree/master/Documentation")
+
+        client?.initializeSDK(clientID, oAuthClientSecret: clientSecret, oAuthScope: scope)
         return true
     }
 

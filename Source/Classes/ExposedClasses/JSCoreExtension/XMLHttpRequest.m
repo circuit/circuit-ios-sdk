@@ -21,6 +21,7 @@
 
 #import "XMLHttpRequest.h"
 #import "CKTHttp.h"
+#import "JSEngine.h"
 
 @implementation XMLHttpRequest {
     NSString *_method;
@@ -109,19 +110,23 @@ NSMutableURLRequest *req;
                           NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)serverResponse;
                           self.response = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
                           self.status = [httpResponse statusCode];
-                          if (httpResponse.statusCode == 200) {
-                              responseText = response;
-                              readyState = 4;
-                              if (!error && _onLoad)
-                                  [[_onLoad.value invokeMethod:@"bind" withArguments:@[ self ]] callWithArguments:NULL];
-                              else if (error && _onError)
-                                  [[_onError.value invokeMethod:@"bind" withArguments:@[ self ]] callWithArguments:@[
-                                      [JSValue valueWithNewErrorFromMessage:error.localizedDescription
-                                                                  inContext:[JSContext currentContext]]
-                                  ]];
+                          if (error) {
+                              [self setOnerror: [JSValue valueWithNewErrorFromMessage:error.localizedDescription
+                                                                           inContext:[[JSEngine sharedInstance] context]]];
+                              responseText = error.localizedDescription;
+                              [[self.onload invokeMethod:@"bind" withArguments:@[ self ]] callWithArguments:@[ _onError.value ]];
+                          } else {
+                              if (self.status == 200) {
+                                  responseText = response;
+                                  readyState = 4;
+                                  if (_onLoad) {
+                                      [[self.onload invokeMethod:@"bind" withArguments:@[ self ]] callWithArguments:NULL];
+                                  }
+                              } else if (_onError) {
+                                  [[self.onerror invokeMethod:@"bind" withArguments:@[ self ]] callWithArguments:@[ _onError.value ]];
+                              }
                           }
                       }];
-
     [dataTask resume];
 }
 

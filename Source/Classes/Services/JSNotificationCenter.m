@@ -24,6 +24,9 @@
 
 NSString *const CKTNotificationApplicationServiceLoaded = @"applicationServiceLoaded";
 NSString *const CKTNotificationBasicSearchResults = @"basicSearchResults";
+NSString *const CKTNotificationCallEnded = @"callEnded";
+NSString *const CKTNotificationCallIncoming = @"callIncoming";
+NSString *const CKTNotificationCallStatus = @"callStatus";
 NSString *const CKTNotificationConnectionStateChange = @"connectionStateChanged";
 NSString *const CKTNotificationConversationCreated = @"conversationCreated";
 NSString *const CKTNotificationConversationUpdated = @"conversationUpdated";
@@ -40,11 +43,17 @@ NSString *const NOTIFICATION_AUDIO_SESSION_MUTE_SPEAKER = @"circuitkit.notificat
 // Notificaiton from WebRTC that Video receive has been lost
 NSString *const NOTIFICATION_VIDEO_RECEIVE_STREAM_LOST =
     @"circuitkit.notification.VIDEO_RECEIVE_STREAM_LOST";
+// WebRTC failed to setup AVAudioSession during call
+NSString *const NOTIFICATION_AUDIO_SESSION_SETUP_FAILED = @"circuitkit.notification.AUDIO_SESSION_SETUP_FAILED";
+NSString *const NOTIFICATION_AUDIO_SESSION_CHANGE_CATEGORY_REQUESTED =
+@"circuitkit.notification.NOTIFICATION_AUDIO_SESSION_CHANGE_CATEGORY_REQUESTED";
 
 NSString *const CKTKeyEmpty = @"circuitkit.key.EMPTY";
 
 // KEY_EVENT_DATA is used in the WebRTC library libWebRTC.a, we must use that same naming convention
 NSString *const KEY_EVENT_DATA = @"circuitkit.key.DATA";
+NSString *const KEY_AUDIO_ACTIVATE = @"circuitkit.key.AUDIO_ACTIVATE";
+
 
 static NSString *LOG_TAG = @"[JSNotificationCenter]";
 

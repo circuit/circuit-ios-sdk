@@ -2,103 +2,6 @@
 /*exported Circuit, clearInterval, clearTimeout, document, localStorage, location, navigator, Promise, setInterval, setTimeout*/
 
 //---------------------------------------------------------------------------
-//  JS initializations required before common business logic is loaded
-//---------------------------------------------------------------------------
-
-//---------------------------------------------------------------------------
-//  Enhance native logger to handle keysToOmitFromLogging
-//---------------------------------------------------------------------------
-(function () {
-    'use strict';
-    var OMMIT_KEY = 'keysToOmitFromLogging';
-
-    function shallowCopy(src) {
-        if (!src || (typeof src !== 'object')) {
-            return src;
-        }
-
-        if (Array.isArray(src)) {
-            return src.slice();
-        }
-
-        var obj = {};
-        for (var key in src) {
-            if (src.hasOwnProperty(key)) {
-                obj[key] = src[key];
-            }
-        }
-        return obj;
-    }
-
-    function ommitKeys(obj) {
-        if (!obj || typeof obj !== 'object') {
-            return obj;
-        }
-        if (obj.hasOwnProperty(OMMIT_KEY)) {
-            var origObj = obj; // Keep a reference to the original object
-            obj = shallowCopy(obj);  // Create a shallow copy for the modifications
-            obj[OMMIT_KEY].forEach(function (key) {
-                var paths = key.split('.');
-                var root = obj;
-                var origRoot = origObj;
-                var lastIdx = paths.length - 1;
-                paths.every(function (node, idx) {
-                    if (node === '[]') {
-                        if (Array.isArray(root)) {
-                            var subKey = (idx < lastIdx) ? paths.slice(idx + 1).join('.') : null;
-                            root.forEach(function (origElem, elemIdx) {
-                                if (!subKey) {
-                                    root[elemIdx] = '******';
-                                    return;
-                                }
-                                origElem[OMMIT_KEY] = [subKey];
-                                root[elemIdx] = ommitKeys(origElem);
-                                delete origElem[OMMIT_KEY];
-                            });
-                        }
-                        return false;
-                    }
-                    if (!root[node]) {
-                        // The key to be omitted does not exist
-                        return false;
-                    }
-                    if (idx === lastIdx) {
-                        // This is the last element
-                        root[node] = '******';
-                    } else {
-                        if (typeof root[node] !== 'object') {
-                            // Cannot continue
-                            return false;
-                        }
-
-                        // Shallow copy only if have not done so
-                        if (root[node] === origRoot[node]) {
-                            root[node] = shallowCopy(root[node]);
-                        }
-                        // Navigate to the next level
-                        origRoot = origRoot[node];
-                        root = root[node];
-                    }
-                    return true;
-                });
-            });
-            // Remove the OMMIT_KEY property from the copy
-            delete obj[OMMIT_KEY];
-        }
-        return obj;
-    }
-
-    var methods = ['debug', 'info', 'warning', 'error', 'msgSend', 'msgRcvd'];
-    methods.forEach(function (method) {
-        var origMethod = logger[method];
-        logger[method] = function (txt, obj) {
-            origMethod.call(logger, txt, ommitKeys(obj));
-        };
-    });
-
-})();
-
-//---------------------------------------------------------------------------
 //  Create Promise object
 //---------------------------------------------------------------------------
 var Promise = function Promise(resolver) {
@@ -205,18 +108,21 @@ Promise.reject = function (error) {
 //---------------------------------------------------------------------------
 //  Expose applicable window properties to global namespace
 //---------------------------------------------------------------------------
+var setTimeout = window.setTimeout;
+var clearTimeout = window.clearTimeout;
+var setInterval = window.setInterval;
+var clearInterval = window.clearInterval;
 
-// WebRTC isn't available in iOS version of SDK for now, 
+// WebRTC isn't available in iOS version of SDK for now,
 // so we don't introduce navigator and just mock it.
-var navigator = {};
-navigator.platform = 'iOS';
-
-//---------------------------------------------------------------------------
-//  Create global Circuit object
-//---------------------------------------------------------------------------
-var Circuit = {
-    logger: logger
+window.navigator = {
+    platform: 'iOS'
 };
+//---------------------------------------------------------------------------
+//  Expose logger object for SDK
+//---------------------------------------------------------------------------
+var _logger = logger
 
-// Start by creating the base Angular object
+
+
 logger.debug('[sdkInterfacePre]: Finished pre initialization.');

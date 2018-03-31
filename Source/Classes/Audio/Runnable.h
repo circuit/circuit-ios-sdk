@@ -14,23 +14,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-//  Document.h
+//  Runnable.h
 //  CircuitSDK
 //
 //
 
 #import <Foundation/Foundation.h>
-#import <JavaScriptCore/JavaScriptCore.h>
-#import "Element.h"
 
-@protocol DocumentExport<JSExport>
+@protocol Runnable<NSObject>
 
-- (Element *)createElement:(NSString *)tagName;
-
-@end
-
-@interface Document : NSObject<DocumentExport>
-
-+ (Document *)sharedInstance;
+- (void)run:(id)anArgument;
 
 @end

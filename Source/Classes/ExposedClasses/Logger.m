@@ -43,6 +43,16 @@ static NSString *LOG_TAG = @"[JS]";
     return sharedInstance;
 }
 
+- (int)getLevel
+{
+    return (int)([[CKTLog sharedDebug] getiLogState]);
+}
+
+- (void)setLevel:(int)level
+{
+    [[CKTLog sharedDebug] setLogState:level];
+}
+
 - (void)debug:(NSString *)text:(id)data;
 {
     if (data)

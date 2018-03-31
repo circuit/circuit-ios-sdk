@@ -20,7 +20,6 @@
 //
 
 #import "Window.h"
-#import "Document.h"
 #import "JSEngine.h"
 
 // To supress the warning:
@@ -75,13 +74,6 @@
 - (void)dealloc
 {
     [self clearAllTimeouts];
-}
-
-#pragma mark - Properties
-
-- (Document *)document
-{
-    return [Document sharedInstance];
 }
 
 #pragma mark - Public Methods

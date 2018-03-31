@@ -14,7 +14,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-//  JSEngineProtocol.h
+//  Audio.h
 //  CircuitSDK
 //
 //
@@ -22,8 +22,23 @@
 #import <Foundation/Foundation.h>
 #import <JavaScriptCore/JavaScriptCore.h>
 
-@protocol JSEngineCtxProtocol<NSObject>
+@class Audio;
 
-- (JSContext *)getJSEngineContext;
+@protocol AudioExport<JSExport>
+
++ (Audio *)createAudio:(NSString *)soundFile;
+- (void)play;
+- (void)pause;
++ (NSString *)getPlaybackDevice;
++ (NSString *)getRecordingDevice;
++ (NSString *)getVideoDevice;
+
+@property (nonatomic) BOOL loop;
+@property (nonatomic) BOOL vibrate;
+@property (nonatomic, copy) NSString *playMode;
+
+@end
+
+@interface Audio : NSObject<AudioExport>
 
 @end

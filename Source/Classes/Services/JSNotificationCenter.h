@@ -23,6 +23,9 @@
 
 extern NSString *const CKTNotificationApplicationServiceLoaded;
 extern NSString *const CKTNotificationBasicSearchResults;
+extern NSString *const CKTNotificationCallEnded;
+extern NSString *const CKTNotificationCallIncoming;
+extern NSString *const CKTNotificationCallStatus;
 extern NSString *const CKTNotificationConnectionStateChange;
 extern NSString *const CKTNotificationConversationCreated;
 extern NSString *const CKTNotificationConversationUpdated;
@@ -39,9 +42,13 @@ extern NSString *const CKTNotificationUserUpdated;
 extern NSString *const NOTIFICATION_AUDIO_SESSION_MUTE_SPEAKER;
 // Notificaiton from WebRTC that Video receive has been lost
 extern NSString *const NOTIFICATION_VIDEO_RECEIVE_STREAM_LOST;
+// WebRTC failed to setup AVAudioSession during call
+extern NSString *const NOTIFICATION_AUDIO_SESSION_SETUP_FAILED;
+extern NSString *const NOTIFICATION_AUDIO_SESSION_CHANGE_CATEGORY_REQUESTED;
 
 extern NSString *const CKTKeyEmpty;
 extern NSString *const KEY_EVENT_DATA;
+extern NSString *const KEY_AUDIO_ACTIVATE;
 
 @interface JSNotificationCenter : NSObject
 

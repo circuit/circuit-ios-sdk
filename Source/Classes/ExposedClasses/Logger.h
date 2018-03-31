@@ -33,6 +33,8 @@
 
 @protocol LoggerExport<JSExport>
 
+- (int)getLevel;
+- (void)setLevel:(int)level;
 - (void)debug:(NSString *)text:(id)data;
 - (void)info:(NSString *)text:(id)data;
 - (void)warning:(NSString *)text:(id)data;

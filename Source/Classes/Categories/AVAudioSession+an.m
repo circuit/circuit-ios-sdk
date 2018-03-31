@@ -14,32 +14,33 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-//  Document.m
+//  AVAudioSession+an.m
 //  CircuitSDK
 //
 //
 
-#import "Document.h"
+#import "AVAudioSession+an.h"
 
-@implementation Document
+@implementation AVAudioSession (an)
 
-+ (Document *)sharedInstance
+- (NSString *)outputDeviceDescription
 {
-    static Document *sharedInstance = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{ sharedInstance = [[Document alloc] init]; });
-    return sharedInstance;
+    return [self audioDeviceDescriptionForDevicePorts:self.currentRoute.outputs];
 }
 
-- (Element *)createElement:(NSString *)tagName
+- (NSString *)inputDeviceDescription
 {
-    // Uncomment only if needed for debugging
-    // The JS code creates lots of 'div' elements, which in turn generate lots of
-    // traces
+    return [self audioDeviceDescriptionForDevicePorts:self.currentRoute.inputs];
+}
 
-    Element *elmt = [[Element alloc] init];
+- (NSString *)audioDeviceDescriptionForDevicePorts:(NSArray<AVAudioSessionPortDescription *> *)portsArray
+{
+    if (portsArray.count) {
+        AVAudioSessionPortDescription *portDescription = portsArray[0];
+        return [NSString stringWithFormat:@"Name: %@ Type: %@", portDescription.portName, portDescription.portType];
+    }
 
-    return elmt;
+    return @"";
 }
 
 @end

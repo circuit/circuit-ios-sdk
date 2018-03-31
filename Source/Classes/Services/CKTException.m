@@ -30,6 +30,12 @@ NSString *const kCKTOAuthClientSecretException = @"Attempted to configure OAuth 
 NSString *const kCKTOAuthScopeException =
     @"A non valid scope is trying to be used - See CircuitKit documentation on all approved scopes";
 
+// Call Exceptions
+NSString *const kCKTCallIdException = @"Call id was not provided.";
+NSString *const kCKTDialOutException = @"Dial out information was not provided.";
+NSString *const kCKTMediaTypeException = @"Media type was not provided.";
+NSString *const kCKTNumberException = @"Number was not provided";
+
 // Conversation Exceptions
 NSString *const kCKTContentException = @"Content was not provided.";
 NSString *const kCKTConversationIdException = @"Conversation id was not provided.";
@@ -43,6 +49,7 @@ NSString *const kCKTJSEngineException = @"Attempted to use the SDK without start
 
 // Logon Exceptions
 NSString *const kCKTAccessTokenException = @"Attempted to logon without an access token.";
+NSString *const kCKTUserCredentialsException = @"Attempted to login without username or password provided";
 
 // User Exceptions
 NSString *const kCKTUserException = @"User id(s) or User email(s) were not provided";

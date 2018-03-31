@@ -29,6 +29,12 @@ extern NSString *const kCKTOAuthClientIdException;
 extern NSString *const kCKTOAuthClientSecretException;
 extern NSString *const kCKTOAuthScopeException;
 
+// Call Exceptions
+extern NSString *const kCKTCallIdException;
+extern NSString *const kCKTDialOutException;
+extern NSString *const kCKTMediaTypeException;
+extern NSString *const kCKTNumberException;
+
 // Conversation Exceptions
 extern NSString *const kCKTContentException;
 extern NSString *const kCKTConversationIdException;
@@ -42,6 +48,7 @@ extern NSString *const kCKTJSEngineException;
 
 // Logon Exceptions
 extern NSString *const kCKTAccessTokenException;
+extern NSString *const kCKTUserCredentialsException;
 
 // User Exceptions
 extern NSString *const kCKTUserException;

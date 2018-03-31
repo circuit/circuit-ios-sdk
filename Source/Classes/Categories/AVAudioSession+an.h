@@ -14,23 +14,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-//  CKTClient.h
+//  AVAudioSession+an.h
 //  CircuitSDK
 //
 //
 
-#import <Foundation/Foundation.h>
-#import "CKTService.h"
-#import "CKTException.h"
+#import <AVFoundation/AVFoundation.h>
 
-@interface CKTClient : CKTService
+@interface AVAudioSession (an)
 
-@property (nonatomic, strong) NSString *clientID;
-
-@property (nonatomic, strong) NSString *clientSecret;
-
-+ (CKTClient *)sharedInstance;
-
-// All client methods are defined in their respective extensions
+- (NSString *)outputDeviceDescription;
+- (NSString *)inputDeviceDescription;
 
 @end

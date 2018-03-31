@@ -20,6 +20,7 @@
 //
 
 #import "Angular.h"
+#import "Audio.h"
 #import "CKTHttp.h"
 #import "JSEngine.h"
 #import "JSRunLoop.h"
@@ -86,6 +87,7 @@ static NSString *LOG_TAG = @"[JSRunLoop]";
         // do this, the JSEngine wouldn't be reachable from JavaScript, and there wouldn't
         // be anything keeping the managed object alive.
         self.context[@"JSEngine"] = [JSEngine sharedInstance];
+        self.context[@"Audio"] = [Audio class];
         self.context[@"WebSocket"] = [WebSocketManager class];
         self.context[@"XMLHttpRequest"] = [XMLHttpRequest class];
         self.context[@"logger"] = [Logger sharedInstance];

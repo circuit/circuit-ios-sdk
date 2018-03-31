@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 s.name             = 'CircuitSDK'
-s.version          = '1.1.0'
+s.version          = '1.2.0'
 s.summary          = 'Circuit iOS SDK to build a text or media mobile application for iOS'
 s.description      = <<-DESC
                      'The iOS SDK is the Circuit client, exposing a clear abstracted API for Circuit PaaS.
@@ -14,6 +14,7 @@ s.social_media_url = 'https://twitter.com/unifyco'
 s.ios.deployment_target = '10.0'
 s.source_files = 'Source/Classes/**/*'
 s.public_header_files = 'Source/Classes/**/*.h'
+s.exclude_files = 'Source/Classes/CoreSDK/Client/CKTClient+Call.{h,m}'
 s.resource_bundles = {
 'CircuitSDK' => ['Source/scripts/**']
 }

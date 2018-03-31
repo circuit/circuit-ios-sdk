@@ -37,21 +37,6 @@ static NSString *LOG_TAG = @"[CKTClient]";
     return sharedInstance;
 }
 
-- (instancetype)init
-{
-    if (self = [super init]) {
-        return self;
-    }
-
-    return nil;
-}
-
-- (void)dealloc
-{
-    LOGD(LOG_TAG, @"dealloc");
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
 // All client methods are implemented in their respective extensions
 
 @end

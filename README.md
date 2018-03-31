@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/circuit/circuit-ios-sdk.svg?branch=master)](https://travis-ci.org/circuit/circuit-ios-sdk)
 [![Version](https://img.shields.io/cocoapods/v/CircuitSDK.svg?style=flat)](http://cocoapods.org/pods/CircuitSDK)
 [![License](https://img.shields.io/cocoapods/l/CircuitSDK.svg?style=flat)](http://cocoapods.org/pods/CircuitSDK)
 [![Platform](https://img.shields.io/cocoapods/p/CircuitSDK.svg?style=flat)](http://cocoapods.org/pods/CircuitSDK)

@@ -32,12 +32,10 @@
 #pragma clang diagnostic ignored "-Wmissing-selector-name"
 
 @class Location;
-@class Document;
 
 @protocol WindowExport<JSExport>
 
 @property (nonatomic, strong, readonly) Location *location;
-@property (nonatomic, strong, readonly) Document *document;
 
 - (void)alert:(NSString *)message;
 - (NSUInteger)setTimeout:(JSValue *)callback:(NSTimeInterval)duration:(NSString *)requestId;

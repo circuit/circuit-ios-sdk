@@ -42,6 +42,19 @@
 #endif
 }
 
+- (void)logon:(NSString *)username password:(NSString *)password completion:(void (^)(NSDictionary *user, NSError *error))completion
+{
+    CKTHttp *http = [[CKTHttp alloc] init];
+    [http createSession];
+
+    if (!(username.length > 0 && password.length > 0)) {
+         THROW_EXCEPTION(kCKTException, kCKTUserCredentialsException);
+    }
+
+    NSDictionary *args = @{ @"username" : username, @"password" : password, kJSEngineBlockArgName : completion };
+    [self executeAsync:@selector(authenticateResourceOwner:) withObject:args];
+}
+
 - (void)logout:(void (^)(void))completion
 {
     NSDictionary *args = @{kJSEngineBlockArgName : completion};
@@ -50,6 +63,16 @@
 }
 
 #pragma mark - Private Methods
+
+- (void)authenticateResourceOwner:(NSDictionary *)args
+{
+    NSDictionary *object = @{ @"username" : args[@"username"],
+                              @"password" : args[@"password"] };
+    NSArray *logonArgs = @[ object ];
+    CompletionBlock completion = args[kJSEngineBlockArgName];
+
+    [self executeFunction:@"logon" args:logonArgs completionHandler:completion];
+}
 
 - (void)loginToAccessServer:(NSDictionary *)args
 {

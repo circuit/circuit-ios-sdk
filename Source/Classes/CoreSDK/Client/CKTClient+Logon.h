@@ -25,13 +25,30 @@
 
 /*!
 
- @brief Logs user into server via given credentials.
+ @brief Logs user into server via given access token.
+        OAuth2 accessToken logon.
 
  @param accessToken Token retrieved from OAuth
  @param completion A completion handler that takes either a user or an error and returns void.
 
  */
 - (void)logon:(NSString *)accessToken completion:(void (^)(NSDictionary *user, NSError *error))completion;
+
+/*!
+
+ @brief Logs user into server via given credentials.
+        OAuth2 Resource Owner Grant Type logon.
+
+ @discussion This grant type should only be used if other flows
+            are not viable. Also, it should only be used if the
+            application is trusted by the user.
+
+ @param username Username (email) for Resource Owner Grant Type
+ @param password Password for Resource Owner Grant Type
+ @param completion A completion handler that takes either a user or an error and returns void.
+
+ */
+- (void)logon:(NSString *)username password:(NSString *)password completion:(void (^)(NSDictionary *user, NSError *error))completion;
 
 /*!
 
