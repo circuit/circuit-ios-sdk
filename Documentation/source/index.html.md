@@ -17,6 +17,7 @@ includes:
   - authentication
   - user
   - conversation
+  - calls
   - event
   - sample
   - errors

@@ -20,7 +20,7 @@
 //
 
 #import "Promise.h"
-#import "CKTLog.h"
+#import "Log.h"
 #import "JSEngine.h"
 
 @interface Promise () {
@@ -221,9 +221,9 @@ static NSString *LOG_TAG = @"[Promise]";
         Promise *returnedPromise = (Promise *)resultObj;
         // Wait for the returned promise to be resolved/rejected before
         // resolving/rejecting the chained promise.
-        [returnedPromise then:[JSValue valueWithObject:^(JSValue *newData) { [_chainedPromise resolve:newData]; }
+        [returnedPromise then:[JSValue valueWithObject:^(JSValue *newData) { [self->_chainedPromise resolve:newData]; }
                                              inContext:[JSEngine sharedInstance].context
-        ]:[JSValue valueWithObject:^(JSValue *error) { [_chainedPromise reject:error]; }
+                               ]:[JSValue valueWithObject:^(JSValue *error) { [self->_chainedPromise reject:error]; }
                                    inContext:[JSEngine sharedInstance].context]];
     } else {
         // The callback returned a simple object

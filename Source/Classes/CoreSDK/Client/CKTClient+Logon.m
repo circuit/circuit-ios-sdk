@@ -21,13 +21,20 @@
 
 #import "CKTClient+Logon.h"
 #import "CKTHttp.h"
+#import "CKTProxyConfiguration.h"
+#import "Log.h"
+#import "Window.h"
 
 @implementation CKTClient (Logon)
 
+
+static NSString *LOG_TAG = @"CKTClient+Logon";
+static NSString *serverPath = nil;
+static NSString *const kCKTDefaultServerPath = @"circuitsandbox.net";
+
 - (void)logon:(NSString *)accessToken completion:(void (^)(NSDictionary *user, NSError *error))completion
 {
-    CKTHttp *http = [[CKTHttp alloc] init];
-    [http createSession];
+    [self setupConnection];
 
     if (!accessToken) {
         THROW_EXCEPTION(kCKTException, kCKTAccessTokenException);
@@ -44,8 +51,7 @@
 
 - (void)logon:(NSString *)username password:(NSString *)password completion:(void (^)(NSDictionary *user, NSError *error))completion
 {
-    CKTHttp *http = [[CKTHttp alloc] init];
-    [http createSession];
+    [self setupConnection];
 
     if (!(username.length > 0 && password.length > 0)) {
          THROW_EXCEPTION(kCKTException, kCKTUserCredentialsException);
@@ -62,7 +68,40 @@
     [self executeAsync:@selector(logoutCompletion:) withObject:args];
 }
 
+#pragma mark - Server
+
+- (void)setServerPath:(NSString *)server
+{
+    LOGD(LOG_TAG, @"setting server to %@", serverPath);
+    serverPath = server;
+}
+
+- (NSString *)serverPath
+{
+    if (!serverPath) {
+        serverPath = kCKTDefaultServerPath;
+    }
+    return serverPath;
+}
+
 #pragma mark - Private Methods
+
+- (void)setupConnection
+{
+    LOGI(LOG_TAG, @"setupConnections: server: %@", [self serverPath]);
+
+    CKTHttp *http = [[CKTHttp alloc] init];
+    [http createSession];
+
+    // Update the proxy list to reach the server from current network.
+    [[CKTProxyConfiguration sharedInstance]
+        getProxyForUrl:[NSURL URLWithString:[NSString stringWithFormat:@"https://%@", [self serverPath]]]
+    ];
+
+    // needed for registration
+    // The JS ConnectionHandler will use this to set the connection target
+    [Window sharedInstance].location.href = [self serverPath];
+}
 
 - (void)authenticateResourceOwner:(NSDictionary *)args
 {

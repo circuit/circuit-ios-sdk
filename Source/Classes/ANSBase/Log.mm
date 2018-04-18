@@ -14,68 +14,79 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-//  CKTLog.m
+//  Log.h
 //  CircuitSDK
 //
 //
 
-#import "CKTLog.h"
+#import "Log.h"
 #import <sys/utsname.h>
 #import <UIKit/UIKit.h>
-
-NSString *const kLogTagCircuitKit = @"[PCKT]";
 
 #define lss_blocked 0
 #define lss_active 1
 
 #define MaxFileSize 1024 * 1024
-#define MaxFiles 5
+#define MaxFiles 10
 
 // Swift-compatible interface for logging
-void (^CKTLogd)(NSString *, NSString *) = ^void(NSString *tag, NSString *text) {
-    if ([[CKTLog sharedDebug] getiLogState] == logStateMaximum) {
-        [[CKTLog sharedDebug] logFile:logLevelDebug logTag:tag input:text];
+void (^ANSLogd)(NSString *, NSString *) = ^void(NSString *tag, NSString *text) {
+    if ([[ANSLog sharedDebug] getiLogState] == logStateMaximum) {
+        [[ANSLog sharedDebug] logFile:logLevelDebug logTag:tag input:text];
     }
 };
 
-void (^CKTLogi)(NSString *, NSString *) = ^void(NSString *tag, NSString *text) {
-    if ([[CKTLog sharedDebug] getiLogState] >= logStateMedium) {
-        [[CKTLog sharedDebug] logFile:logLevelInfo logTag:tag input:text];
+void (^ANSLogi)(NSString *, NSString *) = ^void(NSString *tag, NSString *text) {
+    if ([[ANSLog sharedDebug] getiLogState] >= logStateMedium) {
+        [[ANSLog sharedDebug] logFile:logLevelInfo logTag:tag input:text];
     }
 };
 
-void (^CKTLogw)(NSString *, NSString *) = ^void(NSString *tag, NSString *text) {
-    if ([[CKTLog sharedDebug] getiLogState] != logStateOff) {
-        [[CKTLog sharedDebug] logFile:logLevelWarn logTag:tag input:text];
+void (^ANSLogw)(NSString *, NSString *) = ^void(NSString *tag, NSString *text) {
+    if ([[ANSLog sharedDebug] getiLogState] != logStateOff) {
+        [[ANSLog sharedDebug] logFile:logLevelWarn logTag:tag input:text];
     }
 };
 
-void (^CKTLoge)(NSString *, NSString *) = ^void(NSString *tag, NSString *text) {
-    if ([[CKTLog sharedDebug] getiLogState] != logStateOff) {
-        [[CKTLog sharedDebug] logFile:logLevelError logTag:tag input:text];
+void (^ANSLoge)(NSString *, NSString *) = ^void(NSString *tag, NSString *text) {
+    if ([[ANSLog sharedDebug] getiLogState] != logStateOff) {
+        [[ANSLog sharedDebug] logFile:logLevelError logTag:tag input:text];
     }
 };
 
-void (^CKTLogButtonTap)(NSString *, NSString *) = ^void(NSString *tag, NSString *buttonTapName) {
-    if ([[CKTLog sharedDebug] getiLogState] >= logStateMinimum) {
-        [[CKTLog sharedDebug] logFile:logLevelInfo logTag:tag input:(@"User action - press/tap: %@"), buttonTapName];
+void (^ANSLogButtonTap)(NSString *, NSString *) = ^void(NSString *tag, NSString *buttonTapName) {
+    if ([[ANSLog sharedDebug] getiLogState] >= logStateMinimum) {
+        [[ANSLog sharedDebug] logFile:logLevelInfo logTag:tag input:(@"User action - press/tap: %@"), buttonTapName];
     }
 };
 
-@implementation CKTLog
+@interface ANSLog ()
 
-const static NSString *CKT_PREFIX = @"PCKT";  // Specifically for DAT - yes, and DAT is awesome
+@property (nonatomic) NSInteger logState;
+@property (nonatomic) NSInteger numOfFiles;
+@property (strong) NSFileHandle *currFile;
+@property (nonatomic) NSInteger logStatus;
+@property (nonatomic) dispatch_queue_t queue;
+@property (strong) NSArray *myLevel;
+@property (nonatomic) NSInteger myPid;
+@property (strong) NSDateFormatter *myDateFormatter;
+
+@end
+
+@implementation ANSLog
+
+const static NSString *ANSIBLE_PREFIX = @"PANS";  // Specifically for DAT - yes, and DAT is awesome
 
 static NSString *device;
 static NSString *version;
 
-static NSArray *JSlevelAry;
+static NSArray *jsLogLevelStrings;
 
-+ (CKTLog *)sharedDebug
++ (ANSLog *)sharedDebug
 {
-    static CKTLog *sharedDebug = nil;
+    static ANSLog *sharedDebug = nil;
     static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{ sharedDebug = [[CKTLog alloc] init]; });
+    dispatch_once(&onceToken, ^{ sharedDebug = [[ANSLog alloc] init]; });
     return sharedDebug;
 }
 
@@ -84,18 +95,13 @@ static NSArray *JSlevelAry;
     if ((self = [super init])) {
         NSMutableArray *files = [[NSMutableArray alloc] init];
         NSMutableArray *crfiles = [[NSMutableArray alloc] init];
-        NSMutableArray *legibleFiles = [[NSMutableArray alloc] init];
-        self.queue = dispatch_queue_create("com.evo.siemens.LogQueue", NULL);
+        self.queue = dispatch_queue_create("com.unify.circuit.LogQueue", NULL);
 
         self.logStatus = lss_blocked;
-        // Settings should be setting the Log state from saved value
-        // temporary set it to medium
-        //----------------------------------------------------------
-        self.logState = logStateMaximum;  // logStateMedium;
+        self.logState = logStateMaximum;  // Currently hard-coded, not configurable
 
         self.numOfFiles = 0;
         self.currFile = nil;
-        self.quickDiagnosticFile = nil;
         self.myLevel = @[ @"D", @"I", @"W", @"E", @"M" ];
         self.myDateFormatter = [self dateFormatter24Hour:@"yy-MM-dd HH:mm:ss.SSS"];
         self.myPid = [NSProcessInfo processInfo].processIdentifier;
@@ -117,19 +123,15 @@ static NSArray *JSlevelAry;
         @try {
             [self getLogFileList:&crfiles logDir:@"CRLogs/"];
             [self getLogFileList:&files logDir:@"Logs/"];
-            [self getLogFileList:&legibleFiles logDir:@"LogsQuick/"];
             if ([self openExistingLogFile:files] == NO) {
                 [self openNewLogFile:&files];
             }
-            if ([self openExistingLegibleLogFile:legibleFiles] == NO) {
-                [self openNewLegibleLogFile:&legibleFiles];
-            }
 
-            JSlevelAry = @[ @"[DEBUG]", @"[INFO]", @"[WARN]", @"[ERROR]" ];
+            jsLogLevelStrings = @[ @"[DEBUG]", @"[INFO]", @"[WARN]", @"[ERROR]" ];
         }
         @catch (NSException *exception)
         {
-            NSLog(@"init Exception %@", exception.reason);
+            NSLog(@"Log init Exception %@", exception.reason);
         }
         @finally
         {
@@ -226,7 +228,6 @@ static NSArray *JSlevelAry;
         } else {
             [self createLogsDirectory:logDir];
         }
-        //[fileManager release];
     }
     @catch (NSException *exception)
     {
@@ -318,98 +319,18 @@ static NSArray *JSlevelAry;
     }
 }
 
-- (BOOL)openExistingLegibleLogFile:(NSMutableArray *)files
-{
-    @try {
-        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        NSString *pathToDocumentsDir = paths[0];
-
-        NSInteger count = files.count;
-        if (count > 0) {
-            NSString *pathToFile = files.lastObject;
-            NSString *file = [pathToDocumentsDir
-                stringByAppendingPathComponent:[NSString stringWithFormat:@"LogsQuick/%@", pathToFile]];
-            NSFileHandle *lastFile = [NSFileHandle fileHandleForUpdatingAtPath:file];
-
-            NSDictionary *attributes = [[NSFileManager defaultManager] attributesOfItemAtPath:file error:nil];
-            NSString *fileSize = attributes[@"NSFileSize"];
-            NSInteger size = fileSize.intValue;
-
-            if (size < MaxFileSize) {
-                // Go to the end of the existing file before we write anything to it
-                [lastFile truncateFileAtOffset:[lastFile seekToEndOfFile]];
-
-                self.quickDiagnosticFile = lastFile;
-
-                return YES;
-            }
-        }
-
-        return NO;
-    }
-    @catch (NSException *exception)
-    {
-        NSLog(@"Couldn't open existing file.....");
-        return NO;
-    }
-    @finally
-    {
-        // Do something here?
-    }
-}
-
-- (BOOL)openNewLegibleLogFile:(NSMutableArray **)files
-{
-    @try {
-        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        NSString *pathToDocumentsDir = paths[0];
-
-        NSDate *today = [NSDate date];
-        NSDateFormatter *dateFormatter = [self dateFormatter24Hour:@"MMddHHmmss"];
-        NSString *date = [dateFormatter stringFromDate:today];
-
-        NSString *newFile = @"pansQuickDiagnostic.txt";
-
-        NSString *pathToFile = [pathToDocumentsDir
-            stringByAppendingPathComponent:[NSString stringWithFormat:@"LogsQuick/%@%@", date, newFile]];
-        [[NSFileManager defaultManager] createFileAtPath:pathToFile contents:nil attributes:nil];
-
-        self.quickDiagnosticFile = [NSFileHandle fileHandleForUpdatingAtPath:pathToFile];
-        [*files addObject:pathToFile];
-
-        return YES;
-    }
-    @catch (NSException *exception)
-    {
-        NSLog(@"Couldn't open new file.....");
-        return NO;
-    }
-    @finally
-    {
-        // Do something here?
-    }
-}
-
 // Create logs directory within Documents folder
 - (BOOL)createLogsDirectory:(NSString *)logDir
 {
-    NSFileManager *fileManager;
-    NSArray *paths;
-    NSString *pathToDocumentsDir;
-    NSString *logsDir;
-    BOOL success;
-
-    fileManager = [NSFileManager defaultManager];
-
-    paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-
-    pathToDocumentsDir = paths[0];
-
-    logsDir = [pathToDocumentsDir stringByAppendingPathComponent:logDir];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *pathToDocumentsDir = paths[0];
+    NSString *logsDir = [pathToDocumentsDir stringByAppendingPathComponent:logDir];
 
     // Create ./Logs, ./CRLogs directory...
     NSError *error;
-    success = [fileManager createDirectoryAtPath:logsDir withIntermediateDirectories:NO attributes:nil error:&error];
+    BOOL success =
+        [fileManager createDirectoryAtPath:logsDir withIntermediateDirectories:NO attributes:nil error:&error];
     if (!success)
         NSLog(@"ERROR create %@ directory: %@", logDir, error);
 
@@ -431,35 +352,6 @@ static NSArray *JSlevelAry;
         for (int idx = 0; count > remaining; count--, idx++) {
             file =
                 [pathToDocumentsDir stringByAppendingPathComponent:[NSString stringWithFormat:@"Logs/%@", files[idx]]];
-
-            [fileManager removeItemAtPath:file error:nil];
-        }
-    }
-    @catch (NSException *exception)
-    {
-        NSLog(@"Couldn't delete log file.....");
-    }
-    @finally
-    {
-        return count;
-    }
-}
-
-- (NSInteger)deleteLegibleLogFiles:(NSInteger)remaining
-{
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSString *file;
-    NSMutableArray *files = [[NSMutableArray alloc] init];
-    NSInteger count = 0;
-    @try {
-        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        NSString *pathToDocumentsDir = paths[0];
-
-        count = [self getLogFileList:&files logDir:@"LogsQuick/"];
-
-        for (int idx = 0; count > remaining; count--, idx++) {
-            file = [pathToDocumentsDir
-                stringByAppendingPathComponent:[NSString stringWithFormat:@"LogsQuick/%@", files[idx]]];
 
             [fileManager removeItemAtPath:file error:nil];
         }
@@ -579,20 +471,10 @@ static NSArray *JSlevelAry;
     self.currFile = nil;
 }
 
-- (void)closeLegibleLogFile
-{
-    [self.quickDiagnosticFile synchronizeFile];
-    [self.quickDiagnosticFile closeFile];
-    self.quickDiagnosticFile = nil;
-}
-
 - (NSString *)logLevelToStr:(NSInteger)logLevel
 {
-    NSString *level;
-
     if ((logLevel >= 0) && (logLevel < 6)) {
-        level = self.myLevel[(logLevel)];
-        return level;
+        return self.myLevel[(logLevel)];
     }
     return @"D";
 }
@@ -620,11 +502,11 @@ static NSArray *JSlevelAry;
 
                     NSString *log =
                         [NSString stringWithFormat:@"%@ %ld %p %@ %@ : %@ %@\r\n", tempDate, (long)self.myPid, threadId,
-                                                   level, CKT_PREFIX, logTag, msg];
+                                                   level, ANSIBLE_PREFIX, logTag, msg];
 
 #ifdef DEBUG
                     NSString *log2 =
-                        [NSString stringWithFormat:@"%p %@ %@ : %@ %@", threadId, level, CKT_PREFIX, logTag, msg];
+                        [NSString stringWithFormat:@"%p %@ %@ : %@ %@", threadId, level, ANSIBLE_PREFIX, logTag, msg];
                     NSLog(@"%@", log2);
 #endif
                     data = [log dataUsingEncoding:NSUTF8StringEncoding];
@@ -669,11 +551,11 @@ static NSArray *JSlevelAry;
 
                     NSString *log =
                         [NSString stringWithFormat:@"%@ %ld %p %@ %@ : %@ %@\r\n", tempDate, (long)self.myPid, threadId,
-                                                   log_level, CKT_PREFIX, log_tag, log_msg];
+                                                   log_level, ANSIBLE_PREFIX, log_tag, log_msg];
 
 #ifdef DEBUG
                     NSString *log2 = [NSString
-                        stringWithFormat:@"%p %@ %@ : %@ %@", threadId, log_level, CKT_PREFIX, log_tag, log_msg];
+                        stringWithFormat:@"%p %@ %@ : %@ %@", threadId, log_level, ANSIBLE_PREFIX, log_tag, log_msg];
                     NSLog(@"%@", log2);
 #endif
                     data = [log dataUsingEncoding:NSUTF8StringEncoding];
@@ -706,8 +588,7 @@ static NSArray *JSlevelAry;
     NSString *jsLogMsg = [lMsg substringFromIndex:lrng2.location + 1];
 
     // Convert JS Level to numeric value
-    // JSlevelAry = @"[DEBUG]", @"[INFO]", @"[WARN]", @"[ERROR]",
-    NSInteger lvlIdx = [JSlevelAry indexOfObject:lvlStr];
+    NSInteger lvlIdx = [jsLogLevelStrings indexOfObject:lvlStr];
 
     // Convert millisecond string into Date object
     NSDate *lDate = [NSDate dateWithTimeIntervalSince1970:(msecStr.doubleValue / 1000)];
@@ -739,33 +620,6 @@ static NSArray *JSlevelAry;
         // Do something here?
     }
     self.numOfFiles = files.count;
-    //[files release];
-    return YES;
-}
-
-- (BOOL)checkLegibleFileHandler
-{
-    // Skip if file handle is available
-    if (self.quickDiagnosticFile != nil) {
-        return YES;
-    }
-
-    NSMutableArray *files = [[NSMutableArray alloc] init];
-    @try {
-        [self getLogFileList:&files logDir:@"LogsQuick/"];
-        if ([self openExistingLegibleLogFile:files] == NO) {
-            [self openNewLegibleLogFile:&files];
-        }
-    }
-    @catch (NSException *exception)
-    {
-        NSLog(@"Couldn't open files.....");
-    }
-    @finally
-    {
-        // Do something here?
-    }
-    // numOfFiles = [files count];
     return YES;
 }
 
@@ -785,7 +639,6 @@ static NSArray *JSlevelAry;
                         [self getLogFileList:&files logDir:@"Logs/"];
                         [self openNewLogFile:&files];
                         self.numOfFiles = files.count;
-                        //[files release];
                     }
 
                     if (self.numOfFiles > MaxFiles) {
@@ -805,72 +658,12 @@ static NSArray *JSlevelAry;
     }
 }
 
-- (void)writeLegible:(NSString *)message
-{
-    if (self.logState > logStateOff) {
-        NSData *data;
-        NSDate *today = [NSDate date];
-        NSString *log;
-        @try {
-            if (message.length != 0) {
-                // CQ00223331
-                NSString *tempDate;
-                @synchronized(self.myDateFormatter)
-                {
-                    tempDate = [self.myDateFormatter stringFromDate:today];
-                }
-
-                log = [NSString stringWithFormat:@"%@ - %@\r\n", tempDate, message];
-            } else {
-                log = [NSString stringWithFormat:@"\r\n"];
-            }
-            data = [log dataUsingEncoding:NSUTF8StringEncoding];
-
-        }  // @try
-        @catch (NSException *exception)
-        {
-            NSLog(@"writeLegible Exception %@", exception.reason);
-        }
-
-        @try {
-            if ([self checkLegibleFileHandler] == YES) {
-                if (self.quickDiagnosticFile != nil) {
-                    [self.quickDiagnosticFile writeData:data];
-                    unsigned long long offset = (self.quickDiagnosticFile).offsetInFile;
-
-                    if (offset >= MaxFileSize) {
-                        NSMutableArray *files = [[NSMutableArray alloc] init];
-                        // write end of file
-                        [self closeLegibleLogFile];
-                        [self getLogFileList:&files logDir:@"LogsQuick/"];
-                        [self openNewLegibleLogFile:&files];
-
-                        if (files.count > 2) {
-                            [self deleteLegibleLogFiles:2];
-                        }
-                    }
-                }
-            }
-        }
-        @catch (NSException *exception)
-        {
-            NSLog(@"Couldn't write into file (basicPrint).....");
-        }
-        @finally
-        {
-            // Do something here?
-        }
-    }
-}
-
 // These logFile methods invoked by the Objective-C Logging Macros
 - (void)logFile:(int)logLevel logTag:(NSString *)logTag input:(NSString *)input, ...
 {
     va_list ap;
-    NSString *print;
-
     va_start(ap, input);
-    print = [[NSString alloc] initWithFormat:input arguments:ap];
+    NSString *print = [[NSString alloc] initWithFormat:input arguments:ap];
     va_end(ap);
 
     if ([NSThread isMainThread])
@@ -887,13 +680,11 @@ static NSArray *JSlevelAry;
            input:(NSString *)input, ...
 {
     va_list ap;
-    NSString *print;
+    va_start(ap, input);
+    NSString *print = [[NSString alloc] initWithFormat:input arguments:ap];
+    va_end(ap);
 
     NSString *lFF = [NSString stringWithFormat:@"%s", lFunction];
-
-    va_start(ap, input);
-    print = [[NSString alloc] initWithFormat:input arguments:ap];
-    va_end(ap);
 
     if ([NSThread isMainThread])
         [self writeToLog:@[ self.myLevel[(logLevel - 1)], logTag, [NSString stringWithFormat:@"%@ %@", lFF, print] ]];
@@ -941,24 +732,23 @@ static NSArray *JSlevelAry;
 // This method invoked by the C++ Logging Macros
 void client_log(int level, const char *tag, const char *msg, ...)
 {
-    if ([[CKTLog sharedDebug] getiLogState] != logStateOff) {
-        va_list ap;
-        NSString *pMsg;
+    if ([[ANSLog sharedDebug] getiLogState] != logStateOff) {
+        NSString *formattingString = @((char *)msg);
 
-        NSString *pMsg2 = @((char *)msg);
+        va_list ap;
         va_start(ap, msg);
-        pMsg = [[NSString alloc] initWithFormat:pMsg2 arguments:ap];
+        NSString *pMsg = [[NSString alloc] initWithFormat:formattingString arguments:ap];
         va_end(ap);
 
         NSString *logTag = @((char *)tag);
 
-        [[CKTLog sharedDebug] iphoneLogPrint:level logTag:logTag msg:pMsg];
+        [[ANSLog sharedDebug] iphoneLogPrint:level logTag:logTag msg:pMsg];
     }
 }
 
 int client_get_log_state()
 {
-    return (int)[[CKTLog sharedDebug] getiLogState];
+    return (int)[[ANSLog sharedDebug] getiLogState];
 }
 
 @end

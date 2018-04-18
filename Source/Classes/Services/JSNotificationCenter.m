@@ -19,8 +19,8 @@
 //
 //
 
-#import "CKTLog.h"
 #import "JSNotificationCenter.h"
+#import "Log.h"
 
 NSString *const CKTNotificationApplicationServiceLoaded = @"applicationServiceLoaded";
 NSString *const CKTNotificationBasicSearchResults = @"basicSearchResults";

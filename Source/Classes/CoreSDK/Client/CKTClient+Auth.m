@@ -22,7 +22,8 @@
 #import "CKTClient+Auth.h"
 #import "JSEngine.h"
 #import "JSNotificationCenter.h"
-#import "CKTLog.h"
+#import "Log.h"
+#import "Navigator.h"
 
 @implementation CKTClient (Auth)
 
@@ -105,9 +106,11 @@ static NSString *LOG_TAG = @"[CKTClient+Auth]";
                     object:nil
                      queue:mainQueue
                 usingBlock:^(NSNotification *note) {
-                    // Set the OAuth credentials
-                    LOGD(LOG_TAG, @"Set the OAuth credentials");
 
+                    // Initialize the WebRTC framework
+                    [[Navigator sharedInstance] initWebRTC];
+
+                    // Set the OAuth credentials
                     [self setOAuthConfig:oAuthClientId clientSecret:oAuthClientSecret scope:userScope];
                 }];
 }
@@ -143,6 +146,7 @@ static NSString *LOG_TAG = @"[CKTClient+Auth]";
 
 - (void)setOAuthConfig:(NSString *)clientId clientSecret:(NSString *)clientSecret scope:(NSString *)scope
 {
+    LOGD(LOG_TAG, @"Set the OAuth credentials");
     id oAuthScope = scope ? scope : [NSNull null];
 
     NSDictionary *args = @{ @"client_id" : clientId, @"client_secret" : clientSecret, @"scope" : oAuthScope };

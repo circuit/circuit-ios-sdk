@@ -14,32 +14,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-//  Angular.h
-//  CircuitSDK
+//  ANRTCPeerConnectionDelegate.h
+//  CKTNavigator
 //
 //
 
-#import "Angular.h"
-#import "Audio.h"
-#import "CKTException.h"
-#import "CKTClient.h"
-#import "CKTClient+Auth.h"
-#import "CKTClient+Conversation.h"
-#import "CKTClient+Logon.h"
-#import "CKTClient+User.h"
-#import "CKTHttp.h"
-#import "CKTProxyConfiguration.h"
-#import "Element.h"
-#import "JSEngine.h"
-#import "JSNotificationCenter.h"
-#import "JSRunLoop.h"
-#import "JSValue+an.h"
-#import "Log.h"
-#import "Logger.h"
-#import "Promise.h"
-#import "PubSubEvents.h"
-#import "PubSubResults.h"
-#import "PubSubService.h"
-#import "WebSocketManager.h"
-#import "Window.h"
-#import "XMLHttpRequest.h"
+#import <Foundation/Foundation.h>
+
+#import <WebRTC/RTCPeerConnection.h>
+
+@interface ANRTCPeerConnectionDelegate : NSObject<RTCPeerConnectionDelegate>
+
+@end

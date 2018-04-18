@@ -19,8 +19,8 @@
 //
 //
 
-#import "CKTLog.h"
 #import "CKTProxyConfiguration.h"
+#import "Log.h"
 
 // Make the properties writable in the implementation
 @interface CKTProxyConfiguration ()

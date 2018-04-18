@@ -22,7 +22,7 @@
 
 #import "CKTHttp.h"
 #import "JSEngine.h"
-#import "CKTLog.h"
+#import "Log.h"
 #import "SocketRocket/SRWebSocket.h"
 
 static const double ANSSocketConnectionTimeout = 30.0;
@@ -233,7 +233,7 @@ static WebSocketManager *currentSocket;
 
         dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, ANSSocketPingTimeout * NSEC_PER_SEC);
         dispatch_after(popTime, dispatch_get_main_queue(), ^(void) {
-            if (_waitingForPong) {
+            if (self->_waitingForPong) {
                 [self performSelector:@selector(callOnPingTimeout)
                              onThread:self.myThread
                            withObject:nil
