@@ -113,17 +113,17 @@ NSMutableURLRequest *req;
                           if (error) {
                               [self setOnerror: [JSValue valueWithNewErrorFromMessage:error.localizedDescription
                                                                            inContext:[[JSEngine sharedInstance] context]]];
-                              responseText = error.localizedDescription;
-                              [[self.onload invokeMethod:@"bind" withArguments:@[ self ]] callWithArguments:@[ _onError.value ]];
+                              self->responseText = error.localizedDescription;
+                              [[self.onload invokeMethod:@"bind" withArguments:@[ self ]] callWithArguments:@[ self->_onError.value ]];
                           } else {
                               if (self.status == 200) {
-                                  responseText = response;
-                                  readyState = 4;
-                                  if (_onLoad) {
+                                  self->responseText = self->response;
+                                  self->readyState = 4;
+                                  if (self->_onLoad) {
                                       [[self.onload invokeMethod:@"bind" withArguments:@[ self ]] callWithArguments:NULL];
                                   }
-                              } else if (_onError) {
-                                  [[self.onerror invokeMethod:@"bind" withArguments:@[ self ]] callWithArguments:@[ _onError.value ]];
+                              } else if (self->_onError) {
+                                  [[self.onerror invokeMethod:@"bind" withArguments:@[ self ]] callWithArguments:@[ self->_onError.value ]];
                               }
                           }
                       }];

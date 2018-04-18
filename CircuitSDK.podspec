@@ -12,13 +12,18 @@ s.author           = { 'Unify Inc.' => 'https://www.unify.com' }
 s.source           = { :git => 'https://github.com/circuit/circuit-ios-sdk.git', :tag => s.version.to_s }
 s.social_media_url = 'https://twitter.com/unifyco'
 s.ios.deployment_target = '10.0'
+
+# SDK src
 s.source_files = 'Source/Classes/**/*'
 s.public_header_files = 'Source/Classes/**/*.h'
-s.exclude_files = 'Source/Classes/CoreSDK/Client/CKTClient+Call.{h,m}'
-s.resource_bundles = {
-'CircuitSDK' => ['Source/scripts/**']
-}
-s.frameworks = 'JavaScriptCore'
+s.resource_bundles = { 'CircuitSDK' => ['Source/scripts/**'] }
+
+# CKTNavigator src
+s.vendored_libraries = 'Source/libCKTNavigator.a'
+s.pod_target_xcconfig = { 'HEADER_SEARCH_PATHS' => '"${PODS_ROOT}/../../CKTNavigator/"/**',
+						  'OTHER_LDFLAGS' => '-ObjC' }
+
+s.frameworks = 'JavaScriptCore', 'AudioToolbox', 'AVFoundation', 'VideoToolbox', 'CoreMedia', 'GLKIT'
 s.dependency 'SocketRocket', '~> 0.4.2'
 end
 

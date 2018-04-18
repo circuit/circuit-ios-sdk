@@ -14,7 +14,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-//  CKTLog.h
+//  Log.h
 //  CircuitSDK
 //
 //
@@ -34,37 +34,37 @@
 
 // Log macros
 
-extern void (^CKTLogd)(NSString *, NSString *);
-extern void (^CKTLogi)(NSString *, NSString *);
-extern void (^CKTLogw)(NSString *, NSString *);
-extern void (^CKTLoge)(NSString *, NSString *);
-extern void (^CKTLogButtonTap)(NSString *, NSString *);
+extern void (^ANSLogd)(NSString *, NSString *);
+extern void (^ANSLogi)(NSString *, NSString *);
+extern void (^ANSLogw)(NSString *, NSString *);
+extern void (^ANSLoge)(NSString *, NSString *);
+extern void (^ANSLogButtonTap)(NSString *, NSString *);
 
 #define LOGD(tag, format, ...)                                                                     \
     do {                                                                                           \
-        if ([[CKTLog sharedDebug] getiLogState] == logStateMaximum) {                              \
-            [[CKTLog sharedDebug] logFile:logLevelDebug logTag:tag input:(format), ##__VA_ARGS__]; \
+        if ([[ANSLog sharedDebug] getiLogState] == logStateMaximum) {                              \
+            [[ANSLog sharedDebug] logFile:logLevelDebug logTag:tag input:(format), ##__VA_ARGS__]; \
         }                                                                                          \
     } while (0)
 
 #define LOGI(tag, format, ...)                                                                    \
     do {                                                                                          \
-        if ([[CKTLog sharedDebug] getiLogState] >= logStateMedium) {                              \
-            [[CKTLog sharedDebug] logFile:logLevelInfo logTag:tag input:(format), ##__VA_ARGS__]; \
+        if ([[ANSLog sharedDebug] getiLogState] >= logStateMedium) {                              \
+            [[ANSLog sharedDebug] logFile:logLevelInfo logTag:tag input:(format), ##__VA_ARGS__]; \
         }                                                                                         \
     } while (0)
 
 #define LOGW(tag, format, ...)                                                                    \
     do {                                                                                          \
-        if ([[CKTLog sharedDebug] getiLogState] != logStateOff) {                                 \
-            [[CKTLog sharedDebug] logFile:logLevelWarn logTag:tag input:(format), ##__VA_ARGS__]; \
+        if ([[ANSLog sharedDebug] getiLogState] != logStateOff) {                                 \
+            [[ANSLog sharedDebug] logFile:logLevelWarn logTag:tag input:(format), ##__VA_ARGS__]; \
         }                                                                                         \
     } while (0)
 
 #define LOGE(tag, format, ...)                                                                     \
     do {                                                                                           \
-        if ([[CKTLog sharedDebug] getiLogState] != logStateOff) {                                  \
-            [[CKTLog sharedDebug] logFile:logLevelError logTag:tag input:(format), ##__VA_ARGS__]; \
+        if ([[ANSLog sharedDebug] getiLogState] != logStateOff) {                                  \
+            [[ANSLog sharedDebug] logFile:logLevelError logTag:tag input:(format), ##__VA_ARGS__]; \
         }                                                                                          \
     } while (0)
 
@@ -72,8 +72,8 @@ extern void (^CKTLogButtonTap)(NSString *, NSString *);
 
 #define LOGFD(tag, format, ...)                                       \
     do {                                                              \
-        if ([[CKTLog sharedDebug] getiLogState] == logStateMaximum) { \
-            [[CKTLog sharedDebug] logFile:logLevelDebug               \
+        if ([[ANSLog sharedDebug] getiLogState] == logStateMaximum) { \
+            [[ANSLog sharedDebug] logFile:logLevelDebug               \
                                    logTag:tag                         \
                              withFunction:__PRETTY_FUNCTION__         \
                                     input:(format), ##__VA_ARGS__];   \
@@ -82,8 +82,8 @@ extern void (^CKTLogButtonTap)(NSString *, NSString *);
 
 #define LOGFI(tag, format, ...)                                      \
     do {                                                             \
-        if ([[CKTLog sharedDebug] getiLogState] >= logStateMedium) { \
-            [[CKTLog sharedDebug] logFile:logLevelInfo               \
+        if ([[ANSLog sharedDebug] getiLogState] >= logStateMedium) { \
+            [[ANSLog sharedDebug] logFile:logLevelInfo               \
                                    logTag:tag                        \
                              withFunction:__PRETTY_FUNCTION__        \
                                     input:(format), ##__VA_ARGS__];  \
@@ -92,8 +92,8 @@ extern void (^CKTLogButtonTap)(NSString *, NSString *);
 
 #define LOGFW(tag, format, ...)                                     \
     do {                                                            \
-        if ([[CKTLog sharedDebug] getiLogState] != logStateOff) {   \
-            [[CKTLog sharedDebug] logFile:logLevelWarn              \
+        if ([[ANSLog sharedDebug] getiLogState] != logStateOff) {   \
+            [[ANSLog sharedDebug] logFile:logLevelWarn              \
                                    logTag:tag                       \
                              withFunction:__PRETTY_FUNCTION__       \
                                     input:(format), ##__VA_ARGS__]; \
@@ -102,8 +102,8 @@ extern void (^CKTLogButtonTap)(NSString *, NSString *);
 
 #define LOGFE(tag, format, ...)                                     \
     do {                                                            \
-        if ([[CKTLog sharedDebug] getiLogState] != logStateOff) {   \
-            [[CKTLog sharedDebug] logFile:logLevelError             \
+        if ([[ANSLog sharedDebug] getiLogState] != logStateOff) {   \
+            [[ANSLog sharedDebug] logFile:logLevelError             \
                                    logTag:tag                       \
                              withFunction:__PRETTY_FUNCTION__       \
                                     input:(format), ##__VA_ARGS__]; \
@@ -115,8 +115,8 @@ extern void (^CKTLogButtonTap)(NSString *, NSString *);
 // Logs when a user presses a button or taps an option on screen
 #define LOG_BUTTON_TAP(tag, buttonTapName)                                                  \
     do {                                                                                    \
-        if ([[CKTLog sharedDebug] getiLogState] >= logStateMinimum) {                       \
-            [[CKTLog sharedDebug] logFile:logLevelInfo                                      \
+        if ([[ANSLog sharedDebug] getiLogState] >= logStateMinimum) {                       \
+            [[ANSLog sharedDebug] logFile:logLevelInfo                                      \
                                    logTag:tag                                               \
                                     input:(@"User action - press/tap: %@"), buttonTapName]; \
         }                                                                                   \
@@ -127,31 +127,19 @@ extern void (^CKTLogButtonTap)(NSString *, NSString *);
 #if VERBOSE
 #define LOGV(tag, format, ...)                                                                     \
     do {                                                                                           \
-        if ([[CKTLog sharedDebug] getiLogState] == logStateMaximum) {                              \
-            [[CKTLog sharedDebug] logFile:logLevelDebug logTag:tag input:(format), ##__VA_ARGS__]; \
+        if ([[ANSLog sharedDebug] getiLogState] == logStateMaximum) {                              \
+            [[ANSLog sharedDebug] logFile:logLevelDebug logTag:tag input:(format), ##__VA_ARGS__]; \
         }                                                                                          \
     } while (0)
 #else
 #define LOGV(tag, format, ...)
 #endif
 
-extern NSString *const kLogTagCircuitKit;
-
 // Function prototypes
 void client_log(int level, const char *tag, const char *msg, ...);
 int client_get_log_state(void);
 
-@interface CKTLog : NSObject
-
-@property (nonatomic) NSInteger logState;
-@property (nonatomic) NSInteger numOfFiles;
-@property (strong) NSFileHandle *currFile;
-@property (strong) NSFileHandle *quickDiagnosticFile;
-@property (nonatomic) NSInteger logStatus;
-@property (nonatomic) dispatch_queue_t queue;
-@property (strong) NSArray *myLevel;
-@property (nonatomic) NSInteger myPid;
-@property (strong) NSDateFormatter *myDateFormatter;
+@interface ANSLog : NSObject
 
 // User information - to be set once user is registered
 @property (copy) NSString *registeredUserName;
@@ -159,32 +147,20 @@ int client_get_log_state(void);
 @property (copy) NSString *registeredUserTenantId;
 @property (copy) NSString *registeredUserEmail;
 
-+ (CKTLog *)sharedDebug;
++ (ANSLog *)sharedDebug;
+
 - (void)logFile:(int)logLevel logTag:(NSString *)logTag input:(NSString *)input, ...;
 - (void)logFile:(int)logLevel
           logTag:(NSString *)logTag
     withFunction:(const char *)lFunction
            input:(NSString *)input, ...;
-- (void)iphoneLogPrint:(int)logLevel logTag:(NSString *)logTag msg:(NSString *)msg;
+
 - (NSInteger)getiLogState;
 - (void)setLogState:(NSInteger)state;
-- (NSInteger)getLogFileList:(NSMutableArray **)files logDir:(NSString *)logDir;
-- (BOOL)openExistingLogFile:(NSMutableArray *)files;
-- (BOOL)openNewLogFile:(NSMutableArray **)files;
-- (BOOL)openNewLegibleLogFile:(NSMutableArray **)files;
-- (NSInteger)deleteLogFiles:(NSInteger)remaining;
-- (NSInteger)deleteCrashFiles:(NSInteger)remaining;
-- (NSInteger)deleteLegibleLogFiles:(NSInteger)remaining;
-- (void)logSystemData:(NSString *)pathToFile;
-- (void)closeLogFile;
-- (void)writeToLog:(NSArray *)msgList;
-- (void)writeToLog:(NSString *)log_tag level:(NSInteger)levelIdx message:(NSString *)log_msg dateObject:(NSDate *)date;
+
 - (void)writeJStoLog:(NSString *)msg;
-- (void)basicPrint:(NSData *)message;
-- (void)writeLegible:(NSString *)message;
-- (void)logHeaderPrint:(NSData *)message;
-- (BOOL)createLogsDirectory:(NSString *)logDir;
-- (BOOL)checkCurrFileHandler;
-- (NSString *)logLevelToStr:(NSInteger)logLevel;
+
+- (NSInteger)getLogFileList:(NSMutableArray **)files logDir:(NSString *)logDir;
+- (NSInteger)deleteCrashFiles:(NSInteger)remaining;
 
 @end

@@ -19,10 +19,10 @@
 //
 //
 
-#import "CKTLog.h"
 #import "JSEngine.h"
 #import "JSNotificationCenter.h"
 #import "JSValue+an.h"
+#import "Log.h"
 #import "PubSubEvents.h"
 #import "PubSubResults.h"
 #import "PubSubService.h"

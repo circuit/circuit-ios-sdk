@@ -20,7 +20,7 @@
 //
 
 #import <AudioToolbox/AudioToolbox.h>
-#import "CKTLog.h"
+#import "Log.h"
 #import "Vibrator.h"
 
 static const NSTimeInterval kANSVibrationInterval = 2.0;

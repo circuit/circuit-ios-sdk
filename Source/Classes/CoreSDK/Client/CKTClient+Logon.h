@@ -52,11 +52,27 @@
 
 /*!
 
- @brief Logs user out of the server and ends the session
+ @brief Logs user out of the server and ends the session.
 
  @param completion A completion handler that takes no arguments and returns void.
 
  */
 - (void)logout:(void (^)(void))completion;
+
+/*!
+
+ @brief Setup server.
+
+ @param server a new server path.
+
+ */
+- (void)setServerPath:(NSString *)server;
+
+/*!
+
+ @brief Get current server path.
+
+ */
+- (NSString *)serverPath;
 
 @end

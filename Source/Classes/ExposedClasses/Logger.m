@@ -20,7 +20,7 @@
 //
 
 #import "Logger.h"
-#import "CKTLog.h"
+#import "Log.h"
 
 // To supress the warning:
 //   “used as the name of the previous parameter rather than as part of the selector”
@@ -45,12 +45,12 @@ static NSString *LOG_TAG = @"[JS]";
 
 - (int)getLevel
 {
-    return (int)([[CKTLog sharedDebug] getiLogState]);
+    return (int)([[ANSLog sharedDebug] getiLogState]);
 }
 
 - (void)setLevel:(int)level
 {
-    [[CKTLog sharedDebug] setLogState:level];
+    [[ANSLog sharedDebug] setLogState:level];
 }
 
 - (void)debug:(NSString *)text:(id)data;

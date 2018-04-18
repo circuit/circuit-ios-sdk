@@ -22,7 +22,7 @@
 #import "JSEngine.h"
 #import "JSNotificationCenter.h"
 #import "JSRunLoop.h"
-#import "CKTLog.h"
+#import "Log.h"
 
 @implementation JSEngine
 

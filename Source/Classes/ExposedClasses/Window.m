@@ -21,6 +21,8 @@
 
 #import "Window.h"
 #import "JSEngine.h"
+#import "Navigator.h"
+
 
 // To supress the warning:
 //   “used as the name of the previous parameter rather than as part of the
@@ -74,6 +76,13 @@
 - (void)dealloc
 {
     [self clearAllTimeouts];
+}
+
+#pragma mark - Properties
+
+- (Navigator *)navigator
+{
+    return [Navigator sharedInstance];
 }
 
 #pragma mark - Public Methods

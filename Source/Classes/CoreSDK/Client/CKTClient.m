@@ -20,10 +20,9 @@
 //
 
 #import "CKTClient.h"
-#import "CKTLog.h"
+#import "Log.h"
 
 @implementation CKTClient
-
 @synthesize clientID = _clientID;
 @synthesize clientSecret = _clientSecret;
 static NSString *LOG_TAG = @"[CKTClient]";
@@ -33,7 +32,6 @@ static NSString *LOG_TAG = @"[CKTClient]";
     static CKTClient *sharedInstance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{ sharedInstance = [[self alloc] init]; });
-
     return sharedInstance;
 }
 

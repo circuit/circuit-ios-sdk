@@ -20,7 +20,7 @@
 //
 
 #import "CKTAVPlayer.h"
-#import "CKTLog.h"
+#import "Log.h"
 #import "JSNotificationCenter.h"
 
 @implementation CKTAVPlayer

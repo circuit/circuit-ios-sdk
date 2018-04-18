@@ -14,8 +14,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-//  Window.h
-//  CircuitSDK
+//  ANSBaseNavigator.h
+//  CKTNavigator
 //
 //
 
@@ -31,45 +31,31 @@
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wmissing-selector-name"
 
-@class Location;
-@class Navigator;
+@protocol ANSBaseNavigatorExport<JSExport>
+@property (nonatomic, strong, readonly) NSString *platform;
 
-@protocol WindowExport<JSExport>
-
-@property (nonatomic, strong, readonly) Location *location;
-@property (nonatomic, strong, readonly) Navigator *navigator;
-
-- (void)alert:(NSString *)message;
-- (NSUInteger)setTimeout:(JSValue *)callback:(NSTimeInterval)duration:(NSString *)requestId;
-- (void)clearTimeout:(NSUInteger)timeoutId;
-- (NSUInteger)setInterval:(JSValue *)callback:(NSTimeInterval)interval;
-- (void)clearInterval:(NSUInteger)timeoutId;
-- (NSString *)btoa:(NSString *)encode;
+- (void)getUserMedia:(JSValue *)options:(JSValue *)successCallback:(JSValue *)errorCallback;
 
 @end
 
-@interface Window : NSObject<WindowExport>
+@interface ANSBaseNavigator : NSObject<ANSBaseNavigatorExport> {
+    // Garbage collected references
+    JSManagedValue *_successCallback;
+}
 
-+ (Window *)sharedInstance;
-- (void)clearAllTimeouts;
+@property (nonatomic, strong, readonly) NSString *deviceModel;
 
-@end
++ (void)initWebRTCInJSContext:(JSContext *)context;
 
-// Not all Location methods are implemented, only those those thought
-// necessary at this time
-@protocol LocationExport<JSExport>
+- (void)initWebRTC;
 
-@property (nonatomic, copy) NSString *href;
-@property (nonatomic, copy, readonly) NSString *host;
-@property (nonatomic, copy, readonly) NSString *hostname;
-@property (nonatomic, copy, readonly) NSString *port;
-@property (nonatomic, copy, readonly) NSString *origin;
+- (NSUInteger)getVideoCaptureDeviceCount;
 
-- (NSString *)toString;
+- (JSContext *)getJSEngineContext;
 
-@end
+- (void)addJSManagedReference:(id)object;
 
-@interface Location : NSObject<LocationExport>
+- (void)removeJSManagedReference:(id)object;
 
 @end
 

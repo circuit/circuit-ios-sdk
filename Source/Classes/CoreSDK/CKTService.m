@@ -23,7 +23,7 @@
 
 #import "CKTService.h"
 #import "JSEngine.h"
-#import "CKTLog.h"
+#import "Log.h"
 #import "Promise.h"
 
 #define JS_SERVICE_NSERROR_FROM_JSERROR(e) [self NSErrorFromJSError:e fromFunction:__PRETTY_FUNCTION__ andLine:__LINE__]

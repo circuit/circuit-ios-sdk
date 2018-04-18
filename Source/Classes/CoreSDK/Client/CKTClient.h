@@ -26,7 +26,6 @@
 @interface CKTClient : CKTService
 
 @property (nonatomic, strong) NSString *clientID;
-
 @property (nonatomic, strong) NSString *clientSecret;
 
 + (CKTClient *)sharedInstance;
