@@ -2,11 +2,12 @@ language: objective-c
 podfile: Example/Podfile
 osx_image: xcode9.2
 
+before_install:
+# For loading of libCKTNavigator.a
 - brew install git-lfs
 - git lfs install
 - git lfs pull
 
-before_install:
 - gem install activesupport -v 4.2.6 # Need this because of travis
 - gem install cocoapods # Since Travis is not always on latest version
 - pod install --project-directory=Example
