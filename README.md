@@ -13,8 +13,21 @@ Welcome to the Circuit iOS SDK. You can use the provided SDK to build a text or 
 * OAuth 2.0 `client_id` and optionally `client_secret`. Get if for free at [circuit.github.com/oauth](https://circuit.github.com/oauth).
 
 ## Installation
-CircuitSDK is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
+CircuitSDK is available through [CocoaPods](http://cocoapods.org). To install CircuiSDK you need to install [Git Large File Storage](https://git-lfs.github.com) by running these comamnds:
+
+```shell
+brew install git-lfs
+git lfs install
+```
+**Be sure to restart your console after installing Git LFS**
+
+You can easily try our sample app by running the following command in your terminal window:
+
+```shell
+pod try CircuitSDK
+```
+
+To use it simply add the following line to your Podfile:
 
 ```ruby
 pod 'CircuitSDK'
