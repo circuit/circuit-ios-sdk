@@ -39,7 +39,9 @@
 
 /*!
 
- @brief Add a participant to an RTC Session via dial out. Unlike addParticipantToCall this API does not rely on a local  call to be present. The participant does not have to be a member of the conversation. Dialing PSTN number is also supported
+ @brief Add a participant to an RTC Session via dial out. Unlike addParticipantToCall this API does not rely on a local
+ call to be present. The participant does not have to be a member of the conversation. Dialing PSTN number is also
+ supported
 
  @discussion Required OAuth2 scopes: WRITE_CONVERSATIONS or FULL
 
@@ -59,14 +61,16 @@
  @param completion A completion handler that takes either a call or an error and returns void.
 
  */
-- (void)answerCall:(NSString *)callId mediaType:(NSDictionary *)mediaType completionHandler:(void (^)(NSDictionary *call, NSError *error))completion;
+- (void)answerCall:(NSString *)callId
+            mediaType:(NSDictionary *)mediaType
+    completionHandler:(void (^)(NSError *error))completion;
 
 /*!
 
  @brief Start a telephony conversation
 
  @param number Dialable number, must match Circuit.Utils.PHONE_PATTERN.
- @param completion A completionHandler that takes either a call or an error and returns void.
+ @param completion A completion that takes either a call or an error and returns void.
 
  */
 - (void)dialNumber:(NSString *)number completionHandler:(void (^)(NSDictionary *call, NSError *error))completion;
@@ -80,17 +84,19 @@
  @param completion A completion handler that takes either a call or an error and returns void.
 
  */
-- (void)dialNumber:(NSString *)number name:(NSString *)name completionHandler:(void (^)(NSDictionary *call, NSError *error))completion;
+- (void)dialNumber:(NSString *)number
+                 name:(NSString *)name
+    completionHandler:(void (^)(NSDictionary *call, NSError *error))completion;
 
 /*!
 
  @brief End a direct call or leave a group conference
 
  @param callId callId of the call to end.
- @param completion A compleiton handler that takes noarguments and returns void.
+ @param completion A completion that takes no arguments and replying with an error.
 
  */
-- (void)endCall:(NSString *)callId completionHandler:(void (^)(void))completion;
+- (void)endCall:(NSString *)callId completion:(void (^)(NSError *error))completion;
 
 /*!
 
@@ -98,11 +104,24 @@
 
  @discussion Requires OAuth2 scopes: CALLS or ALL
 
- @param callId Call id of the call to leave.
- @param completion A completion block that takes no arguments and returns void.
+ @param callId Call id of the call to end.
+ @param completion A compleiton that takes no arguments and replying with an error.
 
 */
-- (void)endConference:(NSString *)callId completion:(void(^)(void))completion;
+- (void)endConference:(NSString *)callId completion:(void (^)(NSError *error))completion;
+
+/*!
+ @brief Leave a conference call.
+
+ @discussion Requires OAuth2 scopes: CALLS or FULL
+
+ @param callId Call id of the call to leave.
+ @param completion A compleiton that takes no arguments and replying with an error.
+
+ */
+
+- (void)leaveConference:(NSString *)callId completion:(void (^)(NSError *error))completion;
+
 /*!
 
  @brief Find a call by its call Id. Call may be local or remote, active or non-active
@@ -131,7 +150,7 @@
  @param completion A completion block that takes active remote calls or an error and returns void.
 
 */
-- (void)getActiveRemoteCalls:(void(^)(NSDictionary *calls, NSError *error))completion;
+- (void)getActiveRemoteCalls:(void (^)(NSDictionary *calls, NSError *error))completion;
 
 /*!
 
@@ -162,7 +181,9 @@
  @param completion A completion handler that takes either a call or an error and returns void.
 
  */
-- (void)makeCall:(NSString *)user mediaType:(NSDictionary *)mediaType completionHandler:(void (^)(NSDictionary *call, NSError *error))completion;
+- (void)makeCall:(NSString *)user
+            mediaType:(NSDictionary *)mediaType
+    completionHandler:(void (^)(NSDictionary *call, NSError *error))completion;
 
 /*!
 
@@ -174,7 +195,10 @@
  @param completion A completion handler that takes either a call or an error and returns void.
 
  */
-- (void)makeCall:(NSString *)user mediaType:(NSDictionary *)mediaType createIfNotExists:(BOOL)createIfNotExists completionHandler:(void (^)(NSDictionary *call, NSError *error))completion;
+- (void)makeCall:(NSString *)user
+            mediaType:(NSDictionary *)mediaType
+    createIfNotExists:(BOOL)createIfNotExists
+    completionHandler:(void (^)(NSDictionary *call, NSError *error))completion;
 
 /*!
 
@@ -194,10 +218,31 @@
 
  @param convId Conversation ID
  @param mediaType Dictionary with boolean attributes: audio, video
- @param completion A completion block that takes a call or an error and returns void.
+ @param completion A completion that takes no arguments and replying with an error.
 
 */
-- (void)startConference:(NSString *)convId mediaType:(NSDictionary *)mediaType completion:(void (^)(NSDictionary *call, NSError *error))completion;
+- (void)startConference:(NSString *)convId
+              mediaType:(NSDictionary *)mediaType
+             completion:(void (^)(NSError *error))completion;
+
+/*!
+
+ @brief Join a conference call from the current device, or optionally from another logged on device.
+
+ @discussion Required OAuth2 scopes: CALLS or ALL
+
+ @param callId callId callId of the call to join.
+ @param mediaType mediaType Object with boolean attributes: audio, video
+ @param clientId clientId of device where to join the call from
+
+ @param completion A completion block that takes no arguments and returns void.
+
+ */
+
+- (void)joinConference:(NSString *)callId
+             mediaType:(NSDictionary *)mediaType
+              clientId:(NSString *)clientId
+            completion:(CompletionBlockWithNoData)completion;
 
 /*!
 

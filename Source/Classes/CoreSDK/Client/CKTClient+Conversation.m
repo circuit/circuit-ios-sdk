@@ -125,6 +125,15 @@
     [self executeAsync:@selector(flagItemCompletion:) withObject:args];
 }
 
+- (void)getConversationById:(NSString *_Nonnull)convId
+          completionHandler:(void (^)(NSDictionary *conversation, NSError *error))completion;
+{
+    if (convId.length > 0) {
+        NSDictionary *dict = @{ @"convId" : convId, kJSEngineBlockArgName : completion };
+        [self executeAsync:@selector(getConversationById:) withObject:dict];
+    }
+}
+
 - (void)getConversations:(CompletionBlock)completion
 {
     [self getConversations:nil completionHandler:completion];
@@ -418,6 +427,16 @@
     CompletionBlock completion = args[kJSEngineBlockArgName];
 
     [self executeFunction:@"getConversations" args:nil completionHandler:completion];
+}
+
+- (void)getConversationById:(NSDictionary *)args
+{
+    NSString *convId = args[@"convId"];
+    CompletionBlock completion = args[kJSEngineBlockArgName];
+
+    NSArray *convArray = @[ convId ];
+
+    [self executeFunction:@"getConversationById" args:convArray completionHandler:completion];
 }
 
 - (void)getConversationsWithOptionsCompletion:(NSDictionary *)args

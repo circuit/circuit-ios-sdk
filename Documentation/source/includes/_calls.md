@@ -1,8 +1,4 @@
-# Calls
-
-<aside class="warning">
-Beta support provided only.
-</aside>
+# CKTClient+Call
 
 ## addParticipantToCall:to:completion:
 
@@ -117,10 +113,10 @@ number | string |  Dialable number, must match Circuit.Utils.PHONE_PATTERN
 name | string | Display name of the number being dialed
 completion | callback | A completion that takes either a call or an error and returns void
 
-## endCall:completionHandler:
+## endCall:completion:
 
 ```objective_c
-[self endCall:@"callId" completionHandler:^{
+[self endCall:@"callId" completion:^{
 // Code goes here
 }];
 ```
@@ -156,6 +152,26 @@ Parameter | Type |  Description
 callId | string |  Call id of the call to leave.
 completion | callback | A completion block that takes no arguments and returns void
 
+
+## leaveConference:completion:
+
+```objective_c
+[self leaveConference:@"callId" completion:^(NSError *error) {
+// Code goes here
+}];
+```
+```swift
+client.leaveConference("callId") { (error) in
+// Code goes here
+}
+```
+
+Leave a conference call
+
+Parameter | Type |  Description
+--------- | ----------- | ---------
+callId | string |  Call id of the call to leave.
+completion | callback | A compleiton that takes no arguments and replying with an error
 
 ## findCall:completionHandler:
 
@@ -347,6 +363,32 @@ Parameter | Type |  Description
 --------- | ----------- | ---------
 convId | string | Conversation ID
 mediaType | dictionary | Object with boolean attributes: audio, video
+completion | callback | A completion handler that takes either a call or an error and returns void
+
+## joinConference:mediaType:clientId:completion:
+
+```objective_c
+NSDictionary *mediaType = @{@"audio": @"true", @"video": @"false"};
+[self joinConference:@"calIId" mediaType:mediaType clientId:@"clientId" completion:^{
+// Code goes here
+}];
+```
+```swift
+let mediaType = ["audio": true, "video": false]
+client.joinConference("callId", mediaType: mediaType, clientId:"clientId") {
+// Code goes here
+}
+```
+
+Join a conference call from the current device, or optionally from another logged on device.
+
+Required OAuth2 scopes: CALLS or ALL
+
+Parameter | Type |  Description
+--------- | ----------- | ---------
+calIId | string | callId callId of the call to mute
+mediaType | dictionary | Object with boolean attributes: audio, video
+clientId | string | clientId of device where to join the call from
 completion | callback | A completion handler that takes either a call or an error and returns void
 
 ## unmute:completionHandler

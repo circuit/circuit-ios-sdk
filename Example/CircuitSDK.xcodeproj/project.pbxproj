@@ -13,6 +13,14 @@
 		6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		662441766E62EF5F96511726 /* Pods_SampleApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4864D3BA1211B1061FB41E6 /* Pods_SampleApp.framework */; };
+		DB2D82DC2094774A00CDB1FB /* CallScreenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2D82DB2094774A00CDB1FB /* CallScreenManager.swift */; };
+		DB38BE1620A0789800C86FB4 /* Call.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB38BE1520A0789800C86FB4 /* Call.swift */; };
+		DB38BE1E20A078EA00C86FB4 /* ConferenceBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB38BE1D20A078EA00C86FB4 /* ConferenceBannerView.swift */; };
+		DB545BAA20768F4F00CB2B63 /* UIColor+SampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB545BA920768F4F00CB2B63 /* UIColor+SampleApp.swift */; };
+		DB8B4F0520764CD500399A72 /* CallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8B4F0420764CD500399A72 /* CallView.swift */; };
+		DBDCEBC9207782F000BCC990 /* CallDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDCEBC8207782F000BCC990 /* CallDataSource.swift */; };
+		DBFDCFAC207502AD0032A254 /* CallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFDCFAB207502AD0032A254 /* CallViewController.swift */; };
+		E668A680204445A8002BE53E /* MessageAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E668A67F204445A8002BE53E /* MessageAreaView.swift */; };
 		E6D57FCA1FD96BE30051D6B1 /* MockXMLHttpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = E6D57FC91FD96BE30051D6B1 /* MockXMLHttpRequest.m */; };
 		E6E5F6D51FD94C9700E5515B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E5F6B71FD94C9700E5515B /* User.swift */; };
 		E6E5F6D61FD94C9700E5515B /* UserDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E5F6B81FD94C9700E5515B /* UserDataSource.swift */; };
@@ -57,13 +65,21 @@
 		6003F5B7195388D20070C39A /* Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tests-Info.plist"; sourceTree = "<group>"; };
 		6003F5B9195388D20070C39A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
-		69B5F223F91AE69C0C662EF2 /* CircuitSDK.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = CircuitSDK.podspec; path = ../CircuitSDK.podspec; sourceTree = "<group>"; };
+		69B5F223F91AE69C0C662EF2 /* CircuitSDK.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = CircuitSDK.podspec; path = ../CircuitSDK.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		90B7AC85D6D19A309A8A7E34 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		97D431B562D17D95F253F8E3 /* Pods-CircuitSDK_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CircuitSDK_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CircuitSDK_Tests/Pods-CircuitSDK_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		B23DD8A9E3EE161BF317379D /* Pods-CircuitSDK_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CircuitSDK_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CircuitSDK_Tests/Pods-CircuitSDK_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		B4864D3BA1211B1061FB41E6 /* Pods_SampleApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SampleApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6BC52C7FDE8F0922EEED987 /* Pods-SampleApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SampleApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-SampleApp/Pods-SampleApp.release.xcconfig"; sourceTree = "<group>"; };
+		DB2D82DB2094774A00CDB1FB /* CallScreenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallScreenManager.swift; sourceTree = "<group>"; };
+		DB38BE1520A0789800C86FB4 /* Call.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Call.swift; sourceTree = "<group>"; };
+		DB38BE1D20A078EA00C86FB4 /* ConferenceBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConferenceBannerView.swift; sourceTree = "<group>"; };
+		DB545BA920768F4F00CB2B63 /* UIColor+SampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+SampleApp.swift"; sourceTree = "<group>"; };
+		DB8B4F0420764CD500399A72 /* CallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallView.swift; sourceTree = "<group>"; };
+		DBDCEBC8207782F000BCC990 /* CallDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallDataSource.swift; sourceTree = "<group>"; };
+		DBFDCFAB207502AD0032A254 /* CallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallViewController.swift; sourceTree = "<group>"; };
 		E116D84F00A416EB3DF3951E /* Pods-SampleApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SampleApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SampleApp/Pods-SampleApp.debug.xcconfig"; sourceTree = "<group>"; };
+		E668A67F204445A8002BE53E /* MessageAreaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageAreaView.swift; sourceTree = "<group>"; };
 		E6D57FC81FD96BE30051D6B1 /* MockXMLHttpRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MockXMLHttpRequest.h; sourceTree = "<group>"; };
 		E6D57FC91FD96BE30051D6B1 /* MockXMLHttpRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MockXMLHttpRequest.m; sourceTree = "<group>"; };
 		E6E5F65E1FD94AFB00E5515B /* SampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -180,6 +196,19 @@
 			name = "Podspec Metadata";
 			sourceTree = "<group>";
 		};
+		DBFDCFAD207502B60032A254 /* Calls */ = {
+			isa = PBXGroup;
+			children = (
+				DB38BE1520A0789800C86FB4 /* Call.swift */,
+				DBDCEBC8207782F000BCC990 /* CallDataSource.swift */,
+				DB2D82DB2094774A00CDB1FB /* CallScreenManager.swift */,
+				DB8B4F0420764CD500399A72 /* CallView.swift */,
+				DBFDCFAB207502AD0032A254 /* CallViewController.swift */,
+				DB38BE1D20A078EA00C86FB4 /* ConferenceBannerView.swift */,
+			);
+			path = Calls;
+			sourceTree = "<group>";
+		};
 		E0B1BFB150BE326A7AE49D2C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -197,6 +226,7 @@
 				E6E5F66C1FD94AFB00E5515B /* Info.plist */,
 				E6E5F6CF1FD94C9700E5515B /* Assets.xcassets */,
 				E6E5F6B91FD94C9700E5515B /* Base.lproj */,
+				DBFDCFAD207502B60032A254 /* Calls */,
 				E6E5F6C11FD94C9700E5515B /* Conversation */,
 				E6E5F6D01FD94C9700E5515B /* Login */,
 				E6E5F6D21FD94C9700E5515B /* Resources */,
@@ -227,6 +257,7 @@
 		E6E5F6BE1FD94C9700E5515B /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				DB545BA920768F4F00CB2B63 /* UIColor+SampleApp.swift */,
 				E6E5F6BF1FD94C9700E5515B /* ImageView+Kingfisher.swift */,
 				E6E5F6C01FD94C9700E5515B /* Utils.swift */,
 			);
@@ -270,6 +301,7 @@
 				E6E5F6CC1FD94C9700E5515B /* ConversationItemDataSource.swift */,
 				E6E5F6CD1FD94C9700E5515B /* DetailConversationTableViewCell.swift */,
 				E6E5F6CE1FD94C9700E5515B /* DetailConversationViewController.swift */,
+				E668A67F204445A8002BE53E /* MessageAreaView.swift */,
 			);
 			path = DetailedView;
 			sourceTree = "<group>";
@@ -333,6 +365,7 @@
 				E6E5F65A1FD94AFB00E5515B /* Sources */,
 				E6E5F65B1FD94AFB00E5515B /* Frameworks */,
 				E6E5F65C1FD94AFB00E5515B /* Resources */,
+				DBB30D602087346500AB7468 /* ShellScript */,
 				4135DE65A18E81428A8E0AA2 /* [CP] Embed Pods Frameworks */,
 				C8993C2D0843392C829259FB /* [CP] Copy Pods Resources */,
 			);
@@ -375,8 +408,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6003F5AD195388D20070C39A /* CircuitSDK_Tests */,
 				E6E5F65D1FD94AFB00E5515B /* SampleApp */,
+				6003F5AD195388D20070C39A /* CircuitSDK_Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -489,14 +522,30 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-SampleApp/Pods-SampleApp-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/CircuitSDK/CircuitSDK.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/CircuitSDK.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SampleApp/Pods-SampleApp-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		DBB30D602087346500AB7468 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n    cd ${SRCROOT}/../scripts\n    ./swiftLintModified.sh\n#echo ${SRCROOT}\n\n#swiftlint\n\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
 		};
 		EDBF937D12969A0C11BF9BEB /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -504,9 +553,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-CircuitSDK_Tests/Pods-CircuitSDK_Tests-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/CircuitSDK/CircuitSDK.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/CircuitSDK.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -531,13 +583,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				E6E5F6DE1FD94C9700E5515B /* ConversationTableViewCell.swift in Sources */,
+				DB38BE1620A0789800C86FB4 /* Call.swift in Sources */,
 				E6E5F6D51FD94C9700E5515B /* User.swift in Sources */,
 				E6E5F6D61FD94C9700E5515B /* UserDataSource.swift in Sources */,
 				E6E5F6E61FD94C9700E5515B /* LoginViewController.swift in Sources */,
+				E668A680204445A8002BE53E /* MessageAreaView.swift in Sources */,
 				E6E5F6D91FD94C9700E5515B /* ImageView+Kingfisher.swift in Sources */,
 				E6E5F6E21FD94C9700E5515B /* ConversationItemDataSource.swift in Sources */,
+				DBDCEBC9207782F000BCC990 /* CallDataSource.swift in Sources */,
 				E6E5F6E11FD94C9700E5515B /* ConversationItem.swift in Sources */,
 				E6E5F6E31FD94C9700E5515B /* DetailConversationTableViewCell.swift in Sources */,
+				DB545BAA20768F4F00CB2B63 /* UIColor+SampleApp.swift in Sources */,
+				DBFDCFAC207502AD0032A254 /* CallViewController.swift in Sources */,
 				E6E5F6E71FD94C9700E5515B /* AppDelegate.swift in Sources */,
 				E6E5F6DB1FD94C9700E5515B /* Conversation.swift in Sources */,
 				E6E5F6E01FD94C9700E5515B /* CreateConversationViewController.swift in Sources */,
@@ -545,6 +602,9 @@
 				E6E5F6E41FD94C9700E5515B /* DetailConversationViewController.swift in Sources */,
 				E6E5F6DF1FD94C9700E5515B /* CreateConversationCollectionViewCell.swift in Sources */,
 				E6E5F6DA1FD94C9700E5515B /* Utils.swift in Sources */,
+				DB8B4F0520764CD500399A72 /* CallView.swift in Sources */,
+				DB2D82DC2094774A00CDB1FB /* CallScreenManager.swift in Sources */,
+				DB38BE1E20A078EA00C86FB4 /* ConferenceBannerView.swift in Sources */,
 				E6E5F6DC1FD94C9700E5515B /* ConversationDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

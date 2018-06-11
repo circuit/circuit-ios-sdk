@@ -51,9 +51,20 @@ typedef void (^CompletionBlockWithErrorOnly)(NSError *);
                threadId:(NSString *)jsThreadId
                    args:(NSArray *)args
              completion:(void (^)(NSDictionary *jsData, NSError *error))completion;
-
+- (void)executeFunction:(NSString *)functionName
+                   args:(NSArray *)args
+             completionHandlerWithErrorOnly:(void (^)(NSError *error))completion;
 #define THROW_EXCEPTION(name, exception) [self throwException:name ofType:exception fromFunction:__PRETTY_FUNCTION__];
 - (void)throwException:(NSExceptionName)name ofType:(NSString *)exception fromFunction:(const char *)function;
+
+// Helpers for error handling
+#define JS_SERVICE_NSERROR_FROM_EXCEPTION(e) \
+    [self NSErrorFromException:e fromFunction:__PRETTY_FUNCTION__ andLine:__LINE__]
+#define JS_SERVICE_NSERROR_FROM_JSERROR(e) [self NSErrorFromJSError:e fromFunction:__PRETTY_FUNCTION__ andLine:__LINE__]
+#define JS_SERVICE_LOG_EXCEPTION(e) [self logException:e fromFunction:__PRETTY_FUNCTION__ andLine:__LINE__]
+- (NSError *)NSErrorFromException:(NSException *)exception fromFunction:(const char *)function andLine:(int)line;
+- (NSError *)NSErrorFromJSError:(JSValue *)jsError fromFunction:(const char *)function andLine:(int)line;
+- (void)logException:(NSException *)exception fromFunction:(const char *)function andLine:(int)line;
 
 extern NSString *const kJSEngineBlockArgName;
 

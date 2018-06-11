@@ -109,7 +109,19 @@
  @param completion A completion handler that takes either a dictionary of  users or an error and returns void.
 
  */
+
 - (void)getUsersById:(NSArray *)userIds completion:(void (^)(id user, NSError *error))completion;
+
+/**
+
+ @brief Returns users in JSON format by the array of user ids.
+
+ @param userIds Array of userIds of the user data you want to retrieve.
+ @param limited If true, a limited user object is retrurned with the most important attributes. Default is false.
+ @param completion A completion handler that takes either a dictionary of  users or an error and returns void.
+
+ */
+- (void)getUsersById:(NSArray *)userIds limited:(BOOL)limited completion:(void (^)(id user, NSError *error))completion;
 
 /**
 

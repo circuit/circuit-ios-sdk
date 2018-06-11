@@ -63,6 +63,10 @@ class ConversationItemDataSource {
             item.state = state
         }
 
+        if let convId = tmpItem["convId"] as? String {
+            item.convId = convId
+        }
+
         item.content = Utils().contentOfConversationItem(tmpItem)
 
         if let modificationTime = tmpItem["modificationTime"] as? NSNumber {
@@ -71,13 +75,17 @@ class ConversationItemDataSource {
         return item
     }
 
+    enum FetchConversationItemsError: Error {
+        case contentException
+    }
+
     /**
      Fetches conversation items based on the conversation id. Returns the last 25 items.
      */
-    func fetchConversationItems(conversation: Conversation, completion: @escaping (_ items: [ConversationItem], _ error: Error?) -> Void) {
+    func fetchConversationItems(convId: String, completion: @escaping (_ items: [ConversationItem], _ error: Error?) -> Void) {
         DispatchQueue.main.async {
             var conversationItems = [ConversationItem]()
-            CKTClient().getConversationItems(conversation.convId, options: nil) { (items, error) in
+            CKTClient().getConversationItems(convId, options: nil) { (items, error) in
                 if error != nil {
                     completion(conversationItems, error)
                     return
@@ -85,6 +93,7 @@ class ConversationItemDataSource {
                 for item in items as! [AnyObject] {
                     let convItem = self.conversationItemFromJSitem(item)
                     guard let parsedItem = convItem else {
+                        completion(conversationItems, FetchConversationItemsError.contentException)
                         return
                     }
                     conversationItems.append(parsedItem)

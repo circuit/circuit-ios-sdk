@@ -26,8 +26,6 @@
 #import "Log.h"
 #import "Promise.h"
 
-#define JS_SERVICE_NSERROR_FROM_JSERROR(e) [self NSErrorFromJSError:e fromFunction:__PRETTY_FUNCTION__ andLine:__LINE__]
-
 NSString *const kJSEngineBlockArgName = @"block";
 
 @implementation CKTService
@@ -130,8 +128,12 @@ static NSString *LOG_TAG = @"[CKTService]";
     jsPromise = [self callFunction:functionName withArguments:args];
 
     PromiseCallback successCallback = ^(JSValue *jsData) {
-        NSDictionary *data = [jsData toObject];
-        completion(data, nil);
+        if (![jsData isNull] && ![jsData isUndefined]) {
+            NSDictionary *data = [jsData toObject];
+            completion(data, nil);
+        } else {
+            completion(nil, nil);
+        }
     };
 
     PromiseCallback errorCallback = ^(JSValue *jsError) {
@@ -144,6 +146,39 @@ static NSString *LOG_TAG = @"[CKTService]";
 
     JSValue *jsErrorCallback = [JSValue valueWithObject:errorCallback inContext:[JSEngine sharedInstance].context];
 
+    JSValue *promiseDict = [jsPromise toObject];
+
+    if ([promiseDict isKindOfClass:[NSDictionary class]]) {
+        promise = [promiseDict valueForKey:@"__nativePromise"];
+    } else {
+        promise = [jsPromise toObject];
+    }
+
+    [promise then:jsSuccessCallback:jsErrorCallback];
+}
+
+- (void)executeFunction:(NSString *)functionName
+                   args:(NSArray *)args
+      completionHandlerWithErrorOnly:(void (^)(NSError *error))completion
+{
+    Promise *promise = [[Promise alloc] init];
+
+    JSValue *jsPromise;
+
+    jsPromise = [self callFunction:functionName withArguments:args];
+
+    PromiseCallback successCallback = ^(JSValue *jsData) {
+            completion(nil);
+    };
+
+    PromiseCallback errorCallback = ^(JSValue *jsError) {
+        NSError *error = JS_SERVICE_NSERROR_FROM_JSERROR(jsError);
+        LOGE(LOG_TAG, @"Error: %@", error);
+        completion(error);
+    };
+
+    JSValue *jsSuccessCallback = [JSValue valueWithObject:successCallback inContext:[JSEngine sharedInstance].context];
+    JSValue *jsErrorCallback = [JSValue valueWithObject:errorCallback inContext:[JSEngine sharedInstance].context];
     JSValue *promiseDict = [jsPromise toObject];
 
     if ([promiseDict isKindOfClass:[NSDictionary class]]) {
@@ -183,6 +218,18 @@ static NSString *LOG_TAG = @"[CKTService]";
     [NSException raise:name format:@"%s - %@", function, exception];
 }
 
+#pragma mark Helpers for error handling
+// Use the macros to consistently log the function name and line number
+
+- (NSError *)NSErrorFromException:(NSException *)exception fromFunction:(const char *)function andLine:(int)line;
+{
+    NSError *error = [NSError errorWithDomain:@"CircuitKit"
+                                         code:0
+                                     userInfo:@{NSLocalizedDescriptionKey : exception.debugDescription}];
+    LOGE(LOG_TAG, @"%s-%d: exception %@", function, line, error);
+    return error;
+}
+
 - (NSError *)NSErrorFromJSError:(JSValue *)jsError fromFunction:(const char *)function andLine:(int)line
 {
     NSError *error;
@@ -217,6 +264,12 @@ static NSString *LOG_TAG = @"[CKTService]";
     }
 
     return error;
+}
+
+- (void)logException:(NSException *)exception fromFunction:(const char *)function andLine:(int)line;
+{
+    LOGE(LOG_TAG, @"%s-%d: exception - name: %@\nreason: %@\nuser info: %@\ndebug description: %@", function, line,
+         exception.name, exception.reason, exception.userInfo, exception.debugDescription);
 }
 
 @end

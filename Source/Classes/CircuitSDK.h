@@ -21,6 +21,7 @@
 
 #import "Angular.h"
 #import "Audio.h"
+#import "CKTAudioSessionManager.h"
 #import "CKTException.h"
 #import "CKTClient.h"
 #import "CKTClient+Auth.h"

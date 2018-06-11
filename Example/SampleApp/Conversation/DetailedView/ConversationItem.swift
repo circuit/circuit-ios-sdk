@@ -37,6 +37,9 @@ struct ConversationItem {
     /// Creation or Modification time of the item
     var timestamp: Date?
 
+    /// Conversation ID that conversation item belongs to
+    var convId: String?
+
     static func == (lhs: ConversationItem, rhs: ConversationItem) -> Bool {
         return lhs.itemId == rhs.itemId
     }
