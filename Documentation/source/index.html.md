@@ -14,10 +14,13 @@ includes:
   - getting_started
   - authorization
   - setting_up
+  - client
   - authentication
+  - logon
   - user
   - conversation
   - calls
+  - audioSessionManager
   - event
   - sample
   - errors

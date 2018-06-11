@@ -22,8 +22,13 @@
 import Foundation
 import CircuitSDK
 
+enum FetchConversationDataError: Error {
+    case getConversationByIdException
+}
+
 class ConversationDataSource {
 
+    static let kLodTag = "ConversationDataSource"
     static let sharedInstance = ConversationDataSource()
 
     func conversationObjectFromJSConversation(_ jsConversation: AnyObject) -> Conversation? {
@@ -70,13 +75,13 @@ class ConversationDataSource {
         var conversations = [Conversation]()
 
         DispatchQueue.main.async {
-            CKTClient().getConversations { (jsConversations, error) in
+            CKTClient().getConversations { [weak self] (jsConversations, error) in
                 guard error == nil else {
                     completion(conversations, error)
                     return
                 }
                 for jsConversation in jsConversations as! [AnyObject] {
-                    let conv = self.conversationObjectFromJSConversation(jsConversation)
+                    let conv = self?.conversationObjectFromJSConversation(jsConversation)
                     guard let parsedConv = conv else {
                         return
                     }
@@ -92,4 +97,19 @@ class ConversationDataSource {
             }
         }
     }
+
+    func getConversationById(convId: String, completion: @escaping (_ conversations: Conversation?, _ error: Error?) -> Void) {
+        CKTClient.sharedInstance().getConversationById(convId) { [weak self] (jsConversation, error) in
+            guard error == nil else {
+                completion(nil, error)
+                return
+            }
+            guard let conversaton = self?.conversationObjectFromJSConversation(jsConversation as AnyObject) else {
+                ANSLoge(ConversationDataSource.kLodTag, "Failed to convert jsConversation into conversation object")
+                return
+            }
+            completion(conversaton, nil)
+        }
+    }
+
 }

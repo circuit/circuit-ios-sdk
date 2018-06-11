@@ -21,7 +21,6 @@
 
 #import "CKTClient+Call.h"
 
-
 @implementation CKTClient (Call)
 
 - (void)addParticipantToCall:(NSString *)callId to:(NSDictionary *)to completion:(void (^)(void))completion
@@ -32,11 +31,12 @@
         THROW_EXCEPTION(kCKTException, kCKTDialOutException);
     }
 
-    NSDictionary *args = @{ @"function": @"addParticipantToCall",
-                            @"callId": callId,
-                            @"to": to,
-                            kJSEngineBlockArgName: completion
-                         };
+    NSDictionary *args = @{
+        @"function" : @"addParticipantToCall",
+        @"callId" : callId,
+        @"to" : to,
+        kJSEngineBlockArgName : completion
+    };
 
     [self executeAsync:@selector(addParticipantToCallCompletion:) withObject:args];
 }
@@ -49,16 +49,19 @@
         THROW_EXCEPTION(kCKTException, kCKTDialOutException);
     }
 
-    NSDictionary *args = @{ @"function": @"addParticipantToRtcSession",
-                            @"callId": callId,
-                            @"to": to,
-                            kJSEngineBlockArgName: completion
-                           };
+    NSDictionary *args = @{
+        @"function" : @"addParticipantToRtcSession",
+        @"callId" : callId,
+        @"to" : to,
+        kJSEngineBlockArgName : completion
+    };
 
     [self executeAsync:@selector(addParticipantToCallCompletion:) withObject:args];
 }
 
-- (void)answerCall:(NSString *)callId mediaType:(NSDictionary *)mediaType completionHandler:(void (^)(NSDictionary *, NSError *))completion
+- (void)answerCall:(NSString *)callId
+            mediaType:(NSDictionary *)mediaType
+    completionHandler:(CompletionBlockWithErrorOnly)completion
 {
     if (!callId) {
         THROW_EXCEPTION(kCKTException, kCKTCallIdException);
@@ -66,10 +69,7 @@
         THROW_EXCEPTION(kCKTException, kCKTMediaTypeException);
     }
 
-    NSDictionary *args = @{ @"callId": callId,
-                            @"mediaType": mediaType,
-                            kJSEngineBlockArgName: completion
-                            };
+    NSDictionary *args = @{ @"callId" : callId, @"mediaType" : mediaType, kJSEngineBlockArgName : completion };
 
     [self executeAsync:@selector(answerCallCompletion:) withObject:args];
 }
@@ -79,47 +79,52 @@
     [self dialNumber:number name:nil completionHandler:completion];
 }
 
-- (void)dialNumber:(NSString *)number name:(NSString *)name completionHandler:(void (^)(NSDictionary *call, NSError *error))completion
+- (void)dialNumber:(NSString *)number
+                 name:(NSString *)name
+    completionHandler:(void (^)(NSDictionary *call, NSError *error))completion
 {
-
     if (!number) {
         THROW_EXCEPTION(kCKTException, kCKTNumberException);
     }
 
     id calleeName = name ? name : [NSNull null];
 
-    NSDictionary *args = @{ @"number": number,
-                            @"name": calleeName,
-                            kJSEngineBlockArgName: completion
-                           };
+    NSDictionary *args = @{ @"number" : number, @"name" : calleeName, kJSEngineBlockArgName : completion };
 
     [self executeAsync:@selector(dialNumberCompletion:) withObject:args];
 }
 
-- (void)endCall:(NSString *)callId completionHandler:(void (^)(void))completion
+- (void)endCall:(NSString *)callId completion:(CompletionBlockWithErrorOnly)completion
 {
     if (!callId) {
         THROW_EXCEPTION(kCKTException, kCKTCallIdException);
     }
 
-    NSDictionary *args = @{ @"callId": callId,
-                            kJSEngineBlockArgName: completion
-                            };
+    NSDictionary *args = @{ @"callId" : callId, kJSEngineBlockArgName : completion };
 
     [self executeAsync:@selector(endCallCompletion:) withObject:args];
 }
 
-- (void)endConference:(NSString *)callId completion:(void (^)(void))completion
+- (void)endConference:(NSString *)callId completion:(CompletionBlockWithErrorOnly)completion
 {
     if (!callId) {
         THROW_EXCEPTION(kCKTException, kCKTCallIdException);
     }
 
-    NSDictionary *args = @{ @"callId": callId,
-                            kJSEngineBlockArgName: completion
-                           };
+    NSDictionary *args = @{ @"callId" : callId, kJSEngineBlockArgName : completion };
 
     [self executeAsync:@selector(endConferenceCompletion:) withObject:args];
+}
+
+- (void)leaveConference:(NSString *)callId completion:(CompletionBlockWithErrorOnly)completion
+{
+    if (!callId) {
+        THROW_EXCEPTION(kCKTException, kCKTCallIdException);
+    }
+
+    NSDictionary *args = @{ @"callId" : callId, kJSEngineBlockArgName : completion };
+
+    [self executeAsync:@selector(leaveConferenceCompletion:) withObject:args];
 }
 
 - (void)findCall:(NSString *)callId completionHandler:(void (^)(NSDictionary *, NSError *))completion
@@ -128,51 +133,50 @@
         THROW_EXCEPTION(kCKTException, kCKTCallIdException);
     }
 
-    NSDictionary *args = @{ @"callId": callId,
-                            kJSEngineBlockArgName: completion
-                            };
+    NSDictionary *args = @{ @"callId" : callId, kJSEngineBlockArgName : completion };
 
     [self executeAsync:@selector(findCallCompletion:) withObject:args];
 }
 
 - (void)getActiveCall:(void (^)(NSDictionary *, NSError *))completion
 {
-    NSDictionary *args = @{ @"function": @"getActiveCall",
-                            kJSEngineBlockArgName: completion };
+    NSDictionary *args = @{ @"function" : @"getActiveCall", kJSEngineBlockArgName : completion };
 
     [self executeAsync:@selector(getCallDataCompletion:) withObject:args];
 }
 
 - (void)getActiveRemoteCalls:(void (^)(NSDictionary *, NSError *))completion
 {
-    NSDictionary *args = @{ @"function": @"getActiveRemoteCalls",
-                            kJSEngineBlockArgName: completion };
+    NSDictionary *args = @{ @"function" : @"getActiveRemoteCalls", kJSEngineBlockArgName : completion };
 
     [self executeAsync:@selector(getCallDataCompletion:) withObject:args];
 }
 
 - (void)getCalls:(void (^)(NSArray *, NSError *))completion
 {
-    NSDictionary *args = @{ @"function": @"getCalls",
-                            kJSEngineBlockArgName: completion };
+    NSDictionary *args = @{ @"function" : @"getCalls", kJSEngineBlockArgName : completion };
 
     [self executeAsync:@selector(getCallDataCompletion:) withObject:args];
 }
 
 - (void)getTelephonyData:(void (^)(NSDictionary *, NSError *))completion
 {
-    NSDictionary *args = @{ @"function": @"getTelephonyData",
-                            kJSEngineBlockArgName: completion };
+    NSDictionary *args = @{ @"function" : @"getTelephonyData", kJSEngineBlockArgName : completion };
 
     [self executeAsync:@selector(getCallDataCompletion:) withObject:args];
 }
 
-- (void)makeCall:(NSString *)user mediaType:(NSDictionary *)mediaType completionHandler:(void (^)(NSDictionary *, NSError *))completion
+- (void)makeCall:(NSString *)user
+            mediaType:(NSDictionary *)mediaType
+    completionHandler:(void (^)(NSDictionary *, NSError *))completion
 {
     [self makeCall:user mediaType:mediaType createIfNotExists:false completionHandler:completion];
 }
 
-- (void)makeCall:(NSString *)user mediaType:(NSDictionary *)mediaType createIfNotExists:(BOOL)createIfNotExists completionHandler:(void (^)(NSDictionary *, NSError *))completion
+- (void)makeCall:(NSString *)user
+            mediaType:(NSDictionary *)mediaType
+    createIfNotExists:(BOOL)createIfNotExists
+    completionHandler:(void (^)(NSDictionary *, NSError *))completion
 {
     if (!user) {
         THROW_EXCEPTION(kCKTException, kCKTUserException);
@@ -182,11 +186,12 @@
 
     id create = createIfNotExists ? @(createIfNotExists) : [NSNull null];
 
-    NSDictionary *args = @{ @"user": user,
-                            @"mediaType": mediaType,
-                            @"createIfNotExists": create,
-                            kJSEngineBlockArgName: completion
-                            };
+    NSDictionary *args = @{
+        @"user" : user,
+        @"mediaType" : mediaType,
+        @"createIfNotExists" : create,
+        kJSEngineBlockArgName : completion
+    };
 
     [self executeAsync:@selector(makeCallCompletion:) withObject:args];
 }
@@ -197,14 +202,14 @@
         THROW_EXCEPTION(kCKTException, kCKTCallIdException);
     }
 
-    NSDictionary *args = @{ @"callId": callId,
-                            kJSEngineBlockArgName: completion
-                            };
+    NSDictionary *args = @{ @"callId" : callId, kJSEngineBlockArgName : completion };
 
     [self executeAsync:@selector(muteCompletion:) withObject:args];
 }
 
-- (void)startConference:(NSString *)convId mediaType:(NSDictionary *)mediaType completion:(void (^)(NSDictionary *, NSError *))completion
+- (void)startConference:(NSString *)convId
+              mediaType:(NSDictionary *)mediaType
+             completion:(CompletionBlockWithErrorOnly)completion
 {
     if (!convId) {
         THROW_EXCEPTION(kCKTException, kCKTConversationIdException);
@@ -212,12 +217,32 @@
         THROW_EXCEPTION(kCKTException, kCKTMediaTypeException);
     }
 
-    NSDictionary *args = @{ @"convId": convId,
-                            @"mediaType": mediaType,
-                            kJSEngineBlockArgName: completion
-                           };
+    NSDictionary *args = @{ @"convId" : convId, @"mediaType" : mediaType, kJSEngineBlockArgName : completion };
 
     [self executeAsync:@selector(startConferenceCompletion:) withObject:args];
+}
+
+- (void)joinConference:(NSString *)callId
+             mediaType:(NSDictionary *)mediaType
+              clientId:(NSString *_Nullable)clientId
+            completion:(CompletionBlockWithNoData)completion
+{
+    if (!callId) {
+        THROW_EXCEPTION(kCKTException, kCKTCallIdException);
+    } else if (!mediaType) {
+        THROW_EXCEPTION(kCKTException, kCKTMediaTypeException);
+    }
+
+    id clientID = clientId ? clientId : [NSNull null];
+
+    NSDictionary *dict = @{
+        @"callId" : callId,
+        @"mediaType" : mediaType,
+        @"clientId" : clientID,
+        kJSEngineBlockArgName : completion
+    };
+
+    [self executeAsync:@selector(joinConference:) withObject:dict];
 }
 
 - (void)unmute:(NSString *)callId completionHandler:(void (^)(void))completion
@@ -226,9 +251,7 @@
         THROW_EXCEPTION(kCKTException, kCKTCallIdException)
     }
 
-    NSDictionary *args = @{ @"callId": callId,
-                            kJSEngineBlockArgName: completion
-                            };
+    NSDictionary *args = @{ @"callId" : callId, kJSEngineBlockArgName : completion };
 
     [self executeAsync:@selector(unmuteCompletion:) withObject:args];
 }
@@ -246,11 +269,7 @@
     id number = args[@"number"] ? args[@"number"] : [NSNull null];
     id displayName = args[@"displayName"] ? args[@"displayName"] : [NSNull null];
 
-    NSDictionary *options = @{ @"userId": userId,
-                               @"email": email,
-                               @"number": number,
-                               @"displayName": displayName
-                              };
+    NSDictionary *options = @{ @"userId" : userId, @"email" : email, @"number" : number, @"displayName" : displayName };
 
     NSArray *participantArray = @[ options ];
 
@@ -288,21 +307,31 @@
 - (void)endCallCompletion:(NSDictionary *)args
 {
     NSString *callId = args[@"callId"];
-    CompletionBlock completion = args[kJSEngineBlockArgName];
+    CompletionBlockWithErrorOnly completion = args[kJSEngineBlockArgName];
 
     NSArray *callArgs = @[ callId ];
 
-    [self executeFunction:@"endCall" args:callArgs completionHandler:completion];
+    [self executeFunction:@"endCall" args:callArgs completionHandlerWithErrorOnly:completion];
 }
 
 - (void)endConferenceCompletion:(NSDictionary *)args
 {
     NSString *callId = args[@"callId"];
-    CompletionBlock completion = args[kJSEngineBlockArgName];
+    CompletionBlockWithErrorOnly completion = args[kJSEngineBlockArgName];
 
     NSArray *conferenceArgs = @[ callId ];
 
-    [self executeFunction:@"endConference" args:conferenceArgs completionHandler:completion];
+    [self executeFunction:@"endConference" args:conferenceArgs completionHandlerWithErrorOnly:completion];
+}
+
+- (void)leaveConferenceCompletion:(NSDictionary *)args
+{
+    NSString *callId = args[@"callId"];
+    CompletionBlockWithErrorOnly completion = args[kJSEngineBlockArgName];
+
+    NSArray *conferenceArgs = @[ callId ];
+
+    [self executeFunction:@"leaveConference" args:conferenceArgs completionHandlerWithErrorOnly:completion];
 }
 
 - (void)findCallCompletion:(NSDictionary *)args
@@ -356,11 +385,29 @@
 {
     NSString *conversationId = args[@"convId"];
     NSDictionary *mediaType = args[@"mediaType"];
+    CompletionBlockWithErrorOnly completion = args[kJSEngineBlockArgName];
+
+    NSArray *conferenceArgs = @[ conversationId, mediaType ];
+
+    [self executeFunction:@"startConference" args:conferenceArgs completionHandlerWithErrorOnly:completion];
+}
+
+- (void)joinConference:(NSDictionary *)args
+{
+    NSString *callId = args[@"callId"];
+    NSDictionary *mediaType = args[@"mediaType"];
     CompletionBlock completion = args[kJSEngineBlockArgName];
 
-    NSArray *conferenceArgs = @[ mediaType ];
+    NSArray *tmp = @[ callId, mediaType ];
+    NSArray *callArgs;
 
-    [self executeFunction:@"startConference" withId:conversationId args:conferenceArgs completionHandler:completion];
+    if (args[@"clientId"]) {
+        callArgs = [tmp arrayByAddingObject:args[@"clientId"]];
+    } else {
+        callArgs = tmp;
+    }
+
+    [self executeFunction:@"joinConference" args:callArgs completionHandler:completion];
 }
 
 - (void)unmuteCompletion:(NSDictionary *)args

@@ -7,9 +7,9 @@ to specific events.
 Event | Type |  Description
 --------- | ----------- | ---------
 CKTNotificationBasicSearchResults | string | Asynchronous search results for startUserSearch or startBasicSearch
-CKTNotificationCallEnded * | string | Fired when a call is terminated
-CKTNotificationCallIncoming * | string | Fired when an incoming call is received. I.e. client is alerting
-CKTNotificationCallStatus * | string | Fired when the call state, or any other call attribute of a local or remote call changes. Use the isRemote property to determine if the call is local or remote. A call is considered remote when a) the call is active on another device, or b) a group call is not joined yet
+CKTNotificationCallEnded | string | Fired when a call is terminated
+CKTNotificationCallIncoming | string | Fired when an incoming call is received. I.e. client is alerting
+CKTNotificationCallStatus | string | Fired when the call state, or any other call attribute of a local or remote call changes. Use the isRemote property to determine if the call is local or remote. A call is considered remote when a) the call is active on another device, or b) a group call is not joined yet
 CKTNotificationConnectionStateChanged | string | Fired when the connection state changes
 CKTNotificationConversationCreated | string | Fired when a new conversation is created for this user. This can be a brand new conversation, or being added to a conversation
 CKTNotificationConversationUpdated | string | Fired when an existing conversation is updated
@@ -21,10 +21,6 @@ CKTNotificationSessionExpires | string | Fired when session expires
 CKTNotificationUserPresenceChanged | string | Fired when the presence of a subscribed user changes
 CKTNotificationUserSettingsChanged | string | Fired when one or more user settings for the logged on user change
 CKTNotificationUserUpdated | string | Fired when the local user is updated. E.g. I change the jobTitle on my mobile device
-
-<aside class="warning">
-*  Beta suport provided only.
-</aside>
 
 
 ## Adding Observers

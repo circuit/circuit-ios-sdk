@@ -22,6 +22,8 @@
 #import <Foundation/Foundation.h>
 #import <JavaScriptCore/JavaScriptCore.h>
 
+extern NSString *const kJSRunloopName;
+
 @interface JSRunLoop : NSThread
 
 @property (nonatomic, strong) JSContext *context;

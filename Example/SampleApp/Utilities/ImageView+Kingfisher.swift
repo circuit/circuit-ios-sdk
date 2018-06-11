@@ -15,7 +15,7 @@
 // limitations under the License.
 //
 //  ImageView+Kingfisher.swift
-//  CircuitKit
+//  SampleApp
 //
 //
 
@@ -23,6 +23,7 @@ import UIKit
 import Kingfisher
 
 extension UIImageView {
+
     func setImage(url: URL) {
         let modifier = AnyModifier { request in
             var r = request
@@ -34,4 +35,17 @@ extension UIImageView {
         }
         self.kf_setImage(with: url, placeholder: nil, options: [.requestModifier(modifier)], progressBlock: nil, completionHandler: nil)
     }
+
+    func setImage(url: URL, completionHandler: @escaping CompletionHandler) {
+        let modifier = AnyModifier { request in
+            var r = request
+            if let cookies = HTTPCookieStorage.shared.cookies(for: url) {
+                let headers = HTTPCookie.requestHeaderFields(with: cookies)
+                r.allHTTPHeaderFields = headers
+            }
+            return r
+        }
+        self.kf_setImage(with: url, placeholder: nil, options: [.requestModifier(modifier)], progressBlock: nil, completionHandler: completionHandler)
+    }
+
 }

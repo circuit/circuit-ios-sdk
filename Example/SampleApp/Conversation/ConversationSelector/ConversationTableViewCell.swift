@@ -29,7 +29,9 @@ class ConversationTableViewCell: UITableViewCell {
     @IBOutlet weak var timestamp: UILabel!
 
     static let reuseId = "convCell"
-    private let defaultAvatar = "icon-general-default-avatar"
+    var cellState = CallState.idle
+    fileprivate let defaultAvatar = "icon-general-default-avatar"
+    fileprivate var convRecentItem = ""
 
     func configureCell(_ conversation: Conversation) {
         conversationTitle.text = "Pending…"
@@ -58,12 +60,45 @@ class ConversationTableViewCell: UITableViewCell {
             }
         }
 
-        recentItem.text = conversation.recentItem
+        if let text = conversation.recentItem {
+            convRecentItem = text
+            recentItem.text = convRecentItem
+        }
+
         timestamp.text = Utils().createTimestampFromDate(conversation.timestamp!)
-        setupUI()
+        setupCellUIElements()
     }
 
-    fileprivate func setupUI() {
+    func updateCellForCallState(_ callState: CallState) {
+        switch callState {
+        case .started:
+            setAppearanceStarted()
+        default:
+            setAppearanceDefault()
+        }
+    }
+
+    // MARK: - Private methods
+
+    fileprivate func setAppearanceDefault() {
+        backgroundColor = .white
+        recentItem.text = convRecentItem
+        recentItem.textColor = .black
+        timestamp.textColor = .black
+        conversationTitle.textColor = .black
+        cellState = CallState.idle
+    }
+
+    fileprivate func setAppearanceStarted() {
+        backgroundColor = UIColor.backgroundColor()
+        recentItem.text = "Conference in progress"
+        recentItem.textColor = .darkGreenColor()
+        timestamp.textColor = .clear
+        conversationTitle.textColor = .white
+        cellState = CallState.initiated
+    }
+
+    fileprivate func setupCellUIElements() {
         separatorInset = UIEdgeInsets.zero
         layoutMargins = UIEdgeInsets.zero
         conversationAvatar.layer.cornerRadius = conversationAvatar.frame.size.width / 2
@@ -71,4 +106,7 @@ class ConversationTableViewCell: UITableViewCell {
         conversationAvatar.contentMode = .scaleAspectFill
     }
 
+    override func prepareForReuse() {
+        updateCellForCallState(CallState.idle)
+    }
 }

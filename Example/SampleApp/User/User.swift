@@ -25,6 +25,9 @@ struct User {
 
     var userId: String?
 
+    /// User email address
+    var emailAddress: String?
+
     /// Users display name, concatenation of first and last name.
     var displayName: String?
 

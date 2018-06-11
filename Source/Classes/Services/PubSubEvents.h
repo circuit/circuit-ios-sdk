@@ -26,6 +26,9 @@ typedef NS_ENUM(NSInteger, JSEvent) {
 
     // JSEvents must stay in the same order as NOTIFICATION_JS in JSNotificationCenter.h
     JSEventBasicSearchResults,
+    JSEventCallEnded,
+    JSEventCallIncoming,
+    JSEventCallStatus,
     JSEventConnectionStateChanged,
     JSEventConversationCreated,
     JSEventConversationUpdated,

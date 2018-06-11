@@ -35,6 +35,8 @@
 #import "Window.h"
 #import "XMLHttpRequest.h"
 
+NSString *const kJSRunloopName = @"JS Run Loop";
+
 @interface JSRunLoop ()
 
 @property (nonatomic, strong) PubSubService *pubSubService;

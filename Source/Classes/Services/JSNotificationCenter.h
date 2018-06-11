@@ -49,6 +49,8 @@ extern NSString *const NOTIFICATION_AUDIO_SESSION_CHANGE_CATEGORY_REQUESTED;
 extern NSString *const CKTKeyEmpty;
 extern NSString *const KEY_EVENT_DATA;
 extern NSString *const KEY_AUDIO_ACTIVATE;
+extern NSString *const KEY_CALL;
+extern NSString *const KEY_CALL_REPLACED;
 
 @interface JSNotificationCenter : NSObject
 

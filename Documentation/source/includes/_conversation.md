@@ -1,12 +1,12 @@
-# Conversation
+# CKTClient+Conversation
 
-## addParticipant
+## addParticipant:userIds:completion:
 
 ```objective_c
 [client addParticipant:@"CONVERSATION ID",
                userIds:@["USER ID(s)"],
             completion:^{
-  // Code goes here            
+  // Code goes here
 }];
 ```
 
@@ -28,7 +28,7 @@ convId | string | Conversation ID to add the participant to.
 userIds | array | Array containing a single or multiple user ids
 completion | callback | A completion block that takes no arguments and returns void.
 
-## addTextItem
+## addTextItem:content:completionHandler:
 
 > Adding an item with the string content type
 
@@ -92,14 +92,14 @@ Parameter | Type |  Description
 content | string   object | Content for the item
 completion | callback | A completion block that takes either the sent content or an error and returns void
 
-## createCommunity
+## createCommunity:topic:description:completion:
 
 ```objective_c
 [client createCommunity:@["USER ID(s)"],
                   topic:@"COMMUNITY TOPIC",
             description:@"COMMUNITY DESCRIPTION",
              completion:^(NSDictionary *community, NSError *error) {
-  // Code goes here             
+  // Code goes here
 }];
 ```
 
@@ -108,7 +108,7 @@ CKTClient().createCommunity(["USER ID(s)"],
             topic: "COMMUNITY TOPIC",
             description: "COMMUNITY DESCRIPTION",
             completion: { (community, error) in
-    // Code goes here          
+    // Code goes here
 })
 ```
 
@@ -123,12 +123,12 @@ topic [optional] | string | Topic of the community.
 description [optional] | string | Description of the community.
 completion | callback | A completion block that takes either a community or an error and returns void.
 
-## createConferenceBridge
+## createConferenceBridge:completion:
 
 ```objective_c
 [client createConferenceBridge:@"TOPIC"
                     completion:^(NSDictionary *conversation, NSError *error) {
-  // Code goes here                    
+  // Code goes here
 }];
 ```
 
@@ -147,7 +147,7 @@ Parameter | Type |  Description
 topic | string | Topic of the conversation
 completion | callback | A completion block that takes either a conversation or an error and returns void.
 
-## createDirectConversation
+## createDirectConversation:completion:
 
 ```objective_c
 [client createDirectConversation:@"PARTICIPANT ID" completion:^(NSDictionary *conversation, NSError *error) {
@@ -168,16 +168,16 @@ Parameter | Type |  Description
 participantId | string | Participant id to create a direct conversation with
 completion | callback | A completion block that takes either the conversation created or an error and returns void
 
-## createGroupConversation
+## createGroupConversation:title:completionHandler
 
 ```objective_c
-[client createGroupConversation:@[ @"PARTICIPANT ID" ] completion:^(NSDictionary *conversation, NSError *error) {
+[client createGroupConversation:@[ @"PARTICIPANT ID" ] title:@"TITLE" completionHandler:^(NSDictionary *conversation, NSError *error) {
   // Code goes here
 }];
 ```
 
 ```swift
-CKTClient().createGroupConversation([ "PARTICIPANT ID" ]) { (conversation, error) in
+CKTClient().createGroupConversation([ "PARTICIPANT ID" ], title:"TITLE") { (conversation, error) in
   // Code goes here
 }
 ```
@@ -190,13 +190,13 @@ participantId | array | Array of participant id's to create a group conversation
 topic | string | Title of the conversation to be created
 completion | callback | A completion block that takes either the conversation created or an error and returns void
 
-## flagItem
+## flagItem:itemId:completion:
 
 ```objective_c
 [client flagItem:@"CONVERSATION ID"
           itemId:@"ITEM ID"
           completion:^{
-  // Code goes here          
+  // Code goes here
 }];
 ```
 
@@ -217,7 +217,28 @@ conversationId | string | Id of the conversation where the item exists
 itemId | string | Id of the item to be flagged
 completion | callback | A completion block that takes no arguments and returns void
 
-## getConversations
+## getConversations:
+
+```objective_c
+[client getConversations: ^(NSArray *conversations, NSError *error) {
+// Code goes here
+}];
+```
+
+```swift
+CKTClient().getConversations() { (conversations, error) in
+// Code goes here
+}
+```
+
+Returns the conversations of the logged on user in JSON format
+
+Parameter | Type |  Description
+--------- | ----------- | ---------
+options [optional] | dictionary | A dictionary of options to filter conversations
+completion | callback | A completion block that takes either conversations or an error and returns void
+
+## getConversations:completionHandler:
 
 ```objective_c
 NSDictionary *options = @{ @"direction": @"BEFORE",
@@ -226,7 +247,7 @@ NSDictionary *options = @{ @"direction": @"BEFORE",
                            @"numberOfParticipants": @5
                          };
 
-[client getConversations:options completion:^(NSArray *conversations, NSError *error) {
+[client getConversations:options completionHandler:^(NSArray *conversations, NSError *error) {
   // Code goes here
 }];
 ```
@@ -258,7 +279,29 @@ Parameter | Type |  Description
 options [optional] | dictionary | A dictionary of options to filter conversations
 completion | callback | A completion block that takes either conversations or an error and returns void
 
-## getConversationDetails
+
+## getConversationById:completionHandler:
+
+```objective_c
+[client getConversationById:@"CONVERSATION ID"
+                completionHandler:^(NSDictionary conversation,  NSError *error){
+  // Code goes here
+}]
+```
+```swift
+CKTClient().getConversationById("CONVERSATION ID") { (conversation, error) in
+  // Code goes here
+}
+```
+
+Get the conversation by conversation Id.
+
+Parameter | Type |  Description
+--------- | ----------- | ---------
+convId | string | Conversation Id
+completion | callback | A completion block that takes either conversations or an error and returns void.
+
+## getConversationDetails:completion:
 
 ```objective_c
 [client getConversationDetails:@"CONVERSATION ID"
@@ -281,7 +324,7 @@ Parameter | Type |  Description
 convId | string | Conversation Id of the items to retrieve
 completion | callback | A completion block that takes either conversation details or an error and returns void
 
-## getConversationFeed
+## getConversationFeed:options:completion:
 
 ```objective_c
 NSDictionary *options = @{ @"timestamp" : 1264378424,
@@ -321,7 +364,7 @@ convId | string | Conversation Id of the items to retrieve
 options | dictionary | Dictionary containing specific options
 completion | callback | A completion block that takes either a conversation feed or an error and returns void
 
-## getConversationItems
+## getConversationItems:options:completion:
 
 ```objective_c
 NSDictionary *options = @{ @"direction": @"BEFORE",
@@ -364,7 +407,7 @@ threadId | string | Item Id of the initial post of the thread
 options [optional] | dictionary | Options to filter the conversation items
 completion | callback | A completion block that takes either conversation items or an error and returns void
 
-## getConversationParticipants
+## getConversationParticipants:options:completion:
 
 ```objective_c
 NSDictionary *options = @{ @"pageSize": @20,
@@ -373,7 +416,7 @@ NSDictionary *options = @{ @"pageSize": @20,
 [client getConversationParticipants: @"CONVERSATION ID"
                             options: options
                             completion:^(NSDictionary *participants, NSError *error) {
-  // Code goes here                            
+  // Code goes here
 }];
 ```
 
@@ -402,13 +445,13 @@ convId | string | Conversation Id
 options [optional] | dictionary | Options for search criteria
 completion | callback | A completion block that takes either conversation participants or an error and returns void
 
-## getDirectConversationWithUser
+## getDirectConversationWithUser:createIfNotExists:completion:
 
 ```objective_c
 [client getDirectConversationWithUser:@"USER QUERY"
                     createIfNotExists: YES
                            completion:^(NSDictionary *conversation, NSError *error) {
-  // Code goes here                           
+  // Code goes here
 }];
 ```
 
@@ -429,7 +472,7 @@ query | string | User id or user email address
 createIfNotExists | boolean | Create conversation with user if not already existing. Default is FALSE
 completion | callback | A completion block that takes either a conversation or an error and returns void
 
-## getFlaggedItems
+## getFlaggedItems:
 
 ```objective_c
 [client getFlaggedItems:^(NSDictionary *items, NSError *error) {
@@ -451,7 +494,7 @@ Parameter | Type | Description
 --------- | ----------- | ---------
 completion | callback | A completion block that takes either all flagged items or an error and returns void
 
-## getItemById
+## getItemById:completionHandler:
 
 ```objective_c
 [client getItemById:@"ITEM ID" completion:^(NSDictionary *item, NSError *error) {
@@ -472,7 +515,7 @@ Parameter | Type |  Description
 itemId | string | Item id for the item to retrieve
 completion | callback | A completion block that takes either conversation item or an error and returns void
 
-## getItemsByThread
+## getItemsByThread:threadId:options:completion:
 
 ```objective_c
 NSDictionary *options = @{ @"modificationDate": @145694922,
@@ -520,7 +563,7 @@ threadId | string | Thread ID
 options | dictionary | Dictionary containing specific options listed above
 completion | callback | A completion block that takes either items or an error and returns void
 
-## getMarkedConversations
+## getMarkedConversations:
 
 ```objective_c
 [client getMarkedConversations:^(NSDictionary *conversations, NSError *error) {
@@ -542,7 +585,7 @@ Parameter | Type |  Description
 --------- | ----------- | ---------
 completion | callback | A completion block that takes either mark conversations or an error and returns void
 
-## getSupportConversationId
+## getSupportConversationId:
 
 ```objective_c
 [client getSupportConversationId:^(NSString *conversationId, NSError *error) {
@@ -564,7 +607,7 @@ Parameter | Type |  Description
 --------- | ----------- | ---------
 completion | callback | A completion block that takes either the support conversation id or an error and returns void
 
-## getTelephonyConversationId
+## getTelephonyConversationId:
 
 ```objective_c
 [client getTelephonyConversationId:^(NSString *conversationId, NSError *error) {
@@ -586,12 +629,12 @@ Parameter | Type |  Description
 --------- | ----------- | ---------
 completion | callback | A completion block that takes either the support conversation id or an error and returns void
 
-## likeItem
+## likeItem:completion:
 
 ```objective_c
 [client likeItem:@"ITEM ID"
       completion:^{
-  // Code goes here      
+  // Code goes here
 }];
 ```
 
@@ -610,13 +653,13 @@ Parameter | Type |  Description
 itemID | string | ID of the liked item
 completion | callback | A completion block that takes no arguments and returns void
 
-## markItemAsRead
+## markItemAsRead:creationTime:completion:
 
 ```objective_c
 [client markItemAsRead:@"CONVERSATION ID"
           creationTime:124858473
             completion:^{
-  // Code goes here            
+  // Code goes here
 }];
 ```
 
@@ -637,13 +680,13 @@ convId | string | Conversation id
 creationTime | number | Items older than this timestamp are marked as read. Defaults to current time
 completion | callback | A completion block that takes no arguments and returns void
 
-## removeParticipant
+## removeParticipant:userIds:completion:
 
 ```objective_c
 [client removeParticipant:@"CONVERSATION ID"
                   userIds:@"USER ID"
                completion:^{
-  // Code goes here               
+  // Code goes here
 }];
 ```
 
@@ -664,13 +707,13 @@ convId | string | Conversation Id
 userIds | any | Single user id as string or array of many user ids
 completion | callback | A completion block that takes no arguments and returns void
 
-## unflagItem
+## unflagItem:itemId:completion:
 
 ```objective_c
 [client unflagItem:@"CONVERSATION ID"
             itemId:@"ITEM ID"
         completion:^{
-  // Code goes here        
+  // Code goes here
 }];
 ```
 
@@ -690,12 +733,12 @@ convId | string | Conversation ID
 itemId | string | ID of the flagged item to to unflag
 completion | callback | A completion block that takes no arguments and returns void
 
-## unlikeItem
+## unlikeItem:completion:
 
 ```objective_c
 [client unlikeItem:@"ITEM ID"
         completion:^{
-  // Code goes here        
+  // Code goes here
 }];
 ```
 
@@ -714,12 +757,12 @@ Parameter | Type |  Description
 itemId | string | Id of the item to unlike
 completion | callback | A completion block that takes no arguments and returns void
 
-## updateTextItem
+## updateTextItem:completion:
 
 ```objective_c
 [client updateTextItem:options
             completion:^(NSDictionary *item, NSError *error) {
-  // Code goes here            
+  // Code goes here
 }];
 ```
 

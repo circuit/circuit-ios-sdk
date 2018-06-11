@@ -112,12 +112,8 @@ var setTimeout = window.setTimeout;
 var clearTimeout = window.clearTimeout;
 var setInterval = window.setInterval;
 var clearInterval = window.clearInterval;
+var navigator = window.navigator;
 
-// WebRTC isn't available in iOS version of SDK for now,
-// so we don't introduce navigator and just mock it.
-window.navigator = {
-    platform: 'iOS'
-};
 //---------------------------------------------------------------------------
 //  Expose logger object for SDK
 //---------------------------------------------------------------------------

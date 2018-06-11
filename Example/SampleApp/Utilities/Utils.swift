@@ -182,4 +182,25 @@ class Utils {
         return result
     }
 
+    static func showAlert(controller: UIViewController, title: String?, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        controller.present(alertController, animated: true, completion: nil)
+    }
+
+    static func showAlert(controller: UIViewController, message: String) {
+        showAlert(controller: controller, title: nil, message: message)
+    }
+
+    static func showAlertAsync(controller: UIViewController, title: String?, message: String) {
+        DispatchQueue.main.async {
+            Utils.showAlert(controller: controller, title: title, message: message)
+        }
+    }
+
+    static func showError(controller: UIViewController, errorDescription: String) {
+        showAlert(controller: controller, title: nil, message: errorDescription)
+    }
+
 }

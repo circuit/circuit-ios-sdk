@@ -76,6 +76,10 @@ class UserDataSource {
             return
         }
 
+        if let userEmail = jsUser["emailAddress"] as? String {
+            user.emailAddress = userEmail
+        }
+
         user.userId = userId
 
         let avatarURL = URL(string: avatarURLString)
@@ -93,6 +97,8 @@ class UserDataSource {
     enum FetchUserDataError: Error {
         case contentException
         case userEmailException
+        case userIdException
+
     }
 
     /**
@@ -123,6 +129,38 @@ class UserDataSource {
                 })
             }
             completion(usersIds, error)
+        }
+    }
+
+    /**
+     Returns an array of users emails based on provided array of userIds
+
+     - parameter userIds: array of the userIds
+
+     - returns: array of the user emails
+     */
+    func getUsersEmailsByIds (_ userIds: [String], completion: @escaping(_ usersIds: [String]?, _ error: Error?) -> Void) {
+        var error: FetchUserDataError?
+        // Fetch users
+        CKTClient().getUsersById(userIds, limited: true) { (users, _) in
+            guard let usersJson = users as? [[String: Any]] else {
+                error = .contentException
+                completion(nil, error)
+                return
+            }
+            if usersJson.count != userIds.count {
+                error = .userIdException
+                completion(nil, error)
+            }
+            var usersEmails: [String] = []
+            for userJson in usersJson {
+                self.userObjectFromJSUser(userJson as AnyObject, completion: { user in
+                    if let usersEmail = user.emailAddress {
+                        usersEmails.append(usersEmail)
+                    }
+                })
+            }
+            completion(usersEmails, error)
         }
     }
 }

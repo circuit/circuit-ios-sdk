@@ -60,7 +60,20 @@
         THROW_EXCEPTION(kCKTException, kCKTUserException);
     }
 
-    NSDictionary *args = @{ @"userIds" : userIds, kJSEngineBlockArgName : completion };
+    BOOL isLimited = YES;
+    NSDictionary *args = @{ @"userIds" : userIds, @"limited" : @(isLimited), kJSEngineBlockArgName : completion };
+
+    [self executeAsync:@selector(getUsersByIdCompletion:) withObject:args];
+}
+
+- (void)getUsersById:(NSArray *)userIds limited:(BOOL)limited completion:(CompletionBlock)completion
+{
+    if (!userIds) {
+        THROW_EXCEPTION(kCKTException, kCKTUserException);
+    }
+
+    BOOL isLimited = limited;
+    NSDictionary *args = @{ @"userIds" : userIds, @"limited" : @(isLimited), kJSEngineBlockArgName : completion };
 
     [self executeAsync:@selector(getUsersByIdCompletion:) withObject:args];
 }
@@ -144,7 +157,7 @@
 - (void)getPresenceCompletion:(NSDictionary *)args
 {
     NSArray *userIds = args[@"userIds"];
-    BOOL full = (BOOL) args[@"full"];
+    BOOL full = (BOOL)args[@"full"];
     CompletionBlock completion = args[kJSEngineBlockArgName];
 
     NSArray *userArgs = @[ userIds, @(full) ];
@@ -156,7 +169,6 @@
 {
     NSString *userId = args[@"userId"];
     CompletionBlock completion = args[kJSEngineBlockArgName];
-
     NSArray *userArgs = @[ userId ];
 
     [self executeFunction:@"getUserById" args:userArgs completionHandler:completion];
@@ -165,9 +177,11 @@
 - (void)getUsersByIdCompletion:(NSDictionary *)args
 {
     NSArray *userIds = args[@"userIds"];
+    BOOL limited = (BOOL)args[@"limited"];
     CompletionBlock completion = args[kJSEngineBlockArgName];
+    NSArray *userArgs = @[ userIds, @(limited) ];
 
-    [self executeFunction:@"getUsersById" args:userIds completionHandler:completion];
+    [self executeFunction:@"getUsersById" args:userArgs completionHandler:completion];
 }
 
 - (void)getUserByEmailCompletion:(NSDictionary *)args

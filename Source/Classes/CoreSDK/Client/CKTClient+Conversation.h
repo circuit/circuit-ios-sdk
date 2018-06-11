@@ -161,6 +161,18 @@
 - (void)getConversations:(NSDictionary *)options
        completionHandler:(void (^)(id conversations, NSError *error))completion;
 
+
+/*!
+
+ @brief Get the conversation by conversationId.
+
+ @param convId The conversation's id.
+ @param completion A completion block that takes either conversations or an error and returns void.
+ */
+
+- (void)getConversationById:(NSString *)convId
+                 completionHandler:(void (^)(NSDictionary *conversation, NSError *error))completion;
+
 /*!
 
  @brief Get the conversation details such as the bridge number and guest link.

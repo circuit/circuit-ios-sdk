@@ -1,6 +1,6 @@
-# Authentication
+# CKTClient+Auth
 
-## initializeSDK
+## initializeSDK:oAuthClientSecret:oAuthScope:
 
 ```objective_c
 [client initializeSDK:@"ADD CLIENT_ID"
@@ -50,70 +50,7 @@ See the image below for an example:
 ![](/images/urlscheme.png)
 
 
-
-## logon
-
-```objective_c
-[client logon:@"ADD YOUR ACCESS TOKEN" completion:^(NSDictionary *user, NSError *error) {
-  // Code goes here
-}];
-```
-
-```swift
-CKTClient().logon("ADD YOUR ACCESS TOKEN") { (user, error) in
-  // Code goes here
-}
-```
-
-Logs user into server via given access token. OAuth2 accessToken logon.
-
-Parameter | Type |  Description
---------- | ----------- | ---------
-completion | callback | A completion block that takes either a user or an error and returns void
-
-## logon
-
-```objective_c
-[self logon:@"USER_NAME" password:@"PASSWORD" completion:^(NSDictionary *user, NSError *error) {
-// Code goes here
-}];
-```
-
-```swift
-CKTClient().logon("USER_NAME" , password: "PASSWORD") { (user, error) in
-// Code goes here
-}
-```
-Logs user into server via given credentials.
-
-Parameter | Type |  Description
---------- | ----------- | ---------
-username | string | Username (email) for Resource Owner Grant Type
-password | string |  Password for Resource Owner Grant Type
-completion | callback | A completion block that takes either a user or an error and returns void
-
-## logout
-
-```objective_c
-[client logout:^{
-  // Code goes here
-}];
-```
-
-```swift
-CKTClient().logout {
-  // Code goes here
-}
-```
-
-Log this client instance out. Logging out does not revoke the OAuth2
-access token
-
-Parameter | Type |  Description
---------- | ----------- | ---------
-completion | callback | A completion block that takes no arguments and returns void
-
-## renewToken
+## renewToken:
 
 ```objective_c
 [client renewToke:^{
@@ -132,7 +69,7 @@ Parameter | Type |  Description
 --------- | ----------- | ---------
 completion | callback | A completion block that takes either a new access token or an error and returns void
 
-## revokeToken
+## revokeToken:completion:
 
 ```objective_c
 [client revokeToken:@"ACCESS TOKEN"
@@ -142,7 +79,7 @@ completion | callback | A completion block that takes either a new access token 
 ```
 
 ```swift
-CKTClient().revokeToken("ACCESS TOKEN", { (token, error) in
+CKTClient().revokeToken("ACCESS TOKEN", {
   // Code goes here
 })
 ```
@@ -156,12 +93,64 @@ Parameter | Type |  Description
 token | string | Access token, if omitted the internally used access toke is revoked.
 completion | callback | A completion block that takes either a new access token or an error and returns void
 
-## validateToken
+## setOAuthConfig:clientSecret:
+
+```objective_c
+[client setOAuthConfig:@"CLIENT_ID" setOAuthConfig:@"CLIENT_SECRET"];
+```
+
+```swift
+CKTClient().setOAuthConfig("CLIENT_ID", setOAuthConfig:"CLIENT_SECRET)
+```
+
+Sets the configuration for OAuth Authentication without scope
+
+Use this method when you want the application to request all permissions
+
+Parameter | Type |  Description
+--------- | ----------- | ---------
+clientId | string | Application [**`CLIENT_ID`**](#authorization)
+clientSecret | string |  Application [**`CLIENT_SECRET`**](#authorization)
+
+## setOAuthConfig:clientSecret:scope:
+
+
+```objective_c
+[client setOAuthConfig:@"CLIENT_ID"
+        setOAuthConfig:@"CLIENT_SECRET"
+        scope:@"SCOPE"];
+```
+
+```swift
+CKTClient().setOAuthConfig("CLIENT_ID", setOAuthConfig:"CLIENT_SECRET, scope:"SCOPE")
+```
+
+Sets the configuration for OAuth Authentication with scope
+
+Use this method when you want to determine which permissions the application requests.
+
+This could be any of the following in a comma deliminated string
+
+- ALL
+- READ_USER_PROFILE
+- WRITE_USER_PROFILE
+- READ_CONVERSATIONS
+- WRITE_CONVERSATION
+- READ_USER
+- CALLS
+
+Parameter | Type |  Description
+--------- | ----------- | ---------
+clientId | string | Application [**`CLIENT_ID`**](#authorization)
+clientSecret | string |  Application [**`CLIENT_SECRET`**](#authorization)
+scope | string | Application scope
+
+## validateToken:completion:
 
 ```objective_c
 [client validateToken:@"ACCESS TOKEN"
            completion: ^{
-  // Code goes here           
+  // Code goes here
 }];
 ```
 

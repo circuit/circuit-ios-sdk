@@ -29,6 +29,8 @@ protocol CreateConversationDelegate: class {
 
 class CreateConversationViewController: UIViewController {
 
+    static let kLogTag = "CreateConversationViewController"
+
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var addParticipantTextField: UITextField!
     @IBOutlet weak var checkmarkImage: UIImageView!
@@ -39,6 +41,7 @@ class CreateConversationViewController: UIViewController {
     fileprivate var users: [User] = []
     fileprivate var selectedParticipantIds: [String] = []
     fileprivate var selectedParticipantEmails: [String] = []
+    fileprivate var callViewController: CallViewController?
 
     // MARK: - Controller Lifecycle
 
@@ -48,6 +51,7 @@ class CreateConversationViewController: UIViewController {
         createConversationButton.isEnabled = false
         users = UserDataSource.users.map { $1 }
         addParticipantTextField.delegate = self
+        addEventObservers()
     }
 
     // MARK: - Actions
@@ -63,7 +67,7 @@ class CreateConversationViewController: UIViewController {
                UserDataSource.sharedInstance.getUsersIdsByEmails(self.selectedParticipantEmails) { (usersIds, error) in
                 guard error == nil else {
                     DispatchQueue.main.async {
-                        self.showAlert("Can't create the conversation. Please check the Email")
+                        Utils.showAlert(controller: self, message: "Can't create the conversation. Please check the Email")
                         self.createConversationButton.isEnabled = true
                     }
                     return
@@ -79,6 +83,27 @@ class CreateConversationViewController: UIViewController {
             createConversation()
         }
     }
+    // MARK: - Notifications
+
+    fileprivate func addEventObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(handleDirectIncomingCall(_:)),
+                                               name: NSNotification.Name(rawValue: CKTNotificationCallIncoming), object: nil)
+    }
+
+    @objc fileprivate func handleDirectIncomingCall (_ notification: Notification) {
+        guard let jsCall = notification.userInfo,
+            let directCall = CallDataSource.sharedInstance.callObjectFromJSCall(jsCall) else {
+                ANSLoge(CreateConversationViewController.kLogTag, "Failed to parce notification")
+                return
+        }
+        callViewController = CallScreenManager.sharedInstance
+            .prepereCallViewControllerForIncomingCall(call: directCall, delegate: self)
+        guard let callVC = callViewController else {
+            Utils.showAlert(controller: self, title: "Call error", message: "Can't start the call")
+            return
+        }
+        self.present(callVC, animated: true, completion: nil)
+    }
 
     // MARK: Private methods
 
@@ -87,14 +112,16 @@ class CreateConversationViewController: UIViewController {
             guard let strongSelf = self else {return}
             DispatchQueue.main.async {
                 guard let conversation = conversation as? NSDictionary else {
-                    strongSelf.showError(error)
+                    Utils.showAlert(controller: strongSelf, message: "Failed to create conversation")
+                    strongSelf.createConversationButton.isEnabled = true
                     return
                 }
                 if let exists = conversation["alreadyExists"] as? NSNumber, exists == true {
-                    strongSelf.showAlert("Conversation already exists")
+                    Utils.showAlert(controller: strongSelf, message: "Conversation already exists")
                     strongSelf.createConversationButton.isEnabled = true
                 } else {
-                    strongSelf.delegate?.createConversationViewController(strongSelf, didFinishCreating: conversation)
+                    strongSelf.delegate?.createConversationViewController(strongSelf,
+                                                                          didFinishCreating: conversation as AnyObject)
                 }
             }
         }
@@ -111,21 +138,9 @@ class CreateConversationViewController: UIViewController {
                                                     creationCompletion(conversation, error)
             })
         } else {
-            showAlert("There are no partisipants selected to start conversation")
+            Utils.showAlert(controller: self, message: "There are no participants selected to start conversation")
         }
     }
-
-    fileprivate func showAlert(_ message: String?) {
-        let alertController = UIAlertController(title: nil, message: message, preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-        alertController.addAction(cancelAction)
-        present(alertController, animated: true, completion: nil)
-    }
-
-    fileprivate func showError(_ error: Error?) {
-        showAlert(error?.localizedDescription)
-    }
-
 }
 
 extension CreateConversationViewController: UITextFieldDelegate {
@@ -220,5 +235,21 @@ extension CreateConversationViewController: UICollectionViewDataSource, UICollec
             }
         }
         cell.checkmarkImage.isHidden = !state
+    }
+}
+
+extension CreateConversationViewController: CallViewControllerDelegate {
+
+    func callViewControllerDidEndCall(withError error: Error?) {
+        callViewController?.dismiss(animated: false, completion: {
+            if let error = error {
+                Utils.showAlert(controller: self, title: "Call error",
+                                message: error.localizedDescription)
+            }
+        })
+    }
+
+    func callViewControllerDidEndCall() {
+        callViewController?.dismiss(animated: true, completion: nil)
     }
 }

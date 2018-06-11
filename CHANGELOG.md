@@ -1,5 +1,37 @@
 # Change Log
 
+## [1.3.0](https://github.com/circuit/circuit-ios-sdk/releases/tag/1.3.0)
+### Added
+* Direct calls and Conference support into SampleApp;
+* New API:
+`getConversationById:completionHandler:`
+`getUsersById:limited:completion:`
+`leaveConference:completion:`
+`setAudioSessionEnabled:`
+### Updated
+* Documentation with the description of newly added API;
+### Fixed:
+* Issue with notifications;
+* Issue with the speech path;
+* Wrong completion handler for:
+`endConference:completion:`
+`endCall:completion:`
+`startConference:mediaType:completion:`
+
+# [1.3.0.beta1](https://github.com/circuit/circuit-ios-sdk/releases/tag/1.3.0-beta.1)
+### Added
+* New API layer `CKTNavigator+Call` with related changes in CoreSDK.
+* New Notifications:
+`CKTNotificationCallEnded`
+`CKTNotificationCallIncoming`
+`CKTNotificationCallStatus`
+* Static library `libCKTNavigator.a` with related header files.
+### Updated
+* Documentation with the description of newly added API;
+### Known issues
+* Not all notifications work as expected;
+* There is no speech path;
+
 ## [1.2.0](https://github.com/circuit/circuit-ios-sdk/releases/tag/1.2.0)
 * Added new API for [Resource Owner Password Credentials Grant](https://circuit.github.io/oauth.html#resource_owner) type supporting.
 * JSSDK version updated to [1.2.2902](https://github.com/circuit/circuit-sdk/releases/tag/1.2.2902)

@@ -1,6 +1,6 @@
-# User
+# CKTClient+User
 
-## getLoggedOnUser
+## getLoggedOnUser:copmletion:
 
 ```objective_c
 [client getLoggedOnUser:^(NSDictionary *user, NSError *error) {
@@ -20,7 +20,7 @@ Parameter | Type |  Description
 --------- | ----------- | ---------
 completion | callback | A completion block that takes either the current logged on user or an error
 
-## getPresence
+## getPresence:full:completion:
 
 ```objective_c
 [client getPresence:@[ "USER ID(s)" ],
@@ -33,7 +33,7 @@ completion | callback | A completion block that takes either the current logged 
 ```swift
 CKTClient().getPresence([ "USER ID(s)" ],
             full: true) { (presence, error) in
-  // Code goes here            
+  // Code goes here
 }
 ```
 
@@ -47,7 +47,7 @@ userIds | array | Array of single or multiple user id's
 full | boolean | If true, detailed presence is returned, which also includes long/lat, timezone, etc
 completion | callback | A completion block that takes either presence or an error and returns void
 
-## getStatusMessage
+## getStatusMessage:completion:
 
 ```objective_c
 [client getStatusMessage:^(id status, NSError *error) {
@@ -69,12 +69,12 @@ Parameter | Type |  Description
 --------- | ----------- | ---------
 completion | callback | A completion block that takes either a status message or an error and returns void.
 
-## getTenantUsers
+## getTenantUsers:completion:
 
 ```objective_c
 [client getTenantUsers:@{ OPTIONS },
             completion:^(id users, NSError *error) {
-  // Code goes here            
+  // Code goes here
 }];
 ```
 
@@ -93,7 +93,7 @@ Parameter | Type |  Description
 options | dictionary | Filter options
 completion | callback | A completion block that takes either users or an error and returns void.
 
-## getUserByEmail
+## getUserByEmail:completion:
 
 ```objective_c
 [client getUserByEmail:@"ADD EMAIL" completion:^(NSDictionary *user, NSError *error) {
@@ -114,7 +114,7 @@ Parameter | Type |  Description
 email | string | Email of the user to retrieve
 completion | callback | A completion block that takes either a user or an error and returns void
 
-## getUsersByEmail
+## getUsersByEmail:completion:
 
 ```objective_c
 [client getUsersByEmail:@[ "ADD EMAIL" ] completion:^(NSDictionary *users, NSError *error) {
@@ -135,7 +135,7 @@ Parameter | Type |  Description
 emails | array | Array of email addresses of the users to retrieve
 completion | callback | A completion block that takes either a user or an error and retutns void
 
-## getUserById
+## getUserById:completion:
 
 ```objective_c
 [client getUserById:@"ADD USER ID" completion:^(NSDictionary *user, NSError *error) {
@@ -149,14 +149,14 @@ CKTClient().getUserById("ADD USER ID") { (user, error) in
 }
 ```
 
-Returns the user in JSON format by the given user id
+Returns the user in JSON format by the given user ids
 
 Parameter | Type |  Description
 --------- | ----------- | ---------
 userId | string | ID of the user to retrieve
 completion | callback | A completion block that takes either a user or an error and returns void
 
-## getUsersById
+## getUsersById:completion:
 
 ```objective_c
 [client getUsersById:@[ "ADD USER ID" ] completion:^(NSDictionary *users, NSError *error) {
@@ -174,10 +174,32 @@ Returns the users in JSON format by the given array of user id's
 
 Parameter | Type |  Description
 --------- | ----------- | ---------
-userId | string | ID of the user to retrieve
+userId | array | ID of the user to retrieve
 completion | callback | A completion block that takes either users or an error and returns void
 
-## getUserSettings
+## getUsersById:limited:completion:
+
+```objective_c
+[client getUsersById:[@"ADD USER ID"] limited:YES completion:^(NSDictionary *user, NSError *error) {
+// Code goes here
+}];
+```
+
+```swift
+CKTClient().getUsersById(["ADD USER ID"], limited:true) { (user, error) in
+// Code goes here
+}
+```
+
+Returns the user in JSON format by the given user ids
+
+Parameter | Type |  Description
+--------- | ----------- | ---------
+userId | array | ID of the user to retrieve
+limited | bool | If true, a limited user object is retrurned with the most important attributes. Default is false.
+completion | callback | A completion handler that takes either a dictionary of  users or an error and returns void.
+
+## getUserSettings:completion:
 
 ```objective_c
 [client getUserSettings:^(id settings, NSError *error) {
@@ -195,7 +217,7 @@ Get all the user settings of the logged in user
 
 Required OAuth2 scopes: READ_USER_PROFILE or ALL
 
-## updateUser
+## updateUser:completion:
 
 ```objective_c
 [client updateUser:@["USER ATTRIBUTES"] completion:^(void) {
