@@ -129,7 +129,7 @@
           completionHandler:(void (^)(NSDictionary *conversation, NSError *error))completion;
 {
     if (convId.length > 0) {
-        NSDictionary *dict = @{ @"convId" : convId, kJSEngineBlockArgName : completion };
+        NSDictionary *dict = @{@"convId" : convId, kJSEngineBlockArgName : completion};
         [self executeAsync:@selector(getConversationById:) withObject:dict];
     }
 }
@@ -239,6 +239,17 @@
 
     [self executeAsync:@selector(getItemByIdCompletion:) withObject:args];
 }
+
+- (void)getItemsById:(NSArray *)itemIds completionHandler:(CompletionBlock)completion {
+    if (!itemIds) {
+        THROW_EXCEPTION(kCKTException, kCKTItemsIdException);
+    }
+
+    NSDictionary *args = @{ @"itemIds" : itemIds, kJSEngineBlockArgName : completion };
+
+    [self executeAsync:@selector(getItemsByIdCompletion:) withObject:args];
+}
+
 
 - (void)getItemsByThread:(NSString *)convId
                 threadId:(NSString *)threadId
@@ -355,6 +366,21 @@
     NSDictionary *args = @{ @"content" : content, kJSEngineBlockArgName : completion };
 
     [self executeAsync:@selector(updateTextItemCompletion:) withObject:args];
+}
+
+- (void)updateConversation:(NSString *)convId
+        attributesToChange:(NSDictionary *)attributes
+                completion:(CompletionBlock)completion
+{
+    if (!convId) {
+        THROW_EXCEPTION(kCKTException, kCKTConversationIdException);
+    } else if (!attributes) {
+        THROW_EXCEPTION(kCKTException, kCKTAttributesException);
+    }
+
+    NSDictionary *args = @{ @"convId" : convId, @"attributes" : attributes, kJSEngineBlockArgName : completion };
+
+    [self executeAsync:@selector(updateConversationCompletion:) withObject:args];
 }
 
 #pragma mark - Private Methods
@@ -565,6 +591,14 @@
     [self executeFunction:@"getItemById" withId:itemId args:nil completionHandler:completion];
 }
 
+- (void)getItemsByIdCompletion:(NSDictionary *)args
+{
+    NSArray *itemIds = args[@"itemIds"];
+    CompletionBlock completion = args[kJSEngineBlockArgName];
+
+    [self executeFunction:@"getItemsById" withId:itemIds args:nil completionHandler:completion];
+}
+
 - (void)getItemsByThreadCompletion:(NSDictionary *)args
 {
     NSString *convId = args[@"convId"];
@@ -665,6 +699,17 @@
     NSArray *itemArgs = @[ options ];
 
     [self executeFunction:@"updateTextItem" args:itemArgs completionHandler:completion];
+}
+
+- (void)updateConversationCompletion:(NSDictionary *)args
+{
+    NSString *convId = args[@"convId"];
+    NSDictionary *attributes = args[@"attributes"];
+    CompletionBlock completion = args[kJSEngineBlockArgName];
+
+    NSArray *itemArgs = @[ convId, attributes ];
+
+    [self executeFunction:@"updateConversation" args:itemArgs completionHandler:completion];
 }
 
 @end

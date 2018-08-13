@@ -515,6 +515,37 @@ Parameter | Type |  Description
 itemId | string | Item id for the item to retrieve
 completion | callback | A completion block that takes either conversation item or an error and returns void
 
+## getItemsById:completionHandler:
+
+```objective_c
+
+NSArray *itemIDs = @[@"bee98d40-7c7c-4246-b1e4-b29183728da1",
+                     @"e2c20bc1-dd67-4dfb-a0c7-bc11676634b8",
+                     @"1984c74e-0e77-4d36-a121-22c1c5a8cc70"];
+
+[client getItemsById:itemIDs completion:^(NSDictionary *items, NSError *error) {
+// Code goes here
+}];
+```
+
+```swift
+let itemsIds = ["bee98d40-7c7c-4241-b1e6-b29183728da1",
+                "e2c20bc1-dd67-4dfb-a0c7-bc11672634b8",
+                "1984c74e-0e77-4d36-a121-22c1c5a8cc70"]
+
+CKTClient().getItemsById(itemsIds) { (items, error) in
+// Code goes here
+}
+```
+Retrieve multiple conversation items by their id
+
+Required OAuth2 scopes: READ_CONVERSATIONS or ALL
+
+Parameter | Type |  Description
+--------- | ----------- | ---------
+itemIds | arrary | Conversation Item IDs
+completion | callback | A completion block that takes either conversation item or an error and returns void
+
 ## getItemsByThread:threadId:options:completion:
 
 ```objective_c
@@ -780,6 +811,43 @@ Parameter | Type |  Description
 --------- | ----------- | ---------
 content | dictionary | Item options and content. See addTextItem for options
 completion | callback | A completion block that takes an item or an error and returns void
+
+## updateConversation:attributesToChange:completion:
+
+```objective_c
+
+NSString convId =  @"3dab2b90-a3c4-402f-aa26-72238420c4e4";
+NSDictionary *attributes = @{ @"topic" : @"New ConvTopic",
+                              @"description" : @"Corp Community Conv" };
+
+
+[self updateConversation:convId
+                attributesToChange:attributes
+                        completion:^(id item, NSError *error) {
+// Code goes here
+}];
+```
+
+```swift
+
+let convId = "3dab2b90-a3c4-402f-aa26-72238420c4e4"
+let attributes = ["topic": "New ConvTopic",
+                  "description": "Corp Community Conv" ]
+
+CKTClient().updateConversation(convId,
+                attributesToChange: attributes) { (jsconv, error)
+// Code goes here
+}
+```
+Update a conversation or community
+
+Required OAuth2 scopes: WRITE_CONVERSATIONS or ALL
+
+Parameter | Type |  Description
+--------- | ----------- | ---------
+convId | string | Conversation ID
+attributes | dictionary | Attributes to change, keys could be "topic" of conversation/community and "description" (only applicable to communities)
+completion | callback | A completion block that takes an updated conversation or an error and returns void
 
 ## Response
 

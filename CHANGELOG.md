@@ -1,5 +1,13 @@
 # Change Log
 
+## [1.4.0](https://github.com/circuit/circuit-ios-sdk/releases/tag/1.4.0)
+### Added
+* New API:
+`getItemsById:completionHandler:`
+`updateConversation:attributesToChange:completion:`
+### Updated
+* Documentation with the description of newly added API;
+
 ## [1.3.0](https://github.com/circuit/circuit-ios-sdk/releases/tag/1.3.0)
 ### Added
 * Direct calls and Conference support into SampleApp;

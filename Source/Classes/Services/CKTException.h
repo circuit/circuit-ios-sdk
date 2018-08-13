@@ -36,9 +36,11 @@ extern NSString *const kCKTMediaTypeException;
 extern NSString *const kCKTNumberException;
 
 // Conversation Exceptions
+extern NSString *const kCKTAttributesException;
 extern NSString *const kCKTContentException;
 extern NSString *const kCKTConversationIdException;
 extern NSString *const kCKTItemIdException;
+extern NSString *const kCKTItemsIdException;
 extern NSString *const kCKTParticipantIdException;
 extern NSString *const kCKTThreadIdException;
 extern NSString *const kCKTTopicException;
