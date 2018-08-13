@@ -37,9 +37,11 @@ NSString *const kCKTMediaTypeException = @"Media type was not provided.";
 NSString *const kCKTNumberException = @"Number was not provided";
 
 // Conversation Exceptions
+NSString *const kCKTAttributesException = @"Attributes were not provided.";
 NSString *const kCKTContentException = @"Content was not provided.";
 NSString *const kCKTConversationIdException = @"Conversation id was not provided.";
 NSString *const kCKTItemIdException = @"Item id was not provided.";
+NSString *const kCKTItemsIdException = @"Items id was not provided.";
 NSString *const kCKTParticipantIdException = @"Participant id was not provided.";
 NSString *const kCKTThreadIdException = @"Thread id was not provided.";
 NSString *const kCKTTopicException = @"Topic was not provided.";

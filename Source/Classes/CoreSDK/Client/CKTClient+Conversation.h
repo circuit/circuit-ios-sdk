@@ -171,7 +171,7 @@
  */
 
 - (void)getConversationById:(NSString *)convId
-                 completionHandler:(void (^)(NSDictionary *conversation, NSError *error))completion;
+          completionHandler:(void (^)(NSDictionary *conversation, NSError *error))completion;
 
 /*!
 
@@ -272,6 +272,18 @@
 
  */
 - (void)getItemById:(NSString *)itemId completionHandler:(void (^)(id item, NSError *error))completion;
+
+/*!
+
+ @brief Retrieve multiple conversation items by their id.
+
+ @discussion Required OAuth2 scopes: READ_CONVERSATIONS or FULL
+
+ @param itemIds Conversation Item IDs.
+ @param completion A completion block that takes either an items or an error and returns void.
+
+ */
+- (void)getItemsById:(NSArray *)itemIds completionHandler:(void (^)(id items, NSError *error))completion;
 
 /*!
 
@@ -399,5 +411,21 @@
 
 */
 - (void)updateTextItem:(NSDictionary *)content completion:(void (^)(id item, NSError *error))completion;
+
+/*!
+
+ @brief Update a conversation or community.
+
+ @discussion Required OAuth2 scopes: WRITE_CONVERSATIONS or ALL
+
+ @param convId Conversation ID
+ @param attributes Attributes to change, keys
+ could be "topic" of conversation/community and "description" (only applicable to communities)
+ @param completion A completion block that takes an updated conversation or an error and returns void.
+
+ */
+- (void)updateConversation:(NSString *)convId
+        attributesToChange:(NSDictionary *)attributes
+                completion:(void (^)(id item, NSError *error))completion;
 
 @end
