@@ -10,7 +10,7 @@
 Welcome to the Circuit iOS SDK. You can use the provided SDK to build a text or media mobile application for iOS.
 
 ## Prerequisites
-* Developer account on circuitsandbox.net. Get it for free at [developer registration](https://www.circuit.com/web/developers/registration).
+* Developer account on circuitsandbox.net. Get it for free at [developer registration](https://circuit.github.io/).
 * OAuth 2.0 `client_id` and optionally `client_secret`. Get if for free at [circuit.github.com/oauth](https://circuit.github.com/oauth).
 
 ## Installation
