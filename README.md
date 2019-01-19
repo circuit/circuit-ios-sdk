@@ -14,11 +14,15 @@ Welcome to the Circuit iOS SDK. You can use the provided SDK to build a text or 
 * OAuth 2.0 `client_id` and optionally `client_secret`. Get if for free at [circuit.github.com/oauth](https://circuit.github.com/oauth).
 
 ## Installation
-CircuitSDK is available through [CocoaPods](http://cocoapods.org). The WebRTC dependency (Source/libCKTNavigator.a) is too large for github and needs to be fetched:
+Get the WebRTC dependency (Source/libCKTNavigator.a) via:
 
 ```shell
 curl https://storage.cloud.google.com/circuit-ios-sdk/libCKTNavigator.a --output Source/libCKTNavigator.a
 ```
+
+CircuitSDK is available through [CocoaPods](http://cocoapods.org).
+
+
 
 You can easily try our sample app by running the following command in your terminal window:
 
