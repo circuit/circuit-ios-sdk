@@ -1,7 +1,0 @@
-[bigstore]
-	backend = gs
-[bigstore "gs"]
-	key = GOOGVXA6NIOTONHY2YUKPLN2
-	secret = W1B8By/fxP6dFBU6XF0S4FLHYRxXq0uWQHgyCdWX
-	bucket = circuit-ios-sdk
-
