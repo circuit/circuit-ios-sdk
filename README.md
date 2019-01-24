@@ -17,7 +17,7 @@ Welcome to the Circuit iOS SDK. You can use the provided SDK to build a text or 
 Get the WebRTC dependency (Source/libCKTNavigator.a) via:
 
 ```shell
-curl https://storage.cloud.google.com/circuit-ios-sdk/libCKTNavigator.a --output Source/libCKTNavigator.a
+curl -X GET -o "Source/libCKTNavigator.a" "https://www.googleapis.com/storage/v1/b/circuit-ios-sdk/o/libCKTNavigator.a?alt=media"
 ```
 
 CircuitSDK is available through [CocoaPods](http://cocoapods.org).
