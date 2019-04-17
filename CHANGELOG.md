@@ -7,6 +7,7 @@
 `updateConversation:attributesToChange:completion:`
 ### Updated
 * Documentation with the description of newly added API;
+* JSSDK version updated to [1.2.3704](https://github.com/circuit/circuit-sdk/releases/tag/1.2.3704)
 
 ## [1.3.0](https://github.com/circuit/circuit-ios-sdk/releases/tag/1.3.0)
 ### Added

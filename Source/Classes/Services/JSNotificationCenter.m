@@ -42,10 +42,12 @@ NSString *const CKTNotificationUserUpdated = @"userUpdated";
 NSString *const NOTIFICATION_AUDIO_SESSION_MUTE_SPEAKER = @"circuitkit.notification.AUDIO_SESSION_MUTE_SPEAKER";
 // Notificaiton from WebRTC that Video receive has been lost
 NSString *const NOTIFICATION_VIDEO_RECEIVE_STREAM_LOST = @"circuitkit.notification.VIDEO_RECEIVE_STREAM_LOST";
-// WebRTC failed to setup AVAudioSession during call
-NSString *const NOTIFICATION_AUDIO_SESSION_SETUP_FAILED = @"circuitkit.notification.AUDIO_SESSION_SETUP_FAILED";
 NSString *const NOTIFICATION_AUDIO_SESSION_CHANGE_CATEGORY_REQUESTED =
     @"circuitkit.notification.NOTIFICATION_AUDIO_SESSION_CHANGE_CATEGORY_REQUESTED";
+// WebRTC failed to setup AVAudioSession during call
+NSString *const NOTIFICATION_AUDIO_UNIT_SETUP_FAILED = @"ansible.notification.AUDIO_UNIT_SETUP_FAILED";
+// WebRTC indicates that Audio session disruption ends
+NSString *const NOTIFICATION_WEBRTC_AUDIO_DISRUPTION_ENDS = @"ansible.notification.WEBRTC_AUDIO_DISRUPTION_ENDS";
 
 NSString *const CKTKeyEmpty = @"circuitkit.key.EMPTY";
 

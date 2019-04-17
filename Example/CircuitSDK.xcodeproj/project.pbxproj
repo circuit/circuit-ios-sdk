@@ -345,7 +345,6 @@
 				6003F5AB195388D20070C39A /* Frameworks */,
 				6003F5AC195388D20070C39A /* Resources */,
 				C14D3EF648F0CDA304AD5D8C /* [CP] Embed Pods Frameworks */,
-				EDBF937D12969A0C11BF9BEB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -367,7 +366,6 @@
 				E6E5F65C1FD94AFB00E5515B /* Resources */,
 				DBB30D602087346500AB7468 /* ShellScript */,
 				4135DE65A18E81428A8E0AA2 /* [CP] Embed Pods Frameworks */,
-				C8993C2D0843392C829259FB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -391,6 +389,7 @@
 				TargetAttributes = {
 					E6E5F65D1FD94AFB00E5515B = {
 						CreatedOnToolsVersion = 9.1;
+						DevelopmentTeam = 4XGDRF4ETY;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -516,24 +515,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CircuitSDK_Tests/Pods-CircuitSDK_Tests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C8993C2D0843392C829259FB /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-SampleApp/Pods-SampleApp-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/CircuitSDK/CircuitSDK.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/CircuitSDK.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SampleApp/Pods-SampleApp-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		DBB30D602087346500AB7468 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -545,25 +526,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n    cd ${SRCROOT}/../scripts\n    ./swiftLintModified.sh\n#echo ${SRCROOT}\n\n#swiftlint\n\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
-		};
-		EDBF937D12969A0C11BF9BEB /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-CircuitSDK_Tests/Pods-CircuitSDK_Tests-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/CircuitSDK/CircuitSDK.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/CircuitSDK.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CircuitSDK_Tests/Pods-CircuitSDK_Tests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
+			shellScript = "if which swiftlint >/dev/null; then\n    cd ${SRCROOT}/../scripts\n    ./swiftLintModified.sh\n#echo ${SRCROOT}\n\n#swiftlint\n\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -787,7 +750,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 4XGDRF4ETY;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -829,7 +792,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 4XGDRF4ETY;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;

@@ -42,9 +42,12 @@ extern NSString *const CKTNotificationUserUpdated;
 extern NSString *const NOTIFICATION_AUDIO_SESSION_MUTE_SPEAKER;
 // Notificaiton from WebRTC that Video receive has been lost
 extern NSString *const NOTIFICATION_VIDEO_RECEIVE_STREAM_LOST;
-// WebRTC failed to setup AVAudioSession during call
-extern NSString *const NOTIFICATION_AUDIO_SESSION_SETUP_FAILED;
 extern NSString *const NOTIFICATION_AUDIO_SESSION_CHANGE_CATEGORY_REQUESTED;
+// WebRTC failed to setup AVAudioSession during call
+extern NSString *const NOTIFICATION_AUDIO_UNIT_SETUP_FAILED;
+// WebRTC indicates that Audio session disruption ends
+extern NSString *const NOTIFICATION_WEBRTC_AUDIO_DISRUPTION_ENDS;
+
 
 extern NSString *const CKTKeyEmpty;
 extern NSString *const KEY_EVENT_DATA;
