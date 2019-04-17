@@ -27,9 +27,9 @@ import CircuitSDK
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var currentAuthorizationFlow: OIDAuthorizationFlowSession?
+    var currentAuthorizationFlow: OIDExternalUserAgentSession?
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         let client = CKTClient.sharedInstance()
         let clientID = "ADD CLIENT ID"
@@ -55,9 +55,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
      AppAuth authorization request.
 
      */
-    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey: Any]) -> Bool {
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any]) -> Bool {
 
-        if currentAuthorizationFlow?.resumeAuthorizationFlow(with: url) != nil {
+        if currentAuthorizationFlow?.resumeExternalUserAgentFlow(with: url) != nil {
             currentAuthorizationFlow = nil
             return true
         }

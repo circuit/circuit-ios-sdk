@@ -33,10 +33,10 @@ extension UIImageView {
             }
             return r
         }
-        self.kf_setImage(with: url, placeholder: nil, options: [.requestModifier(modifier)], progressBlock: nil, completionHandler: nil)
+        self.kf.setImage(with: url, placeholder: nil, options: [.requestModifier(modifier)], progressBlock: nil)
     }
 
-    func setImage(url: URL, completionHandler: @escaping CompletionHandler) {
+    func setImage(url: URL, completionHandler: @escaping ((Result<RetrieveImageResult, KingfisherError>) -> Void)) {
         let modifier = AnyModifier { request in
             var r = request
             if let cookies = HTTPCookieStorage.shared.cookies(for: url) {
@@ -45,7 +45,7 @@ extension UIImageView {
             }
             return r
         }
-        self.kf_setImage(with: url, placeholder: nil, options: [.requestModifier(modifier)], progressBlock: nil, completionHandler: completionHandler)
+        self.kf.setImage(with: url, placeholder: nil, options: [.requestModifier(modifier)], progressBlock: nil, completionHandler: completionHandler)
     }
 
 }

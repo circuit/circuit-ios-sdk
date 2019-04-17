@@ -51,7 +51,7 @@ class DetailConversationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.estimatedRowHeight = 100
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.separatorStyle = .none
 
         spinner.startAnimating()
@@ -98,8 +98,8 @@ class DetailConversationViewController: UIViewController {
     func registerForNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(itemAddedToConversation(_:)),
                                                name: NSNotification.Name(rawValue: CKTNotificationItemAdded), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: .UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: .UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(handleGroupIncomingCall(_:)),
                                                name: NSNotification.Name(rawValue: CKTNotificationCallStatus), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(handleGroupCallEnded(_:)),
@@ -308,8 +308,8 @@ extension DetailConversationViewController: MessageAreaViewDelegate {
 
     // MARK: Keyboard handling
 
-    func keyboardWillHide(_ notification: Notification) {
-        if let duration = (notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue {
+    @objc func keyboardWillHide(_ notification: Notification) {
+        if let duration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double {
             if let constraint = self.messageAreaBottomConstraint {
                 constraint.constant = 0
             }
@@ -319,11 +319,11 @@ extension DetailConversationViewController: MessageAreaViewDelegate {
         }
     }
 
-    func keyboardWillShow(_ notification: Notification) {
+    @objc func keyboardWillShow(_ notification: Notification) {
         //Let's use UIKeyboardFrameEndUserInfoKey instead of UIKeyboardFrameBeginUserInfoKey
         //to avoid bug with the leyboard height on iOS 11.
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
-            let duration = (notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue {
+        if let keyboardSize = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect,
+            let duration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double {
             if let constraint = self.messageAreaBottomConstraint {
                 constraint.constant -= keyboardSize.height
             }

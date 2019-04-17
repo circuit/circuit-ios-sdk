@@ -56,7 +56,7 @@ class CallView: UIView {
     }()
 
     private lazy var endCallButton: UIButton = {
-        let button = UIButton(type: UIButtonType.custom)
+        let button = UIButton(type: .custom)
         button.backgroundColor = .darkRed()
         button.setImage(UIImage(named: "icon-call-end-call-white"), for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -66,7 +66,7 @@ class CallView: UIView {
     }()
 
     private lazy var answerCallButton: UIButton = {
-        let button = UIButton(type: UIButtonType.custom)
+        let button = UIButton(type: .custom)
         button.backgroundColor = .darkGreenColor()
         button.setImage(UIImage(named: "icon-call-answer-call-white"), for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -86,7 +86,7 @@ class CallView: UIView {
     }()
 
     private let activityIndicator: UIActivityIndicatorView = {
-        let activityIndicator = UIActivityIndicatorView.init(activityIndicatorStyle: UIActivityIndicatorViewStyle.whiteLarge)
+        let activityIndicator = UIActivityIndicatorView.init(style: .whiteLarge)
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         activityIndicator.startAnimating()
         return activityIndicator

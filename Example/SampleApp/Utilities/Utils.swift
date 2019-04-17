@@ -127,7 +127,7 @@ class Utils {
         // Unicode character, e.g.
         //    decodeNumeric("64", 10)   --> "@"
         //    decodeNumeric("20ac", 16) --> "€"
-        func decodeNumeric(string: String, base: Int) -> Character? {
+        func decodeNumeric(_ string: String, base: Int) -> Character? {
             guard let code = UInt32(string, radix: base),
                 let uniScalar = UnicodeScalar(code) else { return nil }
             return Character(uniScalar)
@@ -140,11 +140,10 @@ class Utils {
         //     decode("&lt;")     --> "<"
         //     decode("&foo;")    --> nil
         func decode(entity: String) -> Character? {
-
             if entity.hasPrefix("&#x") || entity.hasPrefix("&#X") {
-                return decodeNumeric(string: entity.substring(with: entity.index(entity.startIndex, offsetBy: 3) ..< entity.index(entity.endIndex, offsetBy: -1)), base: 16)
+                return decodeNumeric(String(entity.dropFirst(3).dropLast()), base: 16)
             } else if entity.hasPrefix("&#") {
-                return decodeNumeric(string: entity.substring(with: entity.index(entity.startIndex, offsetBy: 2) ..< entity.index(entity.endIndex, offsetBy: -1)), base: 10)
+                return decodeNumeric(String(entity.dropFirst(2).dropLast()), base: 10)
             } else {
                 return characterEntities[entity]
             }
@@ -157,7 +156,7 @@ class Utils {
 
         // Find the next '&' and copy the characters preceding it to `result`:
         while let ampRange = escapedHtmlString.range(of: "&", range: position ..< escapedHtmlString.endIndex) {
-            result.append(escapedHtmlString[position ..< ampRange.lowerBound])
+            result.append(String(escapedHtmlString[position ..< ampRange.lowerBound]))
             position = ampRange.lowerBound
 
             // Find the next ';' and copy everything from '&' to ';' into `entity`
@@ -165,12 +164,12 @@ class Utils {
                 let entity = escapedHtmlString[position ..< semiRange.upperBound]
                 position = semiRange.upperBound
 
-                if let decoded = decode(entity: entity) {
+                if let decoded = decode(entity: String(entity)) {
                     // Replace by decoded character:
                     result.append(decoded)
                 } else {
                     // Invalid entity, copy verbatim:
-                    result.append(entity)
+                    result.append(String(entity))
                 }
             } else {
                 // No matching ';'.
@@ -178,7 +177,7 @@ class Utils {
             }
         }
         // Copy remaining characters to `result`:
-        result.append(escapedHtmlString[position ..< escapedHtmlString.endIndex])
+        result.append(String(escapedHtmlString[position ..< escapedHtmlString.endIndex]))
         return result
     }
 

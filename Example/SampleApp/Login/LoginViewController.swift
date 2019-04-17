@@ -41,7 +41,7 @@ class LoginViewController: UIViewController {
     func createUI() {
 
         loginButton.layer.cornerRadius = 15
-        activityIndicator.activityIndicatorViewStyle = .white
+        activityIndicator.style = .white
     }
 
     /*

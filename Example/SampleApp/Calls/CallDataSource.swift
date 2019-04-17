@@ -136,17 +136,16 @@ class CallDataSource: NSObject {
 
     fileprivate func fetchConversationAvatar(url: URL, completion: @escaping (_ imageView: UIImageView) -> Void) {
         let conversationAvatar = UIImageView()
-        conversationAvatar.setImage(url: url,
-                    completionHandler: { (image, error, cash, url) in
-                        guard error == nil else {
-                            ANSLoge(CallDataSource.kLogTag,
-                                    "Failed to fetch conversation avatar due to \(error.debugDescription)")
-                            return
-                        }
-                        DispatchQueue.main.async {
-                            completion(conversationAvatar)
-                        }
-        })
+        conversationAvatar.setImage(url: url) { (result) in
+            switch result {
+            case .success(_):
+                DispatchQueue.main.async {
+                    completion(conversationAvatar)
+                }
+            case .failure(let error):
+                ANSLoge(CallDataSource.kLogTag, "Failed to fetch conversation avatar due to \(error.localizedDescription)")
+            }
+        }
     }
 
     fileprivate func processDirectCallCompletion(call: [AnyHashable: Any]?, error: Error?, completion: callCompletion) {

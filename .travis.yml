@@ -14,3 +14,4 @@ before_install:
 
 script:
 - set -o pipefail && xcodebuild test -workspace Example/CircuitSDK.xcworkspace -scheme CircuitSDK-Example -destination 'platform=iOS Simulator,name=iPhone 6' | xcpretty
+
