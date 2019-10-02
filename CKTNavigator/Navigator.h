@@ -24,14 +24,19 @@
 #import <UIKit/UIKit.h>
 #import "ANSBaseNavigator.h"
 
+@class GeoLocation;
 
 @protocol NavigatorExport<JSExport>
+@property (nonatomic, strong, readonly) GeoLocation *geolocation;
 @end
 
 @interface Navigator : ANSBaseNavigator<NavigatorExport>
 
 @property (nonatomic) BOOL muteSpeaker;
+@property (nonatomic) BOOL iceOptimization;
 
 + (Navigator *)sharedInstance;
+
+- (void)enableWebRTCDebugLogging:(BOOL)debugLogging;
 
 @end

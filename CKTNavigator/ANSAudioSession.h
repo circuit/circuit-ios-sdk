@@ -19,12 +19,23 @@
 //
 //
 
-#import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
+#import <Foundation/Foundation.h>
 
 @interface ANSAudioSession : NSObject
 
 + (instancetype)sharedInstance;
+
+/**
+ Get current Audio Session Category as AVAudioSessionCategory
+
+ */
++ (NSString *)sessionCategory;
+
+/**
+ Get the current audio route
+ */
++ (AVAudioSessionRouteDescription *)currentRoute;
 
 /**
  Change the AudioSession catyegory to the specified one

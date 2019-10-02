@@ -29,6 +29,7 @@
 @property (nonatomic) BOOL enabled;
 @property (nonatomic, readonly) NSString* label;
 @property (nonatomic, strong, readonly) NSString* trackId;
+@property (nonatomic, strong, readonly) NSString* kind;
 
 - (void)stop;
 

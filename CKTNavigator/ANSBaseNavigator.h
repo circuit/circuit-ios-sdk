@@ -31,19 +31,42 @@
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wmissing-selector-name"
 
+@class RTCMediaStream;
+
 @protocol ANSBaseNavigatorExport<JSExport>
 @property (nonatomic, strong, readonly) NSString *platform;
 
 - (void)getUserMedia:(JSValue *)options:(JSValue *)successCallback:(JSValue *)errorCallback;
+- (RTCMediaStream *)createMediaStreamWithTracks:(JSValue *)tracks;
 
 @end
+
+@protocol ANSDOMExceptionInterface<JSExport>
+@property (nonatomic, strong, readonly) NSString *name;
+@end
+
+typedef NS_ENUM(NSInteger, ANSVideoCaptureAspectRatio) {
+    ANSVideoCaptureAspectRatio4_3,
+    ANSVideoCaptureAspectRatio16_9
+};
+
+@class ANSScreenShareVideoCapturer;
 
 @interface ANSBaseNavigator : NSObject<ANSBaseNavigatorExport> {
     // Garbage collected references
     JSManagedValue *_successCallback;
+    JSManagedValue *_errorCallback;
 }
 
 @property (nonatomic, strong, readonly) NSString *deviceModel;
+
+@property (nonatomic) ANSVideoCaptureAspectRatio videoCaptureAspectRatio;
+
+@property (nonatomic, readonly) BOOL metalSupported;
+
+@property (nonatomic) BOOL hdVideoEnabled;
+
+@property (nonatomic, strong) ANSScreenShareVideoCapturer *capturer;
 
 + (void)initWebRTCInJSContext:(JSContext *)context;
 

@@ -105,6 +105,8 @@ Promise.reject = function (error) {
     return deferred.promise;
 };
 
+window.Promise = Promise;
+
 //---------------------------------------------------------------------------
 //  Expose applicable window properties to global namespace
 //---------------------------------------------------------------------------
@@ -117,7 +119,10 @@ var navigator = window.navigator;
 //---------------------------------------------------------------------------
 //  Expose logger object for SDK
 //---------------------------------------------------------------------------
-var _logger = logger
+var Circuit = {
+    logger: logger
+};
+
 
 
 

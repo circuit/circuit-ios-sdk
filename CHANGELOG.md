@@ -1,5 +1,20 @@
 # Change Log
 
+## [1.6.0](https://github.com/circuit/circuit-ios-sdk/releases/tag/1.6.0)
+### Updated
+* JSSDK version updated to [1.2.6402](https://github.com/circuit/circuit-sdk/releases/tag/1.2.6402)
+* libCKTNavigator.a
+### Known issues
+* SDK can be build only for real devices.
+
+## [1.5.1](https://github.com/circuit/circuit-ios-sdk/releases/tag/1.5.1)
+* Add missing files.
+### Updated
+* JSSDK version updated to [1.2.5201](https://github.com/circuit/circuit-sdk/releases/tag/1.2.5201)
+
+## [1.5.0](https://github.com/circuit/circuit-ios-sdk/releases/tag/1.5.0)
+ * Update project structure
+
 ## [1.4.0](https://github.com/circuit/circuit-ios-sdk/releases/tag/1.4.0)
 ### Added
 * New API:

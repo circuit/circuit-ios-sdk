@@ -19,12 +19,21 @@
 //
 //
 
-#import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
+#import <Foundation/Foundation.h>
 
-@class ANEAGLVideoView;
+@class ANSVideoView;
 @class RTCMediaStream;
 @class RTCVideoTrack;
+
+extern const NSString *kANSMediaConstraintsMinAspectRatio;
+extern const NSString *kANSMediaConstraintsMaxAspectRatio;
+extern const NSString *kANSMediaConstraintsMaxWidth;
+extern const NSString *kANSMediaConstraintsMinWidth;
+extern const NSString *kANSMediaConstraintsMaxHeight;
+extern const NSString *kANSMediaConstraintsMinHeight;
+extern const NSString *kANSMediaConstraintsMaxFrameRate;
+extern const NSString *kANSMediaConstraintsMinFrameRate;
 
 @interface ANSMediaStreamUtils : NSObject
 
@@ -37,18 +46,36 @@
 + (RTCMediaStream *)createLocalMediaStreamWithOptions:(id)options;
 
 /**
+ Creates a RTC Media Stream and add the given tracks
+
+ - Returns: RTCMediaStream object, if it is created successfully
+ nil, if any failure during stream creation, adding media tracks.
+ */
++ (RTCMediaStream *)createMediaStreamWithTracks:(NSArray *)tracks;
+
+/**
  Convert the string pointer to a RTC Video track object.
  */
 + (RTCVideoTrack *)getVideoTrackFromString:(NSString *)videoTrackString;
 
 /**
- Toggle between front and rear camera used in a EAGL Video view.
+ Toggle between front and rear camera used in a local Video view.
  */
-+ (void)switchVideoCamera:(ANEAGLVideoView *)videoView;
++ (void)switchVideoCamera:(ANSVideoView *)videoView hdVideo:(BOOL)hdVideo;
 
 /**
- Get the current video capture device used by a video track.
+ Returns YES if the local Video view is using rear camera.
  */
-+ (AVCaptureDevice *)getCaptureDeviceFromVideoTrackId:(NSString *)localVideoTrackId;
++ (BOOL)usingRearCamera:(ANSVideoView *)videoView;
+
+/**
+ Get the name of current video capture device used by a video track.
+ */
++ (NSString *)getVideoCaptureDeviceName:(NSString *)localVideoTrackId;
+
+/**
+ Get the URL of video track in a given stream
+ */
++ (NSString *)getVideoURL:(RTCMediaStream *)stream;
 
 @end

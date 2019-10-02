@@ -1,6 +1,9 @@
 /*global Circuit*/
 /*exported sdkClient*/
 
+// Override logger object after circuit.js is loaded
+Circuit.logger = logger;
+
 var sdkClient = new Circuit.Client();
 
 

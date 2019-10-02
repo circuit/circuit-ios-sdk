@@ -272,6 +272,7 @@ extension DetailConversationViewController: MessageAreaViewDelegate {
         } else {
             CallDataSource.sharedInstance.makeConferenceCall(conversation: conversation, completion: { (call, error) in
                 guard error == nil else {
+                    callVC.dismiss(animated: true, completion: nil)
                     Utils.showAlertAsync(controller: self, title: "Call error", message: "Error occurred \(error.debugDescription)")
                     return
                 }

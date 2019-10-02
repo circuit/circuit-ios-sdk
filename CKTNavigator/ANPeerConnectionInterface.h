@@ -25,8 +25,11 @@
 @class ANRTCDTMFSender;
 @class RTCAudioTrack;
 @class RTCMediaStream;
+@class RTCMediaStreamTrack;
 @class RTCPeerConnection;
 @class RTCSessionDescription;
+@class RTCRtpTransceiver;
+@class RTCRtpSender;
 
 // To supress the warning:
 //   “used as the name of the previous parameter rather than as part of the selector”
@@ -41,11 +44,12 @@
 
 // Event handlers - initialized by JS rtcPeerConnection.js::registerEvtHandlers(pc)
 @property (nonatomic, assign) JSValue* onicecandidate;
-@property (nonatomic, assign) JSValue* onaddstream;
-@property (nonatomic, assign) JSValue* onnegotiationneeded;
-@property (nonatomic, assign) JSValue* onsignalingstatechange;
-@property (nonatomic, assign) JSValue* onremovestream;
 @property (nonatomic, assign) JSValue* oniceconnectionstatechange;
+@property (nonatomic, assign) JSValue* onsignalingstatechange;
+@property (nonatomic, assign) JSValue* onnegotiationneeded;
+@property (nonatomic, assign) JSValue* onaddstream;
+@property (nonatomic, assign) JSValue* onremovestream;
+@property (nonatomic, assign) JSValue* ontrack;
 
 // Attributes
 @property (nonatomic, assign) JSValue* startTime;  // non-standard - part of mockPeerConnection
@@ -68,8 +72,15 @@
 - (void)addIceCandidateJS:(NSDictionary*)sdp;
 - (NSArray*)getRemoteStreams;
 - (NSArray*)getLocalStreams;
+- (NSArray*)getTransceivers;
+- (NSArray*)getReceivers;
+- (NSArray*)getSenders;
 - (void)getStats:(JSValue*)statsCallback;
 - (ANRTCDTMFSender*)createDTMFSender:(RTCAudioTrack*)audioTrack;
+
+JSExportAs(addTransceiver, -(RTCRtpTransceiver*)addTransceiver : (id)trackOrKind init : (NSDictionary*)init);
+
+JSExportAs(addTrack, -(RTCRtpSender*)addTrack : (RTCMediaStreamTrack*)track streamIds : (NSArray<NSString*>*)streamIds);
 
 - (JSValue*)getLocalDescriptionJS;
 - (JSValue*)getRemoteDescriptionJS;

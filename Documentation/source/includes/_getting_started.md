@@ -50,6 +50,12 @@ the command below to install the CircuitSDK pod:
 
 The cocoaPods will download the latest CircuitSDK with the related dependencies.
 
+Lastly get the WebRTC dependency (Source/libCKTNavigator.a).
+
+Simply from project repo run in terminal:
+
+`curl -X GET -o "Source/libCKTNavigator.a" "https://www.googleapis.com/storage/v1/b/circuit-ios-sdk/o/lib`
+
 CircuitSDK uses [SocketRocket](https://github.com/facebook/SocketRocket) pod
 
 

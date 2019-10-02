@@ -14,22 +14,28 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-//  ANMediaStreamInterface.h
+//  ANSVideoSnapshotDelegate.h
 //  CKTNavigator
 //
 //
 
 #import <Foundation/Foundation.h>
-#import <JavaScriptCore/JavaScriptCore.h>
+#if TARGET_OS_IPHONE
+#import <UIKit/UIKit.h>
+#endif
 
-@protocol ANMediaStreamInterface<JSExport>
+#import <WebRTC/RTCMacros.h>
 
-@property (nonatomic, strong, readonly) NSString *streamId;
+NS_ASSUME_NONNULL_BEGIN
 
-- (NSArray *)getAudioTracks;
-- (NSArray *)getVideoTracks;
-- (NSArray *)getTracks;
-- (NSString *)getLabel;
-- (void)stop;
+@class RTCVideoFrame;
+
+RTC_OBJC_EXPORT
+
+@protocol ANSVideoSnapshotDelegate<NSObject>
+
+- (void)OnVideoSnapshotCaptured:(RTCVideoFrame *)videoFrame;
 
 @end
+
+NS_ASSUME_NONNULL_END

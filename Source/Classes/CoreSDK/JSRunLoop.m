@@ -30,8 +30,7 @@
 #import "Navigator.h"
 #import "Promise.h"
 #import "PubSubService.h"
-// Not needed for audio
-// #import "URL.h"
+#import "URL.h"
 #import "WebSocketManager.h"
 #import "Window.h"
 #import "XMLHttpRequest.h"
@@ -94,7 +93,7 @@ static NSString *LOG_TAG = @"[JSRunLoop]";
         self.context[@"JSEngine"] = [JSEngine sharedInstance];
         self.context[@"Audio"] = [Audio class];
         [Navigator initWebRTCInJSContext:self.context];
-        // self.context[@"URL"] = [URL sharedInstance];
+        self.context[@"URL"] = [URL sharedInstance];
         self.context[@"WebSocket"] = [WebSocketManager class];
         self.context[@"XMLHttpRequest"] = [XMLHttpRequest class];
         self.context[@"logger"] = [Logger sharedInstance];
