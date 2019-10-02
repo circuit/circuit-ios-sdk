@@ -1,0 +1,3435 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>CircuitSDK Documentation</title>
+
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .cd {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all.js"></script>
+  </head>
+
+  <body class="index" data-languages="[&quot;objective_c&quot;,&quot;swift&quot;]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar.png" alt="Navbar" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="images/logo.png" class="logo" alt="Logo" />
+        <div class="lang-selector">
+              <a href="#" data-language-name="objective_c">Objective-C</a>
+              <a href="#" data-language-name="swift">Swift</a>
+        </div>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <div id="toc" class="toc-list-h1">
+          <li>
+            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#getting-started" class="toc-h1 toc-link" data-title="Getting Started">Getting Started</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#installing-cocoapods" class="toc-h2 toc-link" data-title="Installing CocoaPods">Installing CocoaPods</a>
+                  </li>
+                  <li>
+                    <a href="#setting-up-cocoapods" class="toc-h2 toc-link" data-title="Setting up CocoaPods">Setting up CocoaPods</a>
+                  </li>
+                  <li>
+                    <a href="#installing-circuitsdk" class="toc-h2 toc-link" data-title="Installing CircuitSDK">Installing CircuitSDK</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#authorization" class="toc-h1 toc-link" data-title="Authorization">Authorization</a>
+          </li>
+          <li>
+            <a href="#setting-up-your-project" class="toc-h1 toc-link" data-title="Setting up your project">Setting up your project</a>
+          </li>
+          <li>
+            <a href="#cktclient-h" class="toc-h1 toc-link" data-title="CKTClient.h">CKTClient.h</a>
+          </li>
+          <li>
+            <a href="#cktclient-auth" class="toc-h1 toc-link" data-title="CKTClient+Auth">CKTClient+Auth</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#initializesdk-oauthclientsecret-oauthscope" class="toc-h2 toc-link" data-title="initializeSDK:oAuthClientSecret:oAuthScope:">initializeSDK:oAuthClientSecret:oAuthScope:</a>
+                  </li>
+                  <li>
+                    <a href="#renewtoken" class="toc-h2 toc-link" data-title="renewToken:">renewToken:</a>
+                  </li>
+                  <li>
+                    <a href="#revoketoken-completion" class="toc-h2 toc-link" data-title="revokeToken:completion:">revokeToken:completion:</a>
+                  </li>
+                  <li>
+                    <a href="#setoauthconfig-clientsecret" class="toc-h2 toc-link" data-title="setOAuthConfig:clientSecret:">setOAuthConfig:clientSecret:</a>
+                  </li>
+                  <li>
+                    <a href="#setoauthconfig-clientsecret-scope" class="toc-h2 toc-link" data-title="setOAuthConfig:clientSecret:scope:">setOAuthConfig:clientSecret:scope:</a>
+                  </li>
+                  <li>
+                    <a href="#validatetoken-completion" class="toc-h2 toc-link" data-title="validateToken:completion:">validateToken:completion:</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#cktclient-logon" class="toc-h1 toc-link" data-title="CKTClient+Logon">CKTClient+Logon</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#logon-completion" class="toc-h2 toc-link" data-title="logon:completion:">logon:completion:</a>
+                  </li>
+                  <li>
+                    <a href="#logon-password-completion" class="toc-h2 toc-link" data-title="logon:password:completion:">logon:password:completion:</a>
+                  </li>
+                  <li>
+                    <a href="#logout-completion" class="toc-h2 toc-link" data-title="logout:completion:">logout:completion:</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#cktclient-user" class="toc-h1 toc-link" data-title="CKTClient+User">CKTClient+User</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#getloggedonuser-copmletion" class="toc-h2 toc-link" data-title="getLoggedOnUser:copmletion:">getLoggedOnUser:copmletion:</a>
+                  </li>
+                  <li>
+                    <a href="#getpresence-full-completion" class="toc-h2 toc-link" data-title="getPresence:full:completion:">getPresence:full:completion:</a>
+                  </li>
+                  <li>
+                    <a href="#getstatusmessage-completion" class="toc-h2 toc-link" data-title="getStatusMessage:completion:">getStatusMessage:completion:</a>
+                  </li>
+                  <li>
+                    <a href="#gettenantusers-completion" class="toc-h2 toc-link" data-title="getTenantUsers:completion:">getTenantUsers:completion:</a>
+                  </li>
+                  <li>
+                    <a href="#getuserbyemail-completion" class="toc-h2 toc-link" data-title="getUserByEmail:completion:">getUserByEmail:completion:</a>
+                  </li>
+                  <li>
+                    <a href="#getusersbyemail-completion" class="toc-h2 toc-link" data-title="getUsersByEmail:completion:">getUsersByEmail:completion:</a>
+                  </li>
+                  <li>
+                    <a href="#getuserbyid-completion" class="toc-h2 toc-link" data-title="getUserById:completion:">getUserById:completion:</a>
+                  </li>
+                  <li>
+                    <a href="#getusersbyid-completion" class="toc-h2 toc-link" data-title="getUsersById:completion:">getUsersById:completion:</a>
+                  </li>
+                  <li>
+                    <a href="#getusersbyid-limited-completion" class="toc-h2 toc-link" data-title="getUsersById:limited:completion:">getUsersById:limited:completion:</a>
+                  </li>
+                  <li>
+                    <a href="#getusersettings-completion" class="toc-h2 toc-link" data-title="getUserSettings:completion:">getUserSettings:completion:</a>
+                  </li>
+                  <li>
+                    <a href="#updateuser-completion" class="toc-h2 toc-link" data-title="updateUser:completion:">updateUser:completion:</a>
+                  </li>
+                  <li>
+                    <a href="#response" class="toc-h2 toc-link" data-title="Response">Response</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#cktclient-conversation" class="toc-h1 toc-link" data-title="CKTClient+Conversation">CKTClient+Conversation</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#addparticipant-userids-completion" class="toc-h2 toc-link" data-title="addParticipant:userIds:completion:">addParticipant:userIds:completion:</a>
+                  </li>
+                  <li>
+                    <a href="#addtextitem-content-completionhandler" class="toc-h2 toc-link" data-title="addTextItem:content:completionHandler:">addTextItem:content:completionHandler:</a>
+                  </li>
+                  <li>
+                    <a href="#createcommunity-topic-description-completion" class="toc-h2 toc-link" data-title="createCommunity:topic:description:completion:">createCommunity:topic:description:completion:</a>
+                  </li>
+                  <li>
+                    <a href="#createconferencebridge-completion" class="toc-h2 toc-link" data-title="createConferenceBridge:completion:">createConferenceBridge:completion:</a>
+                  </li>
+                  <li>
+                    <a href="#createdirectconversation-completion" class="toc-h2 toc-link" data-title="createDirectConversation:completion:">createDirectConversation:completion:</a>
+                  </li>
+                  <li>
+                    <a href="#creategroupconversation-title-completionhandler" class="toc-h2 toc-link" data-title="createGroupConversation:title:completionHandler">createGroupConversation:title:completionHandler</a>
+                  </li>
+                  <li>
+                    <a href="#flagitem-itemid-completion" class="toc-h2 toc-link" data-title="flagItem:itemId:completion:">flagItem:itemId:completion:</a>
+                  </li>
+                  <li>
+                    <a href="#getconversations" class="toc-h2 toc-link" data-title="getConversations:">getConversations:</a>
+                  </li>
+                  <li>
+                    <a href="#getconversations-completionhandler" class="toc-h2 toc-link" data-title="getConversations:completionHandler:">getConversations:completionHandler:</a>
+                  </li>
+                  <li>
+                    <a href="#getconversationbyid-completionhandler" class="toc-h2 toc-link" data-title="getConversationById:completionHandler:">getConversationById:completionHandler:</a>
+                  </li>
+                  <li>
+                    <a href="#getconversationdetails-completion" class="toc-h2 toc-link" data-title="getConversationDetails:completion:">getConversationDetails:completion:</a>
+                  </li>
+                  <li>
+                    <a href="#getconversationfeed-options-completion" class="toc-h2 toc-link" data-title="getConversationFeed:options:completion:">getConversationFeed:options:completion:</a>
+                  </li>
+                  <li>
+                    <a href="#getconversationitems-options-completion" class="toc-h2 toc-link" data-title="getConversationItems:options:completion:">getConversationItems:options:completion:</a>
+                  </li>
+                  <li>
+                    <a href="#getconversationparticipants-options-completion" class="toc-h2 toc-link" data-title="getConversationParticipants:options:completion:">getConversationParticipants:options:completion:</a>
+                  </li>
+                  <li>
+                    <a href="#getdirectconversationwithuser-createifnotexists-completion" class="toc-h2 toc-link" data-title="getDirectConversationWithUser:createIfNotExists:completion:">getDirectConversationWithUser:createIfNotExists:completion:</a>
+                  </li>
+                  <li>
+                    <a href="#getflaggeditems" class="toc-h2 toc-link" data-title="getFlaggedItems:">getFlaggedItems:</a>
+                  </li>
+                  <li>
+                    <a href="#getitembyid-completionhandler" class="toc-h2 toc-link" data-title="getItemById:completionHandler:">getItemById:completionHandler:</a>
+                  </li>
+                  <li>
+                    <a href="#getitemsbyid-completionhandler" class="toc-h2 toc-link" data-title="getItemsById:completionHandler:">getItemsById:completionHandler:</a>
+                  </li>
+                  <li>
+                    <a href="#getitemsbythread-threadid-options-completion" class="toc-h2 toc-link" data-title="getItemsByThread:threadId:options:completion:">getItemsByThread:threadId:options:completion:</a>
+                  </li>
+                  <li>
+                    <a href="#getmarkedconversations" class="toc-h2 toc-link" data-title="getMarkedConversations:">getMarkedConversations:</a>
+                  </li>
+                  <li>
+                    <a href="#getsupportconversationid" class="toc-h2 toc-link" data-title="getSupportConversationId:">getSupportConversationId:</a>
+                  </li>
+                  <li>
+                    <a href="#gettelephonyconversationid" class="toc-h2 toc-link" data-title="getTelephonyConversationId:">getTelephonyConversationId:</a>
+                  </li>
+                  <li>
+                    <a href="#likeitem-completion" class="toc-h2 toc-link" data-title="likeItem:completion:">likeItem:completion:</a>
+                  </li>
+                  <li>
+                    <a href="#markitemasread-creationtime-completion" class="toc-h2 toc-link" data-title="markItemAsRead:creationTime:completion:">markItemAsRead:creationTime:completion:</a>
+                  </li>
+                  <li>
+                    <a href="#removeparticipant-userids-completion" class="toc-h2 toc-link" data-title="removeParticipant:userIds:completion:">removeParticipant:userIds:completion:</a>
+                  </li>
+                  <li>
+                    <a href="#unflagitem-itemid-completion" class="toc-h2 toc-link" data-title="unflagItem:itemId:completion:">unflagItem:itemId:completion:</a>
+                  </li>
+                  <li>
+                    <a href="#unlikeitem-completion" class="toc-h2 toc-link" data-title="unlikeItem:completion:">unlikeItem:completion:</a>
+                  </li>
+                  <li>
+                    <a href="#updatetextitem-completion" class="toc-h2 toc-link" data-title="updateTextItem:completion:">updateTextItem:completion:</a>
+                  </li>
+                  <li>
+                    <a href="#updateconversation-attributestochange-completion" class="toc-h2 toc-link" data-title="updateConversation:attributesToChange:completion:">updateConversation:attributesToChange:completion:</a>
+                  </li>
+                  <li>
+                    <a href="#response" class="toc-h2 toc-link" data-title="Response">Response</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#cktclient-call" class="toc-h1 toc-link" data-title="CKTClient+Call">CKTClient+Call</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#addparticipanttocall-to-completion" class="toc-h2 toc-link" data-title="addParticipantToCall:to:completion:">addParticipantToCall:to:completion:</a>
+                  </li>
+                  <li>
+                    <a href="#addparticipanttortcsession-to-completion" class="toc-h2 toc-link" data-title="addParticipantToRtcSession:to:completion:">addParticipantToRtcSession:to:completion:</a>
+                  </li>
+                  <li>
+                    <a href="#answercall-mediatype-completionhandler" class="toc-h2 toc-link" data-title="answerCall:mediaType:completionHandler:">answerCall:mediaType:completionHandler:</a>
+                  </li>
+                  <li>
+                    <a href="#dialnumber-completionhandler" class="toc-h2 toc-link" data-title="dialNumber:completionHandler:">dialNumber:completionHandler:</a>
+                  </li>
+                  <li>
+                    <a href="#dialnumber-name-completionhandler" class="toc-h2 toc-link" data-title="dialNumber:name:completionHandler:">dialNumber:name:completionHandler:</a>
+                  </li>
+                  <li>
+                    <a href="#endcall-completion" class="toc-h2 toc-link" data-title="endCall:completion:">endCall:completion:</a>
+                  </li>
+                  <li>
+                    <a href="#endconference-completion" class="toc-h2 toc-link" data-title="endConference:completion:">endConference:completion:</a>
+                  </li>
+                  <li>
+                    <a href="#leaveconference-completion" class="toc-h2 toc-link" data-title="leaveConference:completion:">leaveConference:completion:</a>
+                  </li>
+                  <li>
+                    <a href="#findcall-completionhandler" class="toc-h2 toc-link" data-title="findCall:completionHandler:">findCall:completionHandler:</a>
+                  </li>
+                  <li>
+                    <a href="#getactivecall" class="toc-h2 toc-link" data-title="getActiveCall:">getActiveCall:</a>
+                  </li>
+                  <li>
+                    <a href="#getactiveremotecalls" class="toc-h2 toc-link" data-title="getActiveRemoteCalls:">getActiveRemoteCalls:</a>
+                  </li>
+                  <li>
+                    <a href="#getcalls" class="toc-h2 toc-link" data-title="getCalls:">getCalls:</a>
+                  </li>
+                  <li>
+                    <a href="#gettelephonydata" class="toc-h2 toc-link" data-title="getTelephonyData:">getTelephonyData:</a>
+                  </li>
+                  <li>
+                    <a href="#makecall-mediatype-completionhandler" class="toc-h2 toc-link" data-title="makeCall:mediaType:completionHandler:">makeCall:mediaType:completionHandler:</a>
+                  </li>
+                  <li>
+                    <a href="#makecall-mediatype-createifnotexist-completionhandler" class="toc-h2 toc-link" data-title="makeCall:mediaType:createIfNotExist:completionHandler:">makeCall:mediaType:createIfNotExist:completionHandler:</a>
+                  </li>
+                  <li>
+                    <a href="#mute-completionhandler" class="toc-h2 toc-link" data-title="mute:completionHandler:">mute:completionHandler:</a>
+                  </li>
+                  <li>
+                    <a href="#startconference-mediatype-completion" class="toc-h2 toc-link" data-title="startConference:mediaType:completion:">startConference:mediaType:completion:</a>
+                  </li>
+                  <li>
+                    <a href="#joinconference-mediatype-clientid-completion" class="toc-h2 toc-link" data-title="joinConference:mediaType:clientId:completion:">joinConference:mediaType:clientId:completion:</a>
+                  </li>
+                  <li>
+                    <a href="#unmute-completionhandler" class="toc-h2 toc-link" data-title="unmute:completionHandler">unmute:completionHandler</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#cktaudiosessionmanager" class="toc-h1 toc-link" data-title="CKTAudioSessionManager">CKTAudioSessionManager</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#setaudiosessionenabled" class="toc-h2 toc-link" data-title="setAudioSessionEnabled:">setAudioSessionEnabled:</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#event-handling" class="toc-h1 toc-link" data-title="Event Handling">Event Handling</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#adding-observers" class="toc-h2 toc-link" data-title="Adding Observers">Adding Observers</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#sample-application" class="toc-h1 toc-link" data-title="Sample Application">Sample Application</a>
+          </li>
+          <li>
+            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
+          </li>
+      </div>
+        <ul class="toc-footer">
+            <li><a href='https://www.circuit.com/web/developers/registration'>Sign up for a Circuit Dev Account</a></li>
+            <li><a href='https://circuit.github.io/oauth.html'>Register your Circuit Application</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='introduction'>Introduction</h1>
+<p>Welcome to the Circuit iOS SDK. You can use the provided API to build a text
+or media mobile application for iOS.</p>
+
+<p>We have language examples in <strong>Objective-C</strong> and <strong>Swift</strong>. You can view the code
+examples in the dark panel to the right, and can switch the programming language
+of the examples with the tabs in the top right.</p>
+<h1 id='getting-started'>Getting Started</h1>
+<p>Before we can start building an application we need to install CircuitSDK to the your project.</p>
+<h2 id='installing-cocoapods'>Installing CocoaPods</h2>
+<p>First of all, make sure you have <a href="https://cocoapods.org/">CocoaPods</a> installed on your system.</p>
+
+<p>To install CocoaPods make sure you have latest Xcode,
+open the terminal and run the
+following command below:</p>
+
+<p><strong><code>sudo gem install cocoapod</code></strong></p>
+<h2 id='setting-up-cocoapods'>Setting up CocoaPods</h2>
+<p>For the CircuitSDK to run properly, you must setup your project with CocoaPods.
+In the terminal navigate to your project folder and run the command below:</p>
+
+<p><strong><code>pod init</code></strong></p>
+
+<p>pod init sets up a PodFile for your project</p>
+
+<p>The file should look like this where PROJECT NAME is your project name</p>
+
+<p><img src="images/podfile.png" alt="Podfile" /></p>
+<h2 id='installing-circuitsdk'>Installing CircuitSDK</h2>
+<p>Once CocoaPods is installed you are ready to add and install the pod CircuitSDK</p>
+
+<p>Open your Podfile in Xcode, do not use TextEdit as TextEdit uses smart quotes
+which will generate errors upon trying to install the pod</p>
+
+<p>Under target &#39;PROJECT NAME&#39; (is your project name) add the following</p>
+
+<p><code>pod &#39;CircuitSDK&#39;</code></p>
+
+<p>This tells CocoaPods you want to use the CircuitSDK pod with your project,
+save the Podfile.</p>
+
+<p>Your Podfile should look like the example below</p>
+
+<p><img src="images/circuitsdk.png" alt="Circuitsdk" /></p>
+
+<p>Now in the terminal navigate to your project folder containing the Podfile, run
+the command below to install the CircuitSDK pod:</p>
+
+<p><strong><code>pod install</code></strong></p>
+
+<p>The cocoaPods will download the latest CircuitSDK with the related dependencies.</p>
+
+<p>Lastly get the WebRTC dependency (Source/libCKTNavigator.a).</p>
+
+<p>Simply from project repo run in terminal:</p>
+
+<p><code>curl -X GET -o &quot;Source/libCKTNavigator.a&quot; &quot;https://www.googleapis.com/storage/v1/b/circuit-ios-sdk/o/lib</code></p>
+
+<p>CircuitSDK uses <a href="https://github.com/facebook/SocketRocket">SocketRocket</a> pod</p>
+<h1 id='authorization'>Authorization</h1>
+<aside class="warning">
+Important!
+</aside>
+
+<p>If you do not have any client credentials first  sign up for a developer account <a href="https://www.circuit.com/web/developers/registration">here</a></p>
+
+<p>Once your account is approved navigate to <a href="https://circuit.github.io/oauth.html">Circuit App Registration</a> and follow the instructions to obtain the credentials</p>
+
+<p>Once you receive them you are ready to run the sample application and create your own.</p>
+<h1 id='setting-up-your-project'>Setting up your project</h1>
+<p>Once you successfully end up with the sections above, you will be ready to use CircuitSDK in your project.
+Simply import the SDK to your class file and you are ready to go.</p>
+<pre class="highlight objective_c tab-objective_c"><code><span class="cp">#import &lt;CircuitSDK/CircuitSDK.h&gt;
+</span></code></pre><pre class="highlight swift tab-swift"><code><span class="kd">import</span> <span class="kt">CircuitSDK</span>
+</code></pre><h1 id='cktclient-h'>CKTClient.h</h1>
+<p>All client functions are implemented in their respective extensions</p>
+<h1 id='cktclient-auth'>CKTClient+Auth</h1><h2 id='initializesdk-oauthclientsecret-oauthscope'>initializeSDK:oAuthClientSecret:oAuthScope:</h2><pre class="highlight objective_c tab-objective_c"><code><span class="p">[</span><span class="n">client</span> <span class="nf">initializeSDK</span><span class="p">:</span><span class="s">@"ADD CLIENT_ID"</span>
+    <span class="nf">oAuthClientSecret</span><span class="p">:</span><span class="s">@"ADD CLIENT_SECRET"</span>
+            <span class="n">oAuthScope</span><span class="o">:</span><span class="s">@"ADD OAUTH_SCOPE"</span><span class="p">];</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="kt">CKTClient</span><span class="p">()</span><span class="o">.</span><span class="nf">initializeSDK</span><span class="p">(</span><span class="s">"ADD CLIENT ID"</span><span class="p">,</span>
+    <span class="nv">oAuthClientSecret</span><span class="p">:</span> <span class="s">"ADD CLIENT SECRET"</span><span class="p">,</span>
+            <span class="nv">oAuthScope</span><span class="p">:</span> <span class="s">"ALL"</span><span class="p">)</span>
+</code></pre>
+<p>It&#39;s a good idea to initialize the SDK when the application launches,
+this can be done in the AppDelegate file.</p>
+
+<p>Application scope should be a comma delimited string that can contain any of
+the following:</p>
+
+<table><thead>
+<tr>
+<th>SCOPE</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ALL</td>
+</tr>
+<tr>
+<td>READ_USER_PROFILE</td>
+</tr>
+<tr>
+<td>WRITE_USER_PROFILE</td>
+</tr>
+<tr>
+<td>READ_CONVERSATIONS</td>
+</tr>
+<tr>
+<td>WRITE_CONVERSATIONS</td>
+</tr>
+<tr>
+<td>READ_USER</td>
+</tr>
+<tr>
+<td>CALLS</td>
+</tr>
+</tbody></table>
+
+<p>We use a framework called AppAuth to help with OAuth 2.0 authentication.</p>
+
+<p>AppAuth takes your <a href="#authorization"><strong><code>CLIENT_ID</code></strong></a> and <a href="#authorization"><strong><code>CLIENT_SECRET</code></strong></a> and returns to you an <strong>access token</strong>,
+you can the use this access token to logon.</p>
+
+<p>See <a href="https://github.com/openid/AppAuth-iOS">AppAuth-iOS</a> for examples using AppAuth</p>
+
+<p>Remember to set your <strong>redirectURI</strong> you created when registering your application,
+this <strong>redirectURI</strong> tells AppAuth how to get back to your application after
+authentication has completed.</p>
+
+<p>Setting your <strong>redirectURI</strong> can be done in the Info section of your applications
+project settings</p>
+
+<p>See the image below for an example:</p>
+
+<p><img src="images/urlscheme.png" alt="Urlscheme" /></p>
+<h2 id='renewtoken'>renewToken:</h2><pre class="highlight objective_c tab-objective_c"><code><span class="p">[</span><span class="n">client</span> <span class="nf">renewToke</span><span class="p">:</span><span class="o">^</span><span class="p">{</span>
+  <span class="c1">// Code goes here
+</span><span class="p">}];</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="kt">CKTClient</span><span class="p">()</span><span class="o">.</span><span class="n">renewToken</span> <span class="p">{</span>
+  <span class="c1">// Code goes here</span>
+<span class="p">}</span>
+</code></pre>
+<p>Renew the OAuth2 access token of the current user</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>completion</td>
+<td>callback</td>
+<td>A completion block that takes either a new access token or an error and returns void</td>
+</tr>
+</tbody></table>
+<h2 id='revoketoken-completion'>revokeToken:completion:</h2><pre class="highlight objective_c tab-objective_c"><code><span class="p">[</span><span class="n">client</span> <span class="nf">revokeToken</span><span class="p">:</span><span class="s">@"ACCESS TOKEN"</span>
+         <span class="nf">completion</span><span class="p">:</span><span class="o">^</span><span class="p">{</span>
+  <span class="c1">// Code goes here
+</span><span class="p">}];</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="kt">CKTClient</span><span class="p">()</span><span class="o">.</span><span class="nf">revokeToken</span><span class="p">(</span><span class="s">"ACCESS TOKEN"</span><span class="p">,</span> <span class="p">{</span>
+  <span class="c1">// Code goes here</span>
+<span class="p">})</span>
+</code></pre>
+<p>Revoke the OAuth2 access token</p>
+
+<p>Required OAuth2 scopes: N/A</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>token</td>
+<td>string</td>
+<td>Access token, if omitted the internally used access toke is revoked.</td>
+</tr>
+<tr>
+<td>completion</td>
+<td>callback</td>
+<td>A completion block that takes either a new access token or an error and returns void</td>
+</tr>
+</tbody></table>
+<h2 id='setoauthconfig-clientsecret'>setOAuthConfig:clientSecret:</h2><pre class="highlight objective_c tab-objective_c"><code><span class="p">[</span><span class="n">client</span> <span class="nf">setOAuthConfig</span><span class="p">:</span><span class="s">@"CLIENT_ID"</span> <span class="nf">setOAuthConfig</span><span class="p">:</span><span class="s">@"CLIENT_SECRET"</span><span class="p">];</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="kt">CKTClient</span><span class="p">()</span><span class="o">.</span><span class="nf">setOAuthConfig</span><span class="p">(</span><span class="s">"CLIENT_ID"</span><span class="p">,</span> <span class="nv">setOAuthConfig</span><span class="p">:</span><span class="s">"CLIENT_SECRET)
+</span></code></pre>
+<p>Sets the configuration for OAuth Authentication without scope</p>
+
+<p>Use this method when you want the application to request all permissions</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>clientId</td>
+<td>string</td>
+<td>Application <a href="#authorization"><strong><code>CLIENT_ID</code></strong></a></td>
+</tr>
+<tr>
+<td>clientSecret</td>
+<td>string</td>
+<td>Application <a href="#authorization"><strong><code>CLIENT_SECRET</code></strong></a></td>
+</tr>
+</tbody></table>
+<h2 id='setoauthconfig-clientsecret-scope'>setOAuthConfig:clientSecret:scope:</h2><pre class="highlight objective_c tab-objective_c"><code><span class="p">[</span><span class="n">client</span> <span class="nf">setOAuthConfig</span><span class="p">:</span><span class="s">@"CLIENT_ID"</span>
+        <span class="nf">setOAuthConfig</span><span class="p">:</span><span class="s">@"CLIENT_SECRET"</span>
+        <span class="n">scope</span><span class="o">:</span><span class="s">@"SCOPE"</span><span class="p">];</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="kt">CKTClient</span><span class="p">()</span><span class="o">.</span><span class="nf">setOAuthConfig</span><span class="p">(</span><span class="s">"CLIENT_ID"</span><span class="p">,</span> <span class="nv">setOAuthConfig</span><span class="p">:</span><span class="s">"CLIENT_SECRET, scope:"</span><span class="kt">SCOPE</span><span class="s">")
+</span></code></pre>
+<p>Sets the configuration for OAuth Authentication with scope</p>
+
+<p>Use this method when you want to determine which permissions the application requests.</p>
+
+<p>This could be any of the following in a comma deliminated string</p>
+
+<ul>
+<li>ALL</li>
+<li>READ_USER_PROFILE</li>
+<li>WRITE_USER_PROFILE</li>
+<li>READ_CONVERSATIONS</li>
+<li>WRITE_CONVERSATION</li>
+<li>READ_USER</li>
+<li>CALLS</li>
+</ul>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>clientId</td>
+<td>string</td>
+<td>Application <a href="#authorization"><strong><code>CLIENT_ID</code></strong></a></td>
+</tr>
+<tr>
+<td>clientSecret</td>
+<td>string</td>
+<td>Application <a href="#authorization"><strong><code>CLIENT_SECRET</code></strong></a></td>
+</tr>
+<tr>
+<td>scope</td>
+<td>string</td>
+<td>Application scope</td>
+</tr>
+</tbody></table>
+<h2 id='validatetoken-completion'>validateToken:completion:</h2><pre class="highlight objective_c tab-objective_c"><code><span class="p">[</span><span class="n">client</span> <span class="nf">validateToken</span><span class="p">:</span><span class="s">@"ACCESS TOKEN"</span>
+           <span class="nf">completion</span><span class="p">:</span> <span class="o">^</span><span class="p">{</span>
+  <span class="c1">// Code goes here
+</span><span class="p">}];</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="kt">CKTClient</span><span class="p">()</span><span class="o">.</span><span class="nf">validateToken</span><span class="p">(</span><span class="s">"ACCESS TOKEN"</span><span class="p">,</span> <span class="p">{</span>
+  <span class="c1">// Code goes here</span>
+<span class="p">})</span>
+</code></pre>
+<p>Validates the OAuth2 access token</p>
+
+<p>Required OAuth2 scopes: N/A</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>accessToken</td>
+<td>string</td>
+<td>Access token, if not provided, current access token of the client instance is validated.</td>
+</tr>
+<tr>
+<td>completion</td>
+<td>callback</td>
+<td>A completion block that takes no arguments and returns void.</td>
+</tr>
+</tbody></table>
+<h1 id='cktclient-logon'>CKTClient+Logon</h1><h2 id='logon-completion'>logon:completion:</h2><pre class="highlight objective_c tab-objective_c"><code><span class="p">[</span><span class="n">client</span> <span class="nf">logon</span><span class="p">:</span><span class="s">@"ADD YOUR ACCESS TOKEN"</span> <span class="nf">completion</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="n">user</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+<span class="c1">// Code goes here
+</span><span class="p">}];</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="kt">CKTClient</span><span class="p">()</span><span class="o">.</span><span class="nf">logon</span><span class="p">(</span><span class="s">"ADD YOUR ACCESS TOKEN"</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+<span class="c1">// Code goes here</span>
+<span class="p">}</span>
+</code></pre>
+<p>Logs user into server via given access token. OAuth2 accessToken logon.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>completion</td>
+<td>callback</td>
+<td>A completion block that takes either a user or an error and returns void</td>
+</tr>
+</tbody></table>
+<h2 id='logon-password-completion'>logon:password:completion:</h2><pre class="highlight objective_c tab-objective_c"><code><span class="p">[</span><span class="n">self</span> <span class="nf">logon</span><span class="p">:</span><span class="s">@"USER_NAME"</span> <span class="nf">password</span><span class="p">:</span><span class="s">@"PASSWORD"</span> <span class="n">completion</span><span class="o">:^</span><span class="p">(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="n">user</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+<span class="c1">// Code goes here
+</span><span class="p">}];</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="kt">CKTClient</span><span class="p">()</span><span class="o">.</span><span class="nf">logon</span><span class="p">(</span><span class="s">"USER_NAME"</span> <span class="p">,</span> <span class="nv">password</span><span class="p">:</span> <span class="s">"PASSWORD"</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+<span class="c1">// Code goes here</span>
+<span class="p">}</span>
+</code></pre>
+<p>Logs user into server via given credentials.</p>
+
+<p>This grant type should only be used if other flows are not viable. Also, it should only be used if the application is trusted by the user.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>username</td>
+<td>string</td>
+<td>Username (email) for Resource Owner Grant Type</td>
+</tr>
+<tr>
+<td>password</td>
+<td>string</td>
+<td>Password for Resource Owner Grant Type</td>
+</tr>
+<tr>
+<td>completion</td>
+<td>callback</td>
+<td>A completion block that takes either a user or an error and returns void</td>
+</tr>
+</tbody></table>
+<h2 id='logout-completion'>logout:completion:</h2><pre class="highlight objective_c tab-objective_c"><code><span class="p">[</span><span class="n">client</span> <span class="nf">logout</span><span class="p">:</span><span class="o">^</span><span class="p">{</span>
+<span class="c1">// Code goes here
+</span><span class="p">}];</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="kt">CKTClient</span><span class="p">()</span><span class="o">.</span><span class="n">logout</span> <span class="p">{</span>
+<span class="c1">// Code goes here</span>
+<span class="p">}</span>
+</code></pre>
+<p>Log this client instance out. Logging out does not revoke the OAuth2
+access token</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>completion</td>
+<td>callback</td>
+<td>A completion block that takes no arguments and returns void</td>
+</tr>
+</tbody></table>
+<h1 id='cktclient-user'>CKTClient+User</h1><h2 id='getloggedonuser-copmletion'>getLoggedOnUser:copmletion:</h2><pre class="highlight objective_c tab-objective_c"><code><span class="p">[</span><span class="n">client</span> <span class="nf">getLoggedOnUser</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="n">user</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Code goes here
+</span><span class="p">}];</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="kt">CKTClient</span><span class="p">()</span><span class="o">.</span><span class="nf">getLoggedOnUser</span><span class="p">({</span> <span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+  <span class="c1">// Code goes here</span>
+<span class="p">})</span>
+</code></pre>
+<p>Returns the current logged on user in JSON format</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>completion</td>
+<td>callback</td>
+<td>A completion block that takes either the current logged on user or an error</td>
+</tr>
+</tbody></table>
+<h2 id='getpresence-full-completion'>getPresence:full:completion:</h2><pre class="highlight objective_c tab-objective_c"><code><span class="p">[</span><span class="n">client</span> <span class="nf">getPresence</span><span class="p">:@[</span> <span class="s">"USER ID(s)"</span> <span class="p">],</span>
+               <span class="nf">full</span><span class="p">:</span><span class="nb">YES</span><span class="p">,</span>
+         <span class="n">completion</span><span class="o">:^</span><span class="p">(</span><span class="n">id</span> <span class="n">presence</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Code goes here
+</span><span class="p">}];</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="kt">CKTClient</span><span class="p">()</span><span class="o">.</span><span class="nf">getPresence</span><span class="p">([</span> <span class="s">"USER ID(s)"</span> <span class="p">],</span>
+            <span class="nv">full</span><span class="p">:</span> <span class="kc">true</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">presence</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+  <span class="c1">// Code goes here</span>
+<span class="p">}</span>
+</code></pre>
+<p>Get the presence for a list of user id&#39;s</p>
+
+<p>Required OAuth 2 scopes: READ_USER or ALL</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>userIds</td>
+<td>array</td>
+<td>Array of single or multiple user id&#39;s</td>
+</tr>
+<tr>
+<td>full</td>
+<td>boolean</td>
+<td>If true, detailed presence is returned, which also includes long/lat, timezone, etc</td>
+</tr>
+<tr>
+<td>completion</td>
+<td>callback</td>
+<td>A completion block that takes either presence or an error and returns void</td>
+</tr>
+</tbody></table>
+<h2 id='getstatusmessage-completion'>getStatusMessage:completion:</h2><pre class="highlight objective_c tab-objective_c"><code><span class="p">[</span><span class="n">client</span> <span class="nf">getStatusMessage</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">id</span> <span class="n">status</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Code goes here
+</span><span class="p">}];</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="kt">CKTClient</span><span class="p">()</span><span class="o">.</span><span class="n">getStatusMessage</span> <span class="p">{</span> <span class="p">(</span><span class="n">status</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+  <span class="c1">// Code goes here</span>
+<span class="p">}</span>
+</code></pre>
+<p>Get the status message of the logged in user</p>
+
+<p>Required OAuth2 scopes: READ_USER_PROFILE or ALL</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>completion</td>
+<td>callback</td>
+<td>A completion block that takes either a status message or an error and returns void.</td>
+</tr>
+</tbody></table>
+<h2 id='gettenantusers-completion'>getTenantUsers:completion:</h2><pre class="highlight objective_c tab-objective_c"><code><span class="p">[</span><span class="n">client</span> <span class="nf">getTenantUsers</span><span class="p">:@{</span> <span class="n">OPTIONS</span> <span class="p">},</span>
+            <span class="nf">completion</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">id</span> <span class="n">users</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Code goes here
+</span><span class="p">}];</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="kt">CKTClient</span><span class="p">()</span><span class="o">.</span><span class="nf">getTenantUsers</span><span class="p">([</span><span class="s">"OPTIONS DICTIONARY"</span><span class="p">])</span> <span class="p">{</span> <span class="p">(</span><span class="n">users</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+  <span class="c1">// Code goes here</span>
+<span class="p">}</span>
+</code></pre>
+<p>Get the users for this tenant/domain. This API required tenant admin privileges</p>
+
+<p>Required OAuth2 scopes: ALL and only by tenant admins</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>options</td>
+<td>dictionary</td>
+<td>Filter options</td>
+</tr>
+<tr>
+<td>completion</td>
+<td>callback</td>
+<td>A completion block that takes either users or an error and returns void.</td>
+</tr>
+</tbody></table>
+<h2 id='getuserbyemail-completion'>getUserByEmail:completion:</h2><pre class="highlight objective_c tab-objective_c"><code><span class="p">[</span><span class="n">client</span> <span class="nf">getUserByEmail</span><span class="p">:</span><span class="s">@"ADD EMAIL"</span> <span class="nf">completion</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="n">user</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Code goes here
+</span><span class="p">}];</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="kt">CKTClient</span><span class="p">()</span><span class="o">.</span><span class="nf">getUserByEmail</span><span class="p">(</span><span class="s">"ADD EMAIL"</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+  <span class="c1">// Code goes here</span>
+<span class="p">}</span>
+</code></pre>
+<p>Returns the user in JSON format by the given user email.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>email</td>
+<td>string</td>
+<td>Email of the user to retrieve</td>
+</tr>
+<tr>
+<td>completion</td>
+<td>callback</td>
+<td>A completion block that takes either a user or an error and returns void</td>
+</tr>
+</tbody></table>
+<h2 id='getusersbyemail-completion'>getUsersByEmail:completion:</h2><pre class="highlight objective_c tab-objective_c"><code><span class="p">[</span><span class="n">client</span> <span class="nf">getUsersByEmail</span><span class="p">:@[</span> <span class="s">"ADD EMAIL"</span> <span class="p">]</span> <span class="nf">completion</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="n">users</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Code goes here
+</span><span class="p">}];</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="kt">CKTClient</span><span class="p">()</span><span class="o">.</span><span class="nf">getUsersByEmail</span><span class="p">([</span> <span class="s">"ADD EMAIL"</span> <span class="p">])</span> <span class="p">{</span> <span class="p">(</span><span class="n">users</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+  <span class="c1">// Code goes here</span>
+<span class="p">}</span>
+</code></pre>
+<p>Returns the users in JSON format by the given array of email addresses.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>emails</td>
+<td>array</td>
+<td>Array of email addresses of the users to retrieve</td>
+</tr>
+<tr>
+<td>completion</td>
+<td>callback</td>
+<td>A completion block that takes either a user or an error and retutns void</td>
+</tr>
+</tbody></table>
+<h2 id='getuserbyid-completion'>getUserById:completion:</h2><pre class="highlight objective_c tab-objective_c"><code><span class="p">[</span><span class="n">client</span> <span class="nf">getUserById</span><span class="p">:</span><span class="s">@"ADD USER ID"</span> <span class="nf">completion</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="n">user</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Code goes here
+</span><span class="p">}];</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="kt">CKTClient</span><span class="p">()</span><span class="o">.</span><span class="nf">getUserById</span><span class="p">(</span><span class="s">"ADD USER ID"</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+  <span class="c1">// Code goes here</span>
+<span class="p">}</span>
+</code></pre>
+<p>Returns the user in JSON format by the given user ids</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>userId</td>
+<td>string</td>
+<td>ID of the user to retrieve</td>
+</tr>
+<tr>
+<td>completion</td>
+<td>callback</td>
+<td>A completion block that takes either a user or an error and returns void</td>
+</tr>
+</tbody></table>
+<h2 id='getusersbyid-completion'>getUsersById:completion:</h2><pre class="highlight objective_c tab-objective_c"><code><span class="p">[</span><span class="n">client</span> <span class="nf">getUsersById</span><span class="p">:@[</span> <span class="s">"ADD USER ID"</span> <span class="p">]</span> <span class="nf">completion</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="n">users</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Code goes here
+</span><span class="p">}];</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="kt">CKTClient</span><span class="p">()</span><span class="o">.</span><span class="nf">getUsersById</span><span class="p">([</span> <span class="s">"ADD USER ID"</span> <span class="p">])</span> <span class="p">{</span> <span class="p">(</span><span class="n">users</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+  <span class="c1">// Code goes here</span>
+<span class="p">}</span>
+</code></pre>
+<p>Returns the users in JSON format by the given array of user id&#39;s</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>userId</td>
+<td>array</td>
+<td>ID of the user to retrieve</td>
+</tr>
+<tr>
+<td>completion</td>
+<td>callback</td>
+<td>A completion block that takes either users or an error and returns void</td>
+</tr>
+</tbody></table>
+<h2 id='getusersbyid-limited-completion'>getUsersById:limited:completion:</h2><pre class="highlight objective_c tab-objective_c"><code><span class="p">[</span><span class="n">client</span> <span class="nf">getUsersById</span><span class="p">:[</span><span class="s">@"ADD USER ID"</span><span class="p">]</span> <span class="nf">limited</span><span class="p">:</span><span class="nb">YES</span> <span class="n">completion</span><span class="o">:^</span><span class="p">(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="n">user</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+<span class="c1">// Code goes here
+</span><span class="p">}];</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="kt">CKTClient</span><span class="p">()</span><span class="o">.</span><span class="nf">getUsersById</span><span class="p">([</span><span class="s">"ADD USER ID"</span><span class="p">],</span> <span class="nv">limited</span><span class="p">:</span><span class="kc">true</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+<span class="c1">// Code goes here</span>
+<span class="p">}</span>
+</code></pre>
+<p>Returns the user in JSON format by the given user ids</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>userId</td>
+<td>array</td>
+<td>ID of the user to retrieve</td>
+</tr>
+<tr>
+<td>limited</td>
+<td>bool</td>
+<td>If true, a limited user object is retrurned with the most important attributes. Default is false.</td>
+</tr>
+<tr>
+<td>completion</td>
+<td>callback</td>
+<td>A completion handler that takes either a dictionary of  users or an error and returns void.</td>
+</tr>
+</tbody></table>
+<h2 id='getusersettings-completion'>getUserSettings:completion:</h2><pre class="highlight objective_c tab-objective_c"><code><span class="p">[</span><span class="n">client</span> <span class="nf">getUserSettings</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">id</span> <span class="n">settings</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Code goes here
+</span><span class="p">}];</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="kt">CKTClient</span><span class="p">()</span><span class="o">.</span><span class="n">getUserSettings</span> <span class="p">{</span> <span class="p">(</span><span class="n">settings</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+  <span class="c1">// Code goes here</span>
+<span class="p">}</span>
+</code></pre>
+<p>Get all the user settings of the logged in user</p>
+
+<p>Required OAuth2 scopes: READ_USER_PROFILE or ALL</p>
+<h2 id='updateuser-completion'>updateUser:completion:</h2><pre class="highlight objective_c tab-objective_c"><code><span class="p">[</span><span class="n">client</span> <span class="nf">updateUser</span><span class="p">:@[</span><span class="s">"USER ATTRIBUTES"</span><span class="p">]</span> <span class="nf">completion</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+<span class="c1">// Code goes here
+</span><span class="p">}];</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="kt">CKTClient</span><span class="p">()</span><span class="o">.</span><span class="nf">updateUser</span><span class="p">(</span><span class="s">"USER ATTRIBUTE"</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">void</span><span class="p">)</span> <span class="k">in</span>
+<span class="c1">// Code goes here</span>
+<span class="p">}</span>
+</code></pre>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>user</td>
+<td>dictionary</td>
+<td>ictionary containing the user attributes to update</td>
+</tr>
+<tr>
+<td>completion</td>
+<td>callback</td>
+<td>A completion block that takes no arguments and returns void.</td>
+</tr>
+</tbody></table>
+<h2 id='response'>Response</h2><pre class="highlight jsonnet tab-jsonnet"><code><span class="p">{</span>
+    <span class="nx">accounts</span> <span class="p">=</span>     <span class="p">(</span>
+                <span class="p">{</span>
+            <span class="nx">accountId</span> <span class="p">=</span> <span class="s">"USER ACCOUNT ID"</span><span class="p">;</span>
+            <span class="nx">accountStatus</span> <span class="p">=</span> <span class="nx">ACTIVE</span><span class="p">;</span>
+            <span class="nx">accountTemplateName</span> <span class="p">=</span> <span class="nx">USER</span><span class="p">;</span>
+            <span class="nx">canLogon</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>
+            <span class="nx">creationTime</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
+            <span class="nx">isDefault</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>
+            <span class="nx">isExpired</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
+            <span class="nx">isInGracePeriod</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
+            <span class="nx">lastAccess</span> <span class="p">=</span> <span class="nx">LAST</span> <span class="nx">ACCESS</span> <span class="nx">TIME</span><span class="p">;</span>
+            <span class="nx">parentPackageId</span> <span class="p">=</span> <span class="s">"PARENT PACKAGE ID"</span><span class="p">;</span>
+            <span class="nx">parentPackageName</span> <span class="p">=</span> <span class="s">"PARENT PACKAGE NAME"</span><span class="p">;</span>
+            <span class="nx">permissions</span> <span class="p">=</span> <span class="p">(</span> <span class="nx">ARRAY</span> <span class="nx">OF</span> <span class="nx">SYSTEM</span> <span class="nx">PERMISSION</span> <span class="p">);</span>
+            <span class="nx">tags</span> <span class="p">=</span>  <span class="p">(</span> <span class="nx">ARRAY</span> <span class="nx">OF</span> <span class="nx">SYSTEM</span> <span class="nx">TAGS</span> <span class="p">);</span>
+            <span class="nx">tenantId</span> <span class="p">=</span> <span class="s">"USER TENANT ID"</span><span class="p">;</span>
+            <span class="nx">userId</span> <span class="p">=</span> <span class="s">"USER ID"</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">);</span>
+    <span class="nx">apiVersion</span> <span class="p">=</span> <span class="s">"SDK API VERSION"</span><span class="p">;</span>
+    <span class="nx">avatar</span> <span class="p">=</span> <span class="s">"USER AVATAR URL"</span><span class="p">;</span>
+    <span class="nx">avatarLarge</span> <span class="p">=</span> <span class="s">"USER LARGE AVATAR URL"</span><span class="p">;</span>
+    <span class="nx">callerId</span> <span class="p">=</span> <span class="s">""</span><span class="p">;</span>
+    <span class="nx">clientId</span> <span class="p">=</span> <span class="s">"CLIENT ID"</span><span class="p">;</span>
+    <span class="nx">company</span> <span class="p">=</span> <span class="s">""</span><span class="p">;</span>
+    <span class="nx">cstaNumber</span> <span class="p">=</span> <span class="s">""</span><span class="p">;</span>
+    <span class="nx">displayName</span> <span class="p">=</span> <span class="s">"USER FULL NAME"</span><span class="p">;</span>
+    <span class="nx">emailAddress</span> <span class="p">=</span> <span class="s">"USER EMAIL ADDRESS"</span><span class="p">;</span>
+    <span class="nx">firstName</span> <span class="p">=</span> <span class="s">"USER FIRST NAME"</span><span class="p">;</span>
+    <span class="nx">hasAvatar</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="nx">hasPermission</span> <span class="p">=</span>     <span class="p">{</span>
+    <span class="p">};</span>
+    <span class="nx">isExternallyManaged</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="nx">jobTitle</span> <span class="p">=</span> <span class="s">"USER JOB TITLE"</span><span class="p">;</span>
+    <span class="nx">lastName</span> <span class="p">=</span> <span class="s">"USER LAST NAME"</span><span class="p">;</span>
+    <span class="nx">locale</span> <span class="p">=</span> <span class="s">"LOCALE SPECIFICATION"</span><span class="p">;</span>
+    <span class="nx">phoneNumber</span> <span class="p">=</span> <span class="s">"USER PHONE NUMBER"</span><span class="p">;</span>
+    <span class="nx">userId</span> <span class="p">=</span> <span class="s">"USER ID"</span><span class="p">;</span>
+    <span class="nx">userPresenceState</span> <span class="p">=</span>     <span class="p">{</span>
+        <span class="nx">isOptedOut</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="nx">mobile</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="nx">poor</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="nx">state</span> <span class="p">=</span> <span class="nx">OFFLINE</span><span class="p">;</span>
+        <span class="nx">userId</span> <span class="p">=</span> <span class="s">"USER ID"</span><span class="p">;</span>
+    <span class="p">};</span>
+    <span class="nx">userState</span> <span class="p">=</span> <span class="nx">ACTIVE</span><span class="p">;</span>
+    <span class="nx">userType</span> <span class="p">=</span> <span class="nx">REGULAR</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>accounts</td>
+<td>array</td>
+<td>User account details</td>
+</tr>
+<tr>
+<td>apiVersion</td>
+<td>string</td>
+<td>JavaScript sdk api version</td>
+</tr>
+<tr>
+<td>avatar</td>
+<td>string</td>
+<td>User avatar url</td>
+</tr>
+<tr>
+<td>avatarLarge</td>
+<td>string</td>
+<td>User large avatar url</td>
+</tr>
+<tr>
+<td>callerId</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>clientId</td>
+<td>string</td>
+<td>Client ID</td>
+</tr>
+<tr>
+<td>company</td>
+<td>string</td>
+<td>User company name</td>
+</tr>
+<tr>
+<td>cstaNumber</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>displayName</td>
+<td>string</td>
+<td>User full name</td>
+</tr>
+<tr>
+<td>emailAddress</td>
+<td>string</td>
+<td>User email address</td>
+</tr>
+<tr>
+<td>firstName</td>
+<td>string</td>
+<td>User first name</td>
+</tr>
+<tr>
+<td>hasAvatar</td>
+<td>bool</td>
+<td>If the user has an avatar</td>
+</tr>
+<tr>
+<td>hasPermission</td>
+<td>json</td>
+<td>Permission the user has</td>
+</tr>
+<tr>
+<td>isExternallyManaged</td>
+<td>bool</td>
+<td></td>
+</tr>
+<tr>
+<td>jobTitle</td>
+<td>string</td>
+<td>User job title</td>
+</tr>
+<tr>
+<td>lastName</td>
+<td>string</td>
+<td>User last name</td>
+</tr>
+<tr>
+<td>locale</td>
+<td>string</td>
+<td>Locale specification</td>
+</tr>
+<tr>
+<td>phoneNumber</td>
+<td>string</td>
+<td>User phone number</td>
+</tr>
+<tr>
+<td>userId</td>
+<td>string</td>
+<td>User id</td>
+</tr>
+<tr>
+<td>userPresenceState</td>
+<td>json</td>
+<td></td>
+</tr>
+<tr>
+<td>userState</td>
+<td>string</td>
+<td>Current user status</td>
+</tr>
+<tr>
+<td>userType</td>
+<td>string</td>
+<td>User type</td>
+</tr>
+</tbody></table>
+<h1 id='cktclient-conversation'>CKTClient+Conversation</h1><h2 id='addparticipant-userids-completion'>addParticipant:userIds:completion:</h2><pre class="highlight objective_c tab-objective_c"><code><span class="p">[</span><span class="n">client</span> <span class="nf">addParticipant</span><span class="p">:</span><span class="s">@"CONVERSATION ID"</span><span class="p">,</span>
+               <span class="nf">userIds</span><span class="p">:@[</span><span class="s">"USER ID(s)"</span><span class="p">],</span>
+            <span class="n">completion</span><span class="o">:^</span><span class="p">{</span>
+  <span class="c1">// Code goes here
+</span><span class="p">}];</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="kt">CKTClient</span><span class="p">()</span><span class="o">.</span><span class="nf">addParticipant</span><span class="p">(</span><span class="s">"CONVERSATION ID"</span><span class="p">,</span>
+            <span class="nv">userIds</span><span class="p">:</span> <span class="p">[</span><span class="s">"USER ID(s)"</span><span class="p">],</span>
+            <span class="nv">completion</span><span class="p">:</span> <span class="p">{</span>
+    <span class="c1">// Code goes here</span>
+<span class="p">})</span>
+</code></pre>
+<p>Add new participants to a group conversation or community</p>
+
+<p>Required OAuth2 scopes: WRITE_CONVERSATIONS or ALL</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>convId</td>
+<td>string</td>
+<td>Conversation ID to add the participant to.</td>
+</tr>
+<tr>
+<td>userIds</td>
+<td>array</td>
+<td>Array containing a single or multiple user ids</td>
+</tr>
+<tr>
+<td>completion</td>
+<td>callback</td>
+<td>A completion block that takes no arguments and returns void.</td>
+</tr>
+</tbody></table>
+<h2 id='addtextitem-content-completionhandler'>addTextItem:content:completionHandler:</h2>
+<blockquote>
+<p>Adding an item with the string content type</p>
+</blockquote>
+<pre class="highlight objective_c tab-objective_c"><code><span class="p">[</span><span class="n">client</span> <span class="nf">addTextItem</span><span class="p">:</span><span class="s">@"CONVERSATION ID"</span> <span class="nf">content</span><span class="p">:</span><span class="s">@"TEXT CONTENT"</span> <span class="n">completion</span><span class="o">:^</span><span class="p">(</span><span class="n">id</span> <span class="n">content</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Code goes here
+</span><span class="p">}];</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="kt">CKTClient</span><span class="p">()</span><span class="o">.</span><span class="nf">addTextItem</span><span class="p">(</span><span class="s">"CONVERSATION ID"</span><span class="p">,</span> <span class="nv">content</span><span class="p">:</span> <span class="s">"TEXT CONTENT"</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+  <span class="c1">// Code goes here</span>
+<span class="p">}</span>
+</code></pre>
+<blockquote>
+<p>Adding an item with the object content type</p>
+</blockquote>
+<pre class="highlight objective_c tab-objective_c"><code><span class="n">NSDictionary</span> <span class="o">*</span><span class="n">content</span> <span class="o">=</span> <span class="p">@{</span> <span class="s">@"parentId"</span><span class="o">:</span> <span class="s">@"PARENT CONVERSATION ID"</span><span class="p">,</span>
+                           <span class="s">@"contentType"</span><span class="o">:</span> <span class="s">@"PLAIN"</span><span class="p">,</span>
+                           <span class="s">@"subject"</span><span class="o">:</span> <span class="s">@"SUBJECT"</span><span class="p">,</span>
+                           <span class="s">@"content"</span><span class="o">:</span> <span class="s">@"TEXT CONTENT"</span><span class="p">,</span>
+                           <span class="s">@"attachments"</span><span class="o">:</span> <span class="p">@[</span> <span class="n">PHOTO</span> <span class="n">OR</span> <span class="n">VIDEO</span> <span class="p">]</span> <span class="p">};</span>
+
+<span class="p">[</span><span class="n">client</span> <span class="nf">addTextItem</span><span class="p">:</span><span class="s">@"CONVERSATION ID"</span> <span class="nf">content</span><span class="p">:</span><span class="n">content</span> <span class="n">completion</span><span class="o">:^</span><span class="p">(</span><span class="n">id</span> <span class="n">content</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Code goes here
+</span>  <span class="p">}];</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="k">let</span> <span class="nv">content</span> <span class="o">=</span> <span class="p">[</span> <span class="s">"parentId"</span><span class="p">:</span> <span class="s">"PARENT CONVERSATION ID"</span><span class="p">,</span>
+                <span class="s">"contentType"</span><span class="p">:</span> <span class="s">"PLAIN"</span><span class="p">,</span>
+                <span class="s">"subject"</span><span class="p">:</span> <span class="s">"SUBJECT"</span><span class="p">,</span>
+                <span class="s">"content"</span><span class="p">:</span> <span class="s">"TEXT CONTENT"</span><span class="p">,</span>
+                <span class="s">"attachments"</span><span class="p">:</span> <span class="p">[</span> <span class="kt">PHOTOT</span> <span class="kt">OR</span> <span class="kt">VIDEO</span> <span class="p">]</span> <span class="p">]</span>
+
+<span class="kt">CKTClient</span><span class="p">()</span><span class="o">.</span><span class="nf">addTextItem</span><span class="p">(</span><span class="s">"CONVERSATION ID"</span><span class="p">,</span> <span class="nv">content</span><span class="p">:</span> <span class="n">content</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+  <span class="c1">// Code goes here</span>
+<span class="p">}</span>
+</code></pre>
+<p>Adds an item to a conversation, this method can take one of two types</p>
+
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>string</td>
+<td>Text content</td>
+</tr>
+<tr>
+<td>object</td>
+<td>Item object</td>
+</tr>
+</tbody></table>
+
+<p>The item object can contain any of the following</p>
+
+<table><thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>parentId</td>
+<td>string</td>
+<td>The id of the parent post if this is a reply</td>
+</tr>
+<tr>
+<td>contentType</td>
+<td>string</td>
+<td>Either PLAIN or RICH, default is RICH. Whether the content is rich text (HTML) or plain text</td>
+</tr>
+<tr>
+<td>subject</td>
+<td>string</td>
+<td>Subject/Title of the message. Only supported for parent post (i.e. parentId omitted)</td>
+</tr>
+<tr>
+<td>content</td>
+<td>string</td>
+<td>Actual text content</td>
+</tr>
+<tr>
+<td>attachments</td>
+<td>array</td>
+<td>Picture or video attachments</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>content</td>
+<td>string   object</td>
+<td>Content for the item</td>
+</tr>
+<tr>
+<td>completion</td>
+<td>callback</td>
+<td>A completion block that takes either the sent content or an error and returns void</td>
+</tr>
+</tbody></table>
+<h2 id='createcommunity-topic-description-completion'>createCommunity:topic:description:completion:</h2><pre class="highlight objective_c tab-objective_c"><code><span class="p">[</span><span class="n">client</span> <span class="nf">createCommunity</span><span class="p">:@[</span><span class="s">"USER ID(s)"</span><span class="p">],</span>
+                  <span class="nf">topic</span><span class="p">:</span><span class="s">@"COMMUNITY TOPIC"</span><span class="p">,</span>
+            <span class="n">description</span><span class="o">:</span><span class="s">@"COMMUNITY DESCRIPTION"</span><span class="p">,</span>
+             <span class="n">completion</span><span class="o">:^</span><span class="p">(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="n">community</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Code goes here
+</span><span class="p">}];</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="kt">CKTClient</span><span class="p">()</span><span class="o">.</span><span class="nf">createCommunity</span><span class="p">([</span><span class="s">"USER ID(s)"</span><span class="p">],</span>
+            <span class="nv">topic</span><span class="p">:</span> <span class="s">"COMMUNITY TOPIC"</span><span class="p">,</span>
+            <span class="nv">description</span><span class="p">:</span> <span class="s">"COMMUNITY DESCRIPTION"</span><span class="p">,</span>
+            <span class="nv">completion</span><span class="p">:</span> <span class="p">{</span> <span class="p">(</span><span class="n">community</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+    <span class="c1">// Code goes here</span>
+<span class="p">})</span>
+</code></pre>
+<p>Creates a new community</p>
+
+<p>Required OAuth2 scopes: WRITE_CONVERSATIONS or ALL</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>participants [optional]</td>
+<td>array</td>
+<td>User ID(s) of the user(s) to create a community with.</td>
+</tr>
+<tr>
+<td>topic [optional]</td>
+<td>string</td>
+<td>Topic of the community.</td>
+</tr>
+<tr>
+<td>description [optional]</td>
+<td>string</td>
+<td>Description of the community.</td>
+</tr>
+<tr>
+<td>completion</td>
+<td>callback</td>
+<td>A completion block that takes either a community or an error and returns void.</td>
+</tr>
+</tbody></table>
+<h2 id='createconferencebridge-completion'>createConferenceBridge:completion:</h2><pre class="highlight objective_c tab-objective_c"><code><span class="p">[</span><span class="n">client</span> <span class="nf">createConferenceBridge</span><span class="p">:</span><span class="s">@"TOPIC"</span>
+                    <span class="nf">completion</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="n">conversation</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Code goes here
+</span><span class="p">}];</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="kt">CKTClient</span><span class="p">()</span><span class="o">.</span><span class="nf">createConferenceBridge</span><span class="p">(</span><span class="s">"TOPIC"</span><span class="p">,</span> <span class="p">{</span> <span class="p">(</span><span class="n">conversation</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+  <span class="c1">// Code goes here</span>
+<span class="p">})</span>
+</code></pre>
+<p>Create a new conference bridge conversation.</p>
+
+<p>Required OAuth2 scopes: WRITE_CONVERSATIONS or ALL</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>topic</td>
+<td>string</td>
+<td>Topic of the conversation</td>
+</tr>
+<tr>
+<td>completion</td>
+<td>callback</td>
+<td>A completion block that takes either a conversation or an error and returns void.</td>
+</tr>
+</tbody></table>
+<h2 id='createdirectconversation-completion'>createDirectConversation:completion:</h2><pre class="highlight objective_c tab-objective_c"><code><span class="p">[</span><span class="n">client</span> <span class="nf">createDirectConversation</span><span class="p">:</span><span class="s">@"PARTICIPANT ID"</span> <span class="nf">completion</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="n">conversation</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Code goes here
+</span><span class="p">}];</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="kt">CKTClient</span><span class="p">()</span><span class="o">.</span><span class="nf">createDirectConversation</span><span class="p">(</span><span class="s">"PARTICIPANT ID"</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">conversation</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+  <span class="c1">// Code goes here</span>
+<span class="p">}</span>
+</code></pre>
+<p>Creates a direct conversation from  with the participant of the given id</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>participantId</td>
+<td>string</td>
+<td>Participant id to create a direct conversation with</td>
+</tr>
+<tr>
+<td>completion</td>
+<td>callback</td>
+<td>A completion block that takes either the conversation created or an error and returns void</td>
+</tr>
+</tbody></table>
+<h2 id='creategroupconversation-title-completionhandler'>createGroupConversation:title:completionHandler</h2><pre class="highlight objective_c tab-objective_c"><code><span class="p">[</span><span class="n">client</span> <span class="nf">createGroupConversation</span><span class="p">:@[</span> <span class="s">@"PARTICIPANT ID"</span> <span class="p">]</span> <span class="nf">title</span><span class="p">:</span><span class="s">@"TITLE"</span> <span class="n">completionHandler</span><span class="o">:^</span><span class="p">(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="n">conversation</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Code goes here
+</span><span class="p">}];</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="kt">CKTClient</span><span class="p">()</span><span class="o">.</span><span class="nf">createGroupConversation</span><span class="p">([</span> <span class="s">"PARTICIPANT ID"</span> <span class="p">],</span> <span class="nv">title</span><span class="p">:</span><span class="s">"TITLE"</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">conversation</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+  <span class="c1">// Code goes here</span>
+<span class="p">}</span>
+</code></pre>
+<p>Creates a group conversation from an array of participant id&#39;s</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>participantId</td>
+<td>array</td>
+<td>Array of participant id&#39;s to create a group conversation with</td>
+</tr>
+<tr>
+<td>topic</td>
+<td>string</td>
+<td>Title of the conversation to be created</td>
+</tr>
+<tr>
+<td>completion</td>
+<td>callback</td>
+<td>A completion block that takes either the conversation created or an error and returns void</td>
+</tr>
+</tbody></table>
+<h2 id='flagitem-itemid-completion'>flagItem:itemId:completion:</h2><pre class="highlight objective_c tab-objective_c"><code><span class="p">[</span><span class="n">client</span> <span class="nf">flagItem</span><span class="p">:</span><span class="s">@"CONVERSATION ID"</span>
+          <span class="nf">itemId</span><span class="p">:</span><span class="s">@"ITEM ID"</span>
+          <span class="n">completion</span><span class="o">:^</span><span class="p">{</span>
+  <span class="c1">// Code goes here
+</span><span class="p">}];</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="kt">CKTClient</span><span class="p">()</span><span class="o">.</span><span class="nf">flagItem</span><span class="p">(</span><span class="s">"CONVERSATION ID"</span><span class="p">,</span>
+              <span class="nv">itemId</span><span class="p">:</span><span class="s">"ITEM ID"</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Code goes here</span>
+<span class="p">}</span>
+</code></pre>
+<p>Flag an item. Flags are user specific</p>
+
+<p>Required OAuth2 scopes: WRITE_CONVERSATIONS or ALL</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>conversationId</td>
+<td>string</td>
+<td>Id of the conversation where the item exists</td>
+</tr>
+<tr>
+<td>itemId</td>
+<td>string</td>
+<td>Id of the item to be flagged</td>
+</tr>
+<tr>
+<td>completion</td>
+<td>callback</td>
+<td>A completion block that takes no arguments and returns void</td>
+</tr>
+</tbody></table>
+<h2 id='getconversations'>getConversations:</h2><pre class="highlight objective_c tab-objective_c"><code><span class="p">[</span><span class="n">client</span> <span class="nf">getConversations</span><span class="p">:</span> <span class="o">^</span><span class="p">(</span><span class="n">NSArray</span> <span class="o">*</span><span class="n">conversations</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+<span class="c1">// Code goes here
+</span><span class="p">}];</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="kt">CKTClient</span><span class="p">()</span><span class="o">.</span><span class="nf">getConversations</span><span class="p">()</span> <span class="p">{</span> <span class="p">(</span><span class="n">conversations</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+<span class="c1">// Code goes here</span>
+<span class="p">}</span>
+</code></pre>
+<p>Returns the conversations of the logged on user in JSON format</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>options [optional]</td>
+<td>dictionary</td>
+<td>A dictionary of options to filter conversations</td>
+</tr>
+<tr>
+<td>completion</td>
+<td>callback</td>
+<td>A completion block that takes either conversations or an error and returns void</td>
+</tr>
+</tbody></table>
+<h2 id='getconversations-completionhandler'>getConversations:completionHandler:</h2><pre class="highlight objective_c tab-objective_c"><code><span class="n">NSDictionary</span> <span class="o">*</span><span class="n">options</span> <span class="o">=</span> <span class="p">@{</span> <span class="s">@"direction"</span><span class="o">:</span> <span class="s">@"BEFORE"</span><span class="p">,</span>
+                           <span class="s">@"timestamp"</span><span class="o">:</span> <span class="mi">@1264378424</span><span class="p">,</span>
+                           <span class="s">@"numberOfConversations"</span><span class="o">:</span> <span class="mi">@10</span>
+                           <span class="s">@"numberOfParticipants"</span><span class="o">:</span> <span class="mi">@5</span>
+                         <span class="p">};</span>
+
+<span class="p">[</span><span class="n">client</span> <span class="nf">getConversations</span><span class="p">:</span><span class="n">options</span> <span class="nf">completionHandler</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">NSArray</span> <span class="o">*</span><span class="n">conversations</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Code goes here
+</span><span class="p">}];</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="k">let</span> <span class="nv">options</span> <span class="o">=</span> <span class="p">[</span> <span class="s">"direction"</span><span class="p">:</span> <span class="s">"BEFORE"</span><span class="p">,</span>
+                <span class="s">"timestamp"</span><span class="p">:</span> <span class="mi">1264378424</span><span class="p">,</span>
+                <span class="s">"numberOfConversations"</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+                <span class="s">"numberOfParticipants"</span><span class="p">:</span> <span class="mi">5</span> <span class="p">]</span>
+
+<span class="kt">CKTClient</span><span class="p">()</span><span class="o">.</span><span class="nf">getConversations</span><span class="p">(</span><span class="n">options</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">conversations</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+  <span class="c1">// Code goes here</span>
+<span class="p">}</span>
+</code></pre>
+<p>Returns the conversations of the logged on user in JSON format, you can pass
+in a dictionary of options or set this to nil depending on how you want to retrieve
+conversations.</p>
+
+<table><thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>direction</td>
+<td>string</td>
+<td>Whether to get the conversations BEFORE or AFTER a certain timestamp, default is BEFORE</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>number</td>
+<td>Timestamp used in conjunction with the direction option, default is current timestamp</td>
+</tr>
+<tr>
+<td>numberOfConversations</td>
+<td>number</td>
+<td>Maximum number of conversations to retrieve, default is 25</td>
+</tr>
+<tr>
+<td>numberOfParticipants</td>
+<td>number</td>
+<td>Maximum number of participants to return in the participants array. Default is 8</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>options [optional]</td>
+<td>dictionary</td>
+<td>A dictionary of options to filter conversations</td>
+</tr>
+<tr>
+<td>completion</td>
+<td>callback</td>
+<td>A completion block that takes either conversations or an error and returns void</td>
+</tr>
+</tbody></table>
+<h2 id='getconversationbyid-completionhandler'>getConversationById:completionHandler:</h2><pre class="highlight objective_c tab-objective_c"><code><span class="p">[</span><span class="n">client</span> <span class="nf">getConversationById</span><span class="p">:</span><span class="s">@"CONVERSATION ID"</span>
+                <span class="nf">completionHandler</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">NSDictionary</span> <span class="n">conversation</span><span class="p">,</span>  <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">){</span>
+  <span class="c1">// Code goes here
+</span><span class="p">}]</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="kt">CKTClient</span><span class="p">()</span><span class="o">.</span><span class="nf">getConversationById</span><span class="p">(</span><span class="s">"CONVERSATION ID"</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">conversation</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+  <span class="c1">// Code goes here</span>
+<span class="p">}</span>
+</code></pre>
+<p>Get the conversation by conversation Id.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>convId</td>
+<td>string</td>
+<td>Conversation Id</td>
+</tr>
+<tr>
+<td>completion</td>
+<td>callback</td>
+<td>A completion block that takes either conversations or an error and returns void.</td>
+</tr>
+</tbody></table>
+<h2 id='getconversationdetails-completion'>getConversationDetails:completion:</h2><pre class="highlight objective_c tab-objective_c"><code><span class="p">[</span><span class="n">client</span> <span class="nf">getConversationDetails</span><span class="p">:</span><span class="s">@"CONVERSATION ID"</span>
+                    <span class="nf">completion</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">NSArray</span> <span class="o">*</span><span class="n">details</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Code goes here
+</span><span class="p">}];</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="kt">CKTClient</span><span class="p">()</span><span class="o">.</span><span class="nf">getConversationDetails</span><span class="p">(</span><span class="s">"CONVERSATION ID"</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">details</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+  <span class="c1">// Code goes here</span>
+<span class="p">}</span>
+</code></pre>
+<p>Get the conversation details such as the bridge number and guest link.</p>
+
+<p>Required OAuth2 scopes: READ_CONVERSATIONS or ALL.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>convId</td>
+<td>string</td>
+<td>Conversation Id of the items to retrieve</td>
+</tr>
+<tr>
+<td>completion</td>
+<td>callback</td>
+<td>A completion block that takes either conversation details or an error and returns void</td>
+</tr>
+</tbody></table>
+<h2 id='getconversationfeed-options-completion'>getConversationFeed:options:completion:</h2><pre class="highlight objective_c tab-objective_c"><code><span class="n">NSDictionary</span> <span class="o">*</span><span class="n">options</span> <span class="o">=</span> <span class="p">@{</span> <span class="s">@"timestamp"</span> <span class="o">:</span> <span class="mi">1264378424</span><span class="p">,</span>
+                           <span class="s">@"minTotalItems"</span> <span class="o">:</span> <span class="mi">15</span><span class="p">,</span>
+                           <span class="s">@"maxTotalUnread"</span> <span class="o">:</span> <span class="mi">30</span><span class="p">,</span>
+                           <span class="s">@"commentsPerThread"</span> <span class="o">:</span> <span class="mi">5</span><span class="p">,</span>
+                           <span class="s">@"maxUnreadPerThread"</span> <span class="o">:</span> <span class="mi">2</span><span class="p">};</span>
+
+<span class="p">[</span><span class="n">client</span> <span class="nf">getConversationFeed</span><span class="p">:</span><span class="s">@"CONVERSATION ID"</span>
+                <span class="nf">options</span><span class="p">:</span> <span class="n">options</span>
+                <span class="n">completion</span><span class="o">:^</span><span class="p">(</span><span class="n">NSArray</span> <span class="o">*</span><span class="n">feed</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Code goes here
+</span><span class="p">}];</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="k">let</span> <span class="nv">options</span> <span class="o">=</span> <span class="p">[</span> <span class="s">@"timestamp"</span> <span class="p">:</span> <span class="mi">1264378424</span><span class="p">,</span>
+                <span class="s">@"minTotalItems"</span> <span class="p">:</span> <span class="mi">15</span><span class="p">,</span>
+                <span class="s">@"maxTotalUnread"</span> <span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
+                <span class="s">@"commentsPerThread"</span> <span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+                <span class="s">@"maxUnreadPerThread"</span> <span class="p">:</span> <span class="mi">2</span> <span class="p">]</span>
+
+<span class="kt">CKTClient</span><span class="p">()</span><span class="o">.</span><span class="nf">getConversationItems</span><span class="p">(</span><span class="s">"CONVERSATION ID"</span><span class="p">,</span>
+                <span class="nv">options</span><span class="p">:</span> <span class="n">options</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">feed</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+  <span class="c1">// Code goes here</span>
+<span class="p">}</span>
+</code></pre>
+<p>Retrieve items of a conversation in a threaded structure before a specific timestamp. Allows specifying how many
+comments per thread to retrieve, and also how many unread messages of a thread to retireve.</p>
+
+<p>Required OAuth2 scopes: READ_CONVERSATIONS or ALL</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>convId</td>
+<td>string</td>
+<td>Conversation Id of the items to retrieve</td>
+</tr>
+<tr>
+<td>options</td>
+<td>dictionary</td>
+<td>Dictionary containing specific options</td>
+</tr>
+<tr>
+<td>completion</td>
+<td>callback</td>
+<td>A completion block that takes either a conversation feed or an error and returns void</td>
+</tr>
+</tbody></table>
+<h2 id='getconversationitems-options-completion'>getConversationItems:options:completion:</h2><pre class="highlight objective_c tab-objective_c"><code><span class="n">NSDictionary</span> <span class="o">*</span><span class="n">options</span> <span class="o">=</span> <span class="p">@{</span> <span class="s">@"direction"</span><span class="o">:</span> <span class="s">@"BEFORE"</span><span class="p">,</span>
+                           <span class="s">@"creationTime"</span><span class="o">:</span> <span class="mi">@1264378424</span><span class="p">,</span>
+                           <span class="s">@"numberOfConversations"</span><span class="o">:</span> <span class="mi">@10</span> <span class="p">};</span>
+
+<span class="p">[</span><span class="n">client</span> <span class="nf">getConversationItems</span><span class="p">:</span><span class="s">@"CONVERSATION ID"</span>
+                    <span class="nf">threadId</span><span class="p">:</span><span class="s">@"THREAD ID"</span>
+                     <span class="n">options</span><span class="o">:</span> <span class="n">options</span>
+                  <span class="n">completion</span><span class="o">:^</span><span class="p">(</span><span class="n">NSArray</span> <span class="o">*</span><span class="n">items</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Code goes here
+</span><span class="p">}];</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="k">let</span> <span class="nv">options</span> <span class="o">=</span> <span class="p">[</span> <span class="s">"direction"</span><span class="p">:</span> <span class="s">"BEFORE"</span><span class="p">,</span>
+                <span class="s">"creationTime"</span><span class="p">:</span> <span class="mi">1264378424</span><span class="p">,</span>
+                <span class="s">"numberOfConversations"</span><span class="p">:</span> <span class="mi">10</span> <span class="p">]</span>
+
+<span class="kt">CKTClient</span><span class="p">()</span><span class="o">.</span><span class="nf">getConversationItems</span><span class="p">(</span><span class="s">"CONVERSATION ID"</span><span class="p">,</span>
+                        <span class="nv">threadId</span><span class="p">:</span> <span class="s">"THREAD ID"</span><span class="p">,</span>
+                         <span class="nv">options</span><span class="p">:</span> <span class="n">options</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">items</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+  <span class="c1">// Code goes here</span>
+<span class="p">}</span>
+</code></pre>
+<p>Returns the conversation items in JSON format by the given conversation id. You can pass a dictionary of options or leave this nil for defaults.</p>
+
+<table><thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>modificationDate</td>
+<td>number</td>
+<td>Mutually exclusive with creationTime, default is current timestamp</td>
+</tr>
+<tr>
+<td>creationTime</td>
+<td>number</td>
+<td>Mutually exclusive with modificationTime, default is current timestamp</td>
+</tr>
+<tr>
+<td>direction</td>
+<td>string</td>
+<td>Whether to get the conversations BEFORE or AFTER a certain timestamp, default is BEFORE</td>
+</tr>
+<tr>
+<td>numberOfItems</td>
+<td>number</td>
+<td>Maximum number of conversation items to retrieve, default is 25</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>convId</td>
+<td>string</td>
+<td>Conversation id for the items to retrieve</td>
+</tr>
+<tr>
+<td>threadId</td>
+<td>string</td>
+<td>Item Id of the initial post of the thread</td>
+</tr>
+<tr>
+<td>options [optional]</td>
+<td>dictionary</td>
+<td>Options to filter the conversation items</td>
+</tr>
+<tr>
+<td>completion</td>
+<td>callback</td>
+<td>A completion block that takes either conversation items or an error and returns void</td>
+</tr>
+</tbody></table>
+<h2 id='getconversationparticipants-options-completion'>getConversationParticipants:options:completion:</h2><pre class="highlight objective_c tab-objective_c"><code><span class="n">NSDictionary</span> <span class="o">*</span><span class="n">options</span> <span class="o">=</span> <span class="p">@{</span> <span class="s">@"pageSize"</span><span class="o">:</span> <span class="mi">@20</span><span class="p">,</span>
+                           <span class="s">@"includePresence"</span><span class="o">:</span> <span class="err">@</span><span class="p">(</span><span class="nb">YES</span><span class="p">)</span> <span class="p">};</span>
+
+<span class="p">[</span><span class="n">client</span> <span class="nf">getConversationParticipants</span><span class="p">:</span> <span class="s">@"CONVERSATION ID"</span>
+                            <span class="nf">options</span><span class="p">:</span> <span class="n">options</span>
+                            <span class="n">completion</span><span class="o">:^</span><span class="p">(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="n">participants</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Code goes here
+</span><span class="p">}];</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="k">let</span> <span class="nv">options</span> <span class="o">=</span> <span class="p">[</span><span class="s">"pageSize"</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+               <span class="s">"includePresence"</span><span class="p">:</span> <span class="kc">true</span> <span class="p">]</span>
+
+<span class="kt">CKTClient</span><span class="p">()</span><span class="o">.</span><span class="nf">getConversationParticipants</span><span class="p">(</span><span class="s">"CONVERSATION ID"</span><span class="p">,</span>
+                                <span class="nv">options</span><span class="p">:</span> <span class="n">options</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">participants</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+ <span class="c1">// Code goes here</span>
+<span class="p">}</span>
+</code></pre>
+<p>Retrieve conversation participants using optional search criteria</p>
+
+<p>Required OAuth2 scopes: READ_CONVERSATIONS or ALL</p>
+
+<table><thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Criteria</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>pageSize</td>
+<td>number</td>
+<td>Number of participants per page. Maximum is 100</td>
+</tr>
+<tr>
+<td>includePresence</td>
+<td>boolean</td>
+<td>If set to true this will add the presence state of the user to the returned participant object. Default is false</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>convId</td>
+<td>string</td>
+<td>Conversation Id</td>
+</tr>
+<tr>
+<td>options [optional]</td>
+<td>dictionary</td>
+<td>Options for search criteria</td>
+</tr>
+<tr>
+<td>completion</td>
+<td>callback</td>
+<td>A completion block that takes either conversation participants or an error and returns void</td>
+</tr>
+</tbody></table>
+<h2 id='getdirectconversationwithuser-createifnotexists-completion'>getDirectConversationWithUser:createIfNotExists:completion:</h2><pre class="highlight objective_c tab-objective_c"><code><span class="p">[</span><span class="n">client</span> <span class="nf">getDirectConversationWithUser</span><span class="p">:</span><span class="s">@"USER QUERY"</span>
+                    <span class="nf">createIfNotExists</span><span class="p">:</span> <span class="nb">YES</span>
+                           <span class="n">completion</span><span class="o">:^</span><span class="p">(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="n">conversation</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Code goes here
+</span><span class="p">}];</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="kt">CKTClient</span><span class="p">()</span><span class="o">.</span><span class="nf">getDirectConversationWithUser</span><span class="p">(</span><span class="s">"USER QUERY"</span><span class="p">,</span>
+                        <span class="nv">createIfNotExists</span><span class="p">:</span> <span class="kc">true</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">conversation</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+  <span class="c1">// Code goes here</span>
+<span class="p">}</span>
+</code></pre>
+<p>Get the direct conversation with a user by their user id or email address</p>
+
+<p>Required OAuth2 scopes: READ_CONVERSATIONS or ALL</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>query</td>
+<td>string</td>
+<td>User id or user email address</td>
+</tr>
+<tr>
+<td>createIfNotExists</td>
+<td>boolean</td>
+<td>Create conversation with user if not already existing. Default is FALSE</td>
+</tr>
+<tr>
+<td>completion</td>
+<td>callback</td>
+<td>A completion block that takes either a conversation or an error and returns void</td>
+</tr>
+</tbody></table>
+<h2 id='getflaggeditems'>getFlaggedItems:</h2><pre class="highlight objective_c tab-objective_c"><code><span class="p">[</span><span class="n">client</span> <span class="nf">getFlaggedItems</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="n">items</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Code goes here
+</span><span class="p">}];</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="kt">CKTClient</span><span class="p">()</span><span class="o">.</span><span class="n">getFlaggedItems</span> <span class="p">{</span> <span class="p">(</span><span class="n">items</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+  <span class="c1">// Code goes here</span>
+<span class="p">}</span>
+</code></pre>
+<p>Get all flagged items</p>
+
+<p>Required OAuth2 scopes: READ_CONVERSATIONS or ALL</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>completion</td>
+<td>callback</td>
+<td>A completion block that takes either all flagged items or an error and returns void</td>
+</tr>
+</tbody></table>
+<h2 id='getitembyid-completionhandler'>getItemById:completionHandler:</h2><pre class="highlight objective_c tab-objective_c"><code><span class="p">[</span><span class="n">client</span> <span class="nf">getItemById</span><span class="p">:</span><span class="s">@"ITEM ID"</span> <span class="nf">completion</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="n">item</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Code goes here
+</span><span class="p">}];</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="kt">CKTClient</span><span class="p">()</span><span class="o">.</span><span class="nf">getItemById</span><span class="p">(</span><span class="s">"ITEM ID"</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+  <span class="c1">// Code goes here</span>
+<span class="p">}</span>
+</code></pre>
+<p>Returns a single item in JSON format by the given item id</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>itemId</td>
+<td>string</td>
+<td>Item id for the item to retrieve</td>
+</tr>
+<tr>
+<td>completion</td>
+<td>callback</td>
+<td>A completion block that takes either conversation item or an error and returns void</td>
+</tr>
+</tbody></table>
+<h2 id='getitemsbyid-completionhandler'>getItemsById:completionHandler:</h2><pre class="highlight objective_c tab-objective_c"><code>
+<span class="n">NSArray</span> <span class="o">*</span><span class="n">itemIDs</span> <span class="o">=</span> <span class="p">@[</span><span class="s">@"bee98d40-7c7c-4246-b1e4-b29183728da1"</span><span class="p">,</span>
+                     <span class="s">@"e2c20bc1-dd67-4dfb-a0c7-bc11676634b8"</span><span class="p">,</span>
+                     <span class="s">@"1984c74e-0e77-4d36-a121-22c1c5a8cc70"</span><span class="p">];</span>
+
+<span class="p">[</span><span class="n">client</span> <span class="nf">getItemsById</span><span class="p">:</span><span class="n">itemIDs</span> <span class="nf">completion</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="n">items</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+<span class="c1">// Code goes here
+</span><span class="p">}];</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="k">let</span> <span class="nv">itemsIds</span> <span class="o">=</span> <span class="p">[</span><span class="s">"bee98d40-7c7c-4241-b1e6-b29183728da1"</span><span class="p">,</span>
+                <span class="s">"e2c20bc1-dd67-4dfb-a0c7-bc11672634b8"</span><span class="p">,</span>
+                <span class="s">"1984c74e-0e77-4d36-a121-22c1c5a8cc70"</span><span class="p">]</span>
+
+<span class="kt">CKTClient</span><span class="p">()</span><span class="o">.</span><span class="nf">getItemsById</span><span class="p">(</span><span class="n">itemsIds</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">items</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+<span class="c1">// Code goes here</span>
+<span class="p">}</span>
+</code></pre>
+<p>Retrieve multiple conversation items by their id</p>
+
+<p>Required OAuth2 scopes: READ_CONVERSATIONS or ALL</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>itemIds</td>
+<td>arrary</td>
+<td>Conversation Item IDs</td>
+</tr>
+<tr>
+<td>completion</td>
+<td>callback</td>
+<td>A completion block that takes either conversation item or an error and returns void</td>
+</tr>
+</tbody></table>
+<h2 id='getitemsbythread-threadid-options-completion'>getItemsByThread:threadId:options:completion:</h2><pre class="highlight objective_c tab-objective_c"><code><span class="n">NSDictionary</span> <span class="o">*</span><span class="n">options</span> <span class="o">=</span> <span class="p">@{</span> <span class="s">@"modificationDate"</span><span class="o">:</span> <span class="mi">@145694922</span><span class="p">,</span>
+                           <span class="s">@"creationDate"</span><span class="o">:</span> <span class="mi">@329293948</span><span class="p">,</span>
+                           <span class="s">@"direction"</span><span class="o">:</span> <span class="s">@"BEFORE"</span><span class="p">,</span>
+                           <span class="s">@"number"</span><span class="o">:</span> <span class="err">@</span><span class="o">-</span><span class="mi">1</span>
+<span class="p">};</span>
+
+<span class="p">[</span><span class="n">client</span> <span class="nf">getItemsByThread</span><span class="p">:</span><span class="s">@"CONVERSATION ID"</span>
+                <span class="nf">threadId</span><span class="p">:</span><span class="s">@"THREAD ID"</span>
+                 <span class="n">options</span><span class="o">:</span> <span class="n">options</span>
+              <span class="n">completion</span><span class="o">:^</span><span class="p">(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="n">items</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Code goes here              
+</span><span class="p">}];</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="k">let</span> <span class="nv">options</span> <span class="o">=</span> <span class="p">[</span><span class="s">"modificationDate"</span><span class="p">:</span> <span class="mi">145694922</span><span class="p">,</span>
+               <span class="s">"creationDate"</span><span class="p">:</span> <span class="mi">329293948</span><span class="p">,</span>
+               <span class="s">"direction"</span><span class="p">:</span> <span class="s">"BEFORE"</span><span class="p">,</span>
+               <span class="s">"number"</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="kt">CKTClient</span><span class="p">()</span><span class="o">.</span><span class="nf">getItemsByThread</span><span class="p">(</span><span class="s">"CONVERSATION ID"</span><span class="p">,</span>
+                    <span class="nv">threadId</span><span class="p">:</span><span class="s">"THREAD ID"</span><span class="p">,</span>
+                     <span class="nv">options</span><span class="p">:</span><span class="n">options</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">items</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+  <span class="c1">// Code goes here</span>
+<span class="p">}</span>
+</code></pre>
+<p>Retrieve conversation items of a thread</p>
+
+<p>Required OAuth2 scopes: READ_CONVERSATIONS or ALL</p>
+
+<table><thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>modificationDate</td>
+<td>number</td>
+<td>Defines a date to compare with the last modification date of an item.</td>
+</tr>
+<tr>
+<td>creationDate</td>
+<td>number</td>
+<td>Defines a date to compare with the creation date of an item. Defaults to current timestamp.</td>
+</tr>
+<tr>
+<td>direction</td>
+<td>string</td>
+<td>Whether to get items BEFORE or AFTER a certain timestamp.</td>
+</tr>
+<tr>
+<td>number</td>
+<td>number</td>
+<td>Maximum number of conversation items to retrieve. Default (-1) is to retrieve all items of a thread.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>convId</td>
+<td>string</td>
+<td>Conversation ID</td>
+</tr>
+<tr>
+<td>threadId</td>
+<td>string</td>
+<td>Thread ID</td>
+</tr>
+<tr>
+<td>options</td>
+<td>dictionary</td>
+<td>Dictionary containing specific options listed above</td>
+</tr>
+<tr>
+<td>completion</td>
+<td>callback</td>
+<td>A completion block that takes either items or an error and returns void</td>
+</tr>
+</tbody></table>
+<h2 id='getmarkedconversations'>getMarkedConversations:</h2><pre class="highlight objective_c tab-objective_c"><code><span class="p">[</span><span class="n">client</span> <span class="nf">getMarkedConversations</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="n">conversations</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Code goes here
+</span><span class="p">}];</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="kt">CKTClient</span><span class="p">()</span><span class="o">.</span><span class="n">getMarkedConversations</span> <span class="p">{</span> <span class="p">(</span><span class="n">conversations</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+  <span class="c1">// Code goes here</span>
+<span class="p">}</span>
+</code></pre>
+<p>Retrieve all marked (muted or favorited) conversation id&#39;s</p>
+
+<p>Required OAuth2 scopes: READ_CONVERSATIONS or ALL</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>completion</td>
+<td>callback</td>
+<td>A completion block that takes either mark conversations or an error and returns void</td>
+</tr>
+</tbody></table>
+<h2 id='getsupportconversationid'>getSupportConversationId:</h2><pre class="highlight objective_c tab-objective_c"><code><span class="p">[</span><span class="n">client</span> <span class="nf">getSupportConversationId</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="n">conversationId</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Code goes here
+</span><span class="p">}];</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="kt">CKTClient</span><span class="p">()</span><span class="o">.</span><span class="n">getSupportConversationId</span> <span class="p">{</span> <span class="p">(</span><span class="n">conversationId</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+  <span class="c1">// Code goes here</span>
+<span class="p">}</span>
+</code></pre>
+<p>Get the special support conversation id. The support conversation is a special conversation the user can report problems with</p>
+
+<p>Required OAuth2 scopes: READ_CONVERSATIONS or ALL</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>completion</td>
+<td>callback</td>
+<td>A completion block that takes either the support conversation id or an error and returns void</td>
+</tr>
+</tbody></table>
+<h2 id='gettelephonyconversationid'>getTelephonyConversationId:</h2><pre class="highlight objective_c tab-objective_c"><code><span class="p">[</span><span class="n">client</span> <span class="nf">getTelephonyConversationId</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="n">conversationId</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Code goes here
+</span><span class="p">}];</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="kt">CKTClient</span><span class="p">()</span><span class="o">.</span><span class="n">getTelephonyConversationId</span> <span class="p">{</span> <span class="p">(</span><span class="n">conversationId</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+  <span class="c1">// Code goes here</span>
+<span class="p">}</span>
+</code></pre>
+<p>Get the special telephony conversation id. The telephony conversation is a special conversation the user has in case the tenant is enabled for telephony</p>
+
+<p>Required OAuth2 scopes: READ_CONVERSATIONS or ALL</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>completion</td>
+<td>callback</td>
+<td>A completion block that takes either the support conversation id or an error and returns void</td>
+</tr>
+</tbody></table>
+<h2 id='likeitem-completion'>likeItem:completion:</h2><pre class="highlight objective_c tab-objective_c"><code><span class="p">[</span><span class="n">client</span> <span class="nf">likeItem</span><span class="p">:</span><span class="s">@"ITEM ID"</span>
+      <span class="nf">completion</span><span class="p">:</span><span class="o">^</span><span class="p">{</span>
+  <span class="c1">// Code goes here
+</span><span class="p">}];</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="kt">CKTClient</span><span class="p">()</span><span class="o">.</span><span class="nf">likeItem</span><span class="p">(</span><span class="s">"ITEM ID"</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Code goes here</span>
+<span class="p">}</span>
+</code></pre>
+<p>Like an item. Likes will be seen by others</p>
+
+<p>Required OAuth2 scopes: WRITE_CONVERSATIONS or ALL</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>itemID</td>
+<td>string</td>
+<td>ID of the liked item</td>
+</tr>
+<tr>
+<td>completion</td>
+<td>callback</td>
+<td>A completion block that takes no arguments and returns void</td>
+</tr>
+</tbody></table>
+<h2 id='markitemasread-creationtime-completion'>markItemAsRead:creationTime:completion:</h2><pre class="highlight objective_c tab-objective_c"><code><span class="p">[</span><span class="n">client</span> <span class="nf">markItemAsRead</span><span class="p">:</span><span class="s">@"CONVERSATION ID"</span>
+          <span class="nf">creationTime</span><span class="p">:</span><span class="mi">124858473</span>
+            <span class="n">completion</span><span class="o">:^</span><span class="p">{</span>
+  <span class="c1">// Code goes here
+</span><span class="p">}];</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="kt">CKTClient</span><span class="p">()</span><span class="o">.</span><span class="nf">markItemAsRead</span><span class="p">(</span><span class="s">"CONVERSATION ID"</span><span class="p">,</span>
+              <span class="nv">creationTime</span><span class="p">:</span><span class="mi">124858473</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Code goes here</span>
+<span class="p">}</span>
+</code></pre>
+<p>Mark all items of the specified conversation, before a timestamp as read</p>
+
+<p>Required OAuth2 scopes: WRITE_CONVERSATIONS or ALL</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>convId</td>
+<td>string</td>
+<td>Conversation id</td>
+</tr>
+<tr>
+<td>creationTime</td>
+<td>number</td>
+<td>Items older than this timestamp are marked as read. Defaults to current time</td>
+</tr>
+<tr>
+<td>completion</td>
+<td>callback</td>
+<td>A completion block that takes no arguments and returns void</td>
+</tr>
+</tbody></table>
+<h2 id='removeparticipant-userids-completion'>removeParticipant:userIds:completion:</h2><pre class="highlight objective_c tab-objective_c"><code><span class="p">[</span><span class="n">client</span> <span class="nf">removeParticipant</span><span class="p">:</span><span class="s">@"CONVERSATION ID"</span>
+                  <span class="nf">userIds</span><span class="p">:</span><span class="s">@"USER ID"</span>
+               <span class="n">completion</span><span class="o">:^</span><span class="p">{</span>
+  <span class="c1">// Code goes here
+</span><span class="p">}];</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="kt">CKTClient</span><span class="p">()</span><span class="o">.</span><span class="nf">removeParticipant</span><span class="p">(</span><span class="s">"CONVERSATION ID"</span><span class="p">,</span>
+                      <span class="nv">userIds</span><span class="p">:</span><span class="s">"USER ID"</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Code goes here</span>
+<span class="p">}</span>
+</code></pre>
+<p>Remove a participant from a group conversation or community</p>
+
+<p>Required OAuth2 scopes: WRITE_CONVERSATIONS or ALL</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>convId</td>
+<td>string</td>
+<td>Conversation Id</td>
+</tr>
+<tr>
+<td>userIds</td>
+<td>any</td>
+<td>Single user id as string or array of many user ids</td>
+</tr>
+<tr>
+<td>completion</td>
+<td>callback</td>
+<td>A completion block that takes no arguments and returns void</td>
+</tr>
+</tbody></table>
+<h2 id='unflagitem-itemid-completion'>unflagItem:itemId:completion:</h2><pre class="highlight objective_c tab-objective_c"><code><span class="p">[</span><span class="n">client</span> <span class="nf">unflagItem</span><span class="p">:</span><span class="s">@"CONVERSATION ID"</span>
+            <span class="nf">itemId</span><span class="p">:</span><span class="s">@"ITEM ID"</span>
+        <span class="n">completion</span><span class="o">:^</span><span class="p">{</span>
+  <span class="c1">// Code goes here
+</span><span class="p">}];</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="kt">CKTClient</span><span class="p">()</span><span class="o">.</span><span class="nf">unflagItem</span><span class="p">(</span><span class="s">"CONVERSATION ID"</span><span class="p">,</span> <span class="nv">itemId</span><span class="p">:</span> <span class="s">"ITEM ID"</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Code goes here</span>
+<span class="p">}</span>
+</code></pre>
+<p>Clear the flag of an item</p>
+
+<p>Required OAuth2 scopes: WRITE_CONVERSATIONS or ALL</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>convId</td>
+<td>string</td>
+<td>Conversation ID</td>
+</tr>
+<tr>
+<td>itemId</td>
+<td>string</td>
+<td>ID of the flagged item to to unflag</td>
+</tr>
+<tr>
+<td>completion</td>
+<td>callback</td>
+<td>A completion block that takes no arguments and returns void</td>
+</tr>
+</tbody></table>
+<h2 id='unlikeitem-completion'>unlikeItem:completion:</h2><pre class="highlight objective_c tab-objective_c"><code><span class="p">[</span><span class="n">client</span> <span class="nf">unlikeItem</span><span class="p">:</span><span class="s">@"ITEM ID"</span>
+        <span class="nf">completion</span><span class="p">:</span><span class="o">^</span><span class="p">{</span>
+  <span class="c1">// Code goes here
+</span><span class="p">}];</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="kt">CKTClient</span><span class="p">()</span><span class="o">.</span><span class="nf">unlikeItem</span><span class="p">(</span><span class="s">"ITEM ID"</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Code goes here</span>
+<span class="p">}</span>
+</code></pre>
+<p>Unlike an item</p>
+
+<p>Required OAuth2 scopes: WRITE_CONVERSATIONS or ALL</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>itemId</td>
+<td>string</td>
+<td>Id of the item to unlike</td>
+</tr>
+<tr>
+<td>completion</td>
+<td>callback</td>
+<td>A completion block that takes no arguments and returns void</td>
+</tr>
+</tbody></table>
+<h2 id='updatetextitem-completion'>updateTextItem:completion:</h2><pre class="highlight objective_c tab-objective_c"><code><span class="p">[</span><span class="n">client</span> <span class="nf">updateTextItem</span><span class="p">:</span><span class="n">options</span>
+            <span class="nf">completion</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="n">item</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Code goes here
+</span><span class="p">}];</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="kt">CKTClient</span><span class="p">()</span><span class="o">.</span><span class="nf">updateTextItem</span><span class="p">(</span><span class="n">options</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+  <span class="c1">// Code goes here</span>
+<span class="p">}</span>
+</code></pre>
+<p>Update an existing text item</p>
+
+<p>Required OAuth2 scopes: WRITE_CONVERSATIONS or ALL</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>content</td>
+<td>dictionary</td>
+<td>Item options and content. See addTextItem for options</td>
+</tr>
+<tr>
+<td>completion</td>
+<td>callback</td>
+<td>A completion block that takes an item or an error and returns void</td>
+</tr>
+</tbody></table>
+<h2 id='updateconversation-attributestochange-completion'>updateConversation:attributesToChange:completion:</h2><pre class="highlight objective_c tab-objective_c"><code>
+<span class="n">NSString</span> <span class="n">convId</span> <span class="o">=</span>  <span class="s">@"3dab2b90-a3c4-402f-aa26-72238420c4e4"</span><span class="p">;</span>
+<span class="n">NSDictionary</span> <span class="o">*</span><span class="n">attributes</span> <span class="o">=</span> <span class="p">@{</span> <span class="s">@"topic"</span> <span class="o">:</span> <span class="s">@"New ConvTopic"</span><span class="p">,</span>
+                              <span class="s">@"description"</span> <span class="o">:</span> <span class="s">@"Corp Community Conv"</span> <span class="p">};</span>
+
+
+<span class="p">[</span><span class="n">self</span> <span class="nf">updateConversation</span><span class="p">:</span><span class="n">convId</span>
+                <span class="nf">attributesToChange</span><span class="p">:</span><span class="n">attributes</span>
+                        <span class="n">completion</span><span class="o">:^</span><span class="p">(</span><span class="n">id</span> <span class="n">item</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+<span class="c1">// Code goes here
+</span><span class="p">}];</span>
+</code></pre><pre class="highlight swift tab-swift"><code>
+<span class="k">let</span> <span class="nv">convId</span> <span class="o">=</span> <span class="s">"3dab2b90-a3c4-402f-aa26-72238420c4e4"</span>
+<span class="k">let</span> <span class="nv">attributes</span> <span class="o">=</span> <span class="p">[</span><span class="s">"topic"</span><span class="p">:</span> <span class="s">"New ConvTopic"</span><span class="p">,</span>
+                  <span class="s">"description"</span><span class="p">:</span> <span class="s">"Corp Community Conv"</span> <span class="p">]</span>
+
+<span class="kt">CKTClient</span><span class="p">()</span><span class="o">.</span><span class="nf">updateConversation</span><span class="p">(</span><span class="n">convId</span><span class="p">,</span>
+                <span class="nv">attributesToChange</span><span class="p">:</span> <span class="n">attributes</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">jsconv</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span>
+<span class="c1">// Code goes here</span>
+<span class="p">}</span>
+</code></pre>
+<p>Update a conversation or community</p>
+
+<p>Required OAuth2 scopes: WRITE_CONVERSATIONS or ALL</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>convId</td>
+<td>string</td>
+<td>Conversation ID</td>
+</tr>
+<tr>
+<td>attributes</td>
+<td>dictionary</td>
+<td>Attributes to change, keys could be &quot;topic&quot; of conversation/community and &quot;description&quot; (only applicable to communities)</td>
+</tr>
+<tr>
+<td>completion</td>
+<td>callback</td>
+<td>A completion block that takes an updated conversation or an error and returns void</td>
+</tr>
+</tbody></table>
+<h2 id='response'>Response</h2>
+<p>CircuitKit responses are in JSON format</p>
+<pre class="highlight jsonnet tab-jsonnet"><code><span class="p">{</span>
+    <span class="nx">convId</span> <span class="p">=</span> <span class="s">"CONVERSATION ID"</span><span class="p">;</span>
+    <span class="nx">creationTime</span> <span class="p">=</span> <span class="nx">CREATION</span> <span class="nx">TIME</span><span class="p">;</span>
+    <span class="nx">creatorId</span> <span class="p">=</span> <span class="s">"CREATOR ID"</span><span class="p">;</span>
+    <span class="nx">creatorTenantId</span> <span class="p">=</span> <span class="s">"CREATORS TENANT ID"</span><span class="p">;</span>
+    <span class="nx">isDeleted</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="nx">lastItemModificationTime</span> <span class="p">=</span> <span class="nx">LAST</span> <span class="nx">ITEM</span> <span class="nx">MODIFICATION</span> <span class="nx">TIME</span><span class="p">;</span>
+    <span class="nx">modificationTime</span> <span class="p">=</span> <span class="nx">MODIFICATION</span> <span class="nx">TIME</span><span class="p">;</span>
+    <span class="nx">participants</span> <span class="p">=</span>     <span class="p">(</span>
+        <span class="s">"PARTICIPANT USER ID"</span><span class="p">,</span>
+        <span class="s">"PARTICIPANT USER ID"</span>
+    <span class="p">);</span>
+    <span class="nx">rtcSessionId</span> <span class="p">=</span> <span class="s">"RTC SESSION ID"</span><span class="p">;</span>
+    <span class="nx">topLevelItem</span> <span class="p">=</span> <span class="p">{</span>
+        <span class="nx">convId</span> <span class="p">=</span> <span class="s">"CONVERSATION ID"</span><span class="p">;</span>
+        <span class="nx">creationTime</span> <span class="p">=</span> <span class="nx">CREATION</span> <span class="nx">TIME</span><span class="p">;</span>
+        <span class="nx">creatorId</span> <span class="p">=</span> <span class="s">"CREATOR ID"</span><span class="p">;</span>
+        <span class="nx">dataRetentionState</span> <span class="p">=</span> <span class="nx">UNTOUCHED</span><span class="p">;</span>
+        <span class="nx">includeInUnreadCount</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="nx">itemId</span> <span class="p">=</span> <span class="s">"ITEM ID"</span><span class="p">;</span>
+        <span class="nx">modificationTime</span> <span class="p">=</span> <span class="nx">MODIFICATION</span> <span class="nx">TIME</span><span class="p">;</span>
+        <span class="nx">system</span> <span class="p">=</span> <span class="p">{</span>
+            <span class="nx">affectedParticipants</span> <span class="p">=</span> <span class="p">(</span>
+                <span class="s">"PARTICIPANT USER ID"</span><span class="p">,</span>
+                <span class="s">"PARTICIPANT USER ID"</span>
+            <span class="p">);</span>
+            <span class="nb">type</span> <span class="p">=</span> <span class="s">"CONVERSATION_CREATED"</span><span class="p">;</span>
+        <span class="p">};</span>
+        <span class="nb">type</span> <span class="p">=</span> <span class="nx">SYSTEM</span><span class="p">;</span>
+    <span class="p">};</span>
+    <span class="nx">topic</span> <span class="p">=</span> <span class="s">""</span><span class="p">;</span>
+    <span class="nb">type</span> <span class="p">=</span> <span class="nx">DIRECT</span><span class="p">;</span>
+    <span class="nx">userData</span> <span class="p">=</span> <span class="p">{</span>
+        <span class="nx">lastReadTimestamp</span> <span class="p">=</span> <span class="nx">LAST</span> <span class="nx">READ</span> <span class="nx">TIMESTAMP</span><span class="p">;</span>
+        <span class="nx">unreadItems</span> <span class="p">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">};</span>
+<span class="p">}</span>
+</code></pre>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>convId</td>
+<td>string</td>
+<td>Conversation id</td>
+</tr>
+<tr>
+<td>creationTime</td>
+<td>number</td>
+<td>Conversation creation time</td>
+</tr>
+<tr>
+<td>creatorId</td>
+<td>string</td>
+<td>Conversation creator&#39;s user id</td>
+</tr>
+<tr>
+<td>creatorTenantId</td>
+<td>string</td>
+<td>Conversation creator&#39;s tenant id</td>
+</tr>
+<tr>
+<td>isDeleted</td>
+<td>bool</td>
+<td>If the conversation is deleted or not</td>
+</tr>
+<tr>
+<td>lastItemModificationTime</td>
+<td>number</td>
+<td>Modification time of the last item</td>
+</tr>
+<tr>
+<td>modificationTime</td>
+<td>number</td>
+<td>Conversation modification time</td>
+</tr>
+<tr>
+<td>participants</td>
+<td>array</td>
+<td>Conversation participants</td>
+</tr>
+<tr>
+<td>rtcSessionId</td>
+<td>string</td>
+<td>ID of the current rtc session</td>
+</tr>
+<tr>
+<td>topLevelItem</td>
+<td>json</td>
+<td>Most recent conversation item</td>
+</tr>
+<tr>
+<td>topic</td>
+<td>string</td>
+<td>Conversation title</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>Conversation type can be DIRECT, OPEN, GROUP</td>
+</tr>
+</tbody></table>
+<h3 id='toplevelitem'>topLevelItem</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>convId</td>
+<td>string</td>
+<td>Parent conversation id</td>
+</tr>
+<tr>
+<td>creationTime</td>
+<td>number</td>
+<td>Item creation time</td>
+</tr>
+<tr>
+<td>creatorId</td>
+<td>string</td>
+<td>Item creator user id</td>
+</tr>
+<tr>
+<td>dataRetentionState</td>
+<td>string</td>
+<td>If the item was modified</td>
+</tr>
+<tr>
+<td>includeInUnreadCount</td>
+<td>bool</td>
+<td>If this is an unread item or not</td>
+</tr>
+<tr>
+<td>itemId</td>
+<td>string</td>
+<td>item id</td>
+</tr>
+<tr>
+<td>modificationTime</td>
+<td>number</td>
+<td>Item modification time</td>
+</tr>
+</tbody></table>
+<h1 id='cktclient-call'>CKTClient+Call</h1><h2 id='addparticipanttocall-to-completion'>addParticipantToCall:to:completion:</h2><pre class="highlight objective_c tab-objective_c"><code><span class="p">[</span><span class="n">self</span> <span class="nf">addParticipantToCall</span><span class="p">:</span><span class="s">@"callId"</span> <span class="nf">to</span><span class="p">:@{</span><span class="s">"Dial out information"</span><span class="p">}</span> <span class="n">completion</span><span class="o">:^</span><span class="p">{</span>
+<span class="c1">// Code goes here
+</span><span class="p">}];</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="n">client</span><span class="o">.</span><span class="nf">addParticipant</span><span class="p">(</span><span class="nv">toCall</span><span class="p">:</span> <span class="s">"callId"</span><span class="p">,</span> <span class="nv">to</span><span class="p">:</span> <span class="p">[</span><span class="s">"Dial out information"</span><span class="p">],</span> <span class="nv">completion</span><span class="p">:</span> <span class="p">{</span>
+<span class="c1">// Code goes here</span>
+<span class="p">})</span>
+</code></pre>
+<p>Add a participant to a call via dial out. The participant does not have to be a member of the conversation.
+Dialing PSTN number is also supported.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>callId</td>
+<td>string</td>
+<td>Id of the current call</td>
+</tr>
+<tr>
+<td>to</td>
+<td>dictionary</td>
+<td>Dictionary containing dial out information</td>
+</tr>
+<tr>
+<td>completion</td>
+<td>callback</td>
+<td>A completion handler that takes no arguments and returns void</td>
+</tr>
+</tbody></table>
+<h2 id='addparticipanttortcsession-to-completion'>addParticipantToRtcSession:to:completion:</h2><pre class="highlight objective_c tab-objective_c"><code><span class="p">[</span><span class="n">self</span> <span class="nf">addParticipantToRtcSession</span><span class="p">:</span><span class="s">@"callId"</span> <span class="nf">to</span><span class="p">:@{</span><span class="s">"Dial out information"</span><span class="p">}</span> <span class="n">completion</span><span class="o">:^</span><span class="p">{</span>
+<span class="c1">// Code goes here
+</span><span class="p">}];</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="n">client</span><span class="o">.</span><span class="nf">addParticipantToRtcSession</span><span class="p">(</span><span class="nv">toCall</span><span class="p">:</span> <span class="s">"callId"</span><span class="p">,</span> <span class="nv">to</span><span class="p">:</span> <span class="p">[</span><span class="s">"Dial out information"</span><span class="p">],</span> <span class="nv">completion</span><span class="p">:</span> <span class="p">{</span>
+<span class="c1">// Code goes here</span>
+<span class="p">})</span>
+</code></pre>
+<p>Add a participant to an RTC Session via dial out. Unlike addParticipantToCall this API does not rely on a local  call to be present. The participant does not have to be a member of the conversation. Dialing PSTN number is also supported.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>callId</td>
+<td>string</td>
+<td>Id of the current call</td>
+</tr>
+<tr>
+<td>to</td>
+<td>dictionary</td>
+<td>Dictionary containing dial out information</td>
+</tr>
+<tr>
+<td>completion</td>
+<td>callback</td>
+<td>A completion handler that takes no arguments and returns void</td>
+</tr>
+</tbody></table>
+<h2 id='answercall-mediatype-completionhandler'>answerCall:mediaType:completionHandler:</h2><pre class="highlight objective_c tab-objective_c"><code><span class="n">NSDictionary</span> <span class="o">*</span><span class="n">mediaType</span> <span class="o">=</span> <span class="p">@{</span><span class="s">@"audio"</span><span class="o">:</span> <span class="s">@"true"</span><span class="p">,</span> <span class="s">@"video"</span><span class="o">:</span> <span class="s">@"false"</span><span class="p">};</span>
+<span class="p">[</span><span class="n">self</span> <span class="nf">answerCall</span><span class="p">:</span><span class="s">@"callId"</span> <span class="nf">mediaType</span><span class="p">:</span><span class="n">mediaType</span>
+            <span class="n">completionHandler</span><span class="o">:^</span><span class="p">(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="n">call</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">){</span>
+<span class="c1">// Code goes here
+</span><span class="p">}];</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="k">let</span> <span class="nv">mediaType</span> <span class="o">=</span> <span class="p">[</span><span class="s">"audio"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="s">"video"</span><span class="p">:</span> <span class="kc">false</span><span class="p">]</span>
+<span class="n">client</span><span class="p">?</span><span class="o">.</span><span class="nf">answerCall</span><span class="p">(</span><span class="s">"callId"</span><span class="p">,</span> <span class="nv">mediaType</span><span class="p">:</span> <span class="n">mediaType</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="p">{</span> <span class="p">(</span><span class="n">call</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+<span class="c1">// Code goes here</span>
+<span class="p">})</span>
+</code></pre>
+<p>Answer an incoming call received in a callIncoming event</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>callId</td>
+<td>string</td>
+<td>callId of the call to answer</td>
+</tr>
+<tr>
+<td>mediaType</td>
+<td>dictionary</td>
+<td>Object with boolean attributes: audio, video</td>
+</tr>
+<tr>
+<td>completion</td>
+<td>callback</td>
+<td>A completion handler that takes either a call or an error and returns void</td>
+</tr>
+</tbody></table>
+<h2 id='dialnumber-completionhandler'>dialNumber:completionHandler:</h2><pre class="highlight objective_c tab-objective_c"><code><span class="p">[</span><span class="n">self</span> <span class="nf">dialNumber</span><span class="p">:</span><span class="s">@"number"</span> <span class="nf">completionHandler</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="n">call</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+<span class="c1">// Code goes here
+</span><span class="p">}];</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="n">client</span><span class="o">.</span><span class="nf">dialNumber</span><span class="p">(</span><span class="s">"number"</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">call</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+<span class="c1">// Code goes here</span>
+<span class="p">}</span>
+</code></pre>
+<p>Start a telephony conversation</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>number</td>
+<td>string</td>
+<td>Dialable number, must match Circuit.Utils.PHONE_PATTERN</td>
+</tr>
+<tr>
+<td>completion</td>
+<td>callback</td>
+<td>A completion that takes either a call or an error and returns void</td>
+</tr>
+</tbody></table>
+<h2 id='dialnumber-name-completionhandler'>dialNumber:name:completionHandler:</h2><pre class="highlight objective_c tab-objective_c"><code><span class="p">[</span><span class="n">self</span> <span class="nf">dialNumber</span><span class="p">:</span><span class="s">@"number"</span> <span class="nf">name</span><span class="p">:</span><span class="s">@"name"</span> <span class="n">completionHandler</span><span class="o">:^</span><span class="p">(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="n">call</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+<span class="c1">// Code goes here
+</span><span class="p">}];</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="n">client</span><span class="o">.</span><span class="nf">dialNumber</span><span class="p">(</span><span class="s">"number"</span><span class="p">,</span> <span class="nv">name</span><span class="p">:</span> <span class="s">"name"</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">call</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+<span class="c1">// Code goes here</span>
+<span class="p">}</span>
+</code></pre>
+<p>Start a telephony conversation</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>number</td>
+<td>string</td>
+<td>Dialable number, must match Circuit.Utils.PHONE_PATTERN</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>Display name of the number being dialed</td>
+</tr>
+<tr>
+<td>completion</td>
+<td>callback</td>
+<td>A completion that takes either a call or an error and returns void</td>
+</tr>
+</tbody></table>
+<h2 id='endcall-completion'>endCall:completion:</h2><pre class="highlight objective_c tab-objective_c"><code><span class="p">[</span><span class="n">self</span> <span class="nf">endCall</span><span class="p">:</span><span class="s">@"callId"</span> <span class="nf">completion</span><span class="p">:</span><span class="o">^</span><span class="p">{</span>
+<span class="c1">// Code goes here
+</span><span class="p">}];</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="n">client</span><span class="o">.</span><span class="nf">endCall</span><span class="p">(</span><span class="s">"callId"</span><span class="p">)</span> <span class="p">{</span>
+<span class="c1">// Code goes here</span>
+<span class="p">}</span>
+</code></pre>
+<p>End a direct call or leave a group conference</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>callId</td>
+<td>string</td>
+<td>Call id of the call to leave</td>
+</tr>
+<tr>
+<td>completion</td>
+<td>callback</td>
+<td>A completion block that takes no arguments and returns void</td>
+</tr>
+</tbody></table>
+<h2 id='endconference-completion'>endConference:completion:</h2><pre class="highlight objective_c tab-objective_c"><code><span class="p">[</span><span class="n">self</span> <span class="nf">endConference</span><span class="p">:</span><span class="s">@"callId"</span> <span class="nf">completion</span><span class="p">:</span><span class="o">^</span><span class="p">{</span>
+<span class="c1">// Code goes here
+</span><span class="p">}];</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="n">client</span><span class="o">.</span><span class="nf">endConference</span><span class="p">(</span><span class="s">"callId"</span><span class="p">)</span> <span class="p">{</span>
+<span class="c1">// Code goes here</span>
+<span class="p">}</span>
+</code></pre>
+<p>End a conference call. Disconnects all other participants as well</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>callId</td>
+<td>string</td>
+<td>Call id of the call to leave.</td>
+</tr>
+<tr>
+<td>completion</td>
+<td>callback</td>
+<td>A completion block that takes no arguments and returns void</td>
+</tr>
+</tbody></table>
+<h2 id='leaveconference-completion'>leaveConference:completion:</h2><pre class="highlight objective_c tab-objective_c"><code><span class="p">[</span><span class="n">self</span> <span class="nf">leaveConference</span><span class="p">:</span><span class="s">@"callId"</span> <span class="nf">completion</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+<span class="c1">// Code goes here
+</span><span class="p">}];</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="n">client</span><span class="o">.</span><span class="nf">leaveConference</span><span class="p">(</span><span class="s">"callId"</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+<span class="c1">// Code goes here</span>
+<span class="p">}</span>
+</code></pre>
+<p>Leave a conference call</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>callId</td>
+<td>string</td>
+<td>Call id of the call to leave.</td>
+</tr>
+<tr>
+<td>completion</td>
+<td>callback</td>
+<td>A compleiton that takes no arguments and replying with an error</td>
+</tr>
+</tbody></table>
+<h2 id='findcall-completionhandler'>findCall:completionHandler:</h2><pre class="highlight objective_c tab-objective_c"><code><span class="p">[</span><span class="n">self</span> <span class="nf">findCall</span><span class="p">:</span><span class="s">@"callId"</span> <span class="nf">completionHandler</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="n">call</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+<span class="c1">// Code goes here
+</span><span class="p">}];</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="n">client</span><span class="o">.</span><span class="nf">findCall</span><span class="p">(</span><span class="s">"callId"</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">call</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+<span class="c1">// Code goes here</span>
+<span class="p">}</span>
+</code></pre>
+<p>Find a call by its call Id. Call may be local or remote, active or non-active</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>callId</td>
+<td>string</td>
+<td>Call id of the call to leave</td>
+</tr>
+<tr>
+<td>completion</td>
+<td>callback</td>
+<td>A completion handler that takes either a call or an error and returns void</td>
+</tr>
+</tbody></table>
+<h2 id='getactivecall'>getActiveCall:</h2><pre class="highlight objective_c tab-objective_c"><code><span class="p">[</span><span class="n">self</span> <span class="nf">getActiveCall</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="n">call</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+<span class="c1">// Code goes here
+</span><span class="p">}];</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="n">client</span><span class="o">.</span><span class="n">getActiveCall</span> <span class="p">{</span> <span class="p">(</span><span class="n">call</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+<span class="c1">// Code goes here</span>
+<span class="p">}</span>
+</code></pre>
+<p>Get local active call</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>completion</td>
+<td>callback</td>
+<td>A completion handler that takes either a call or an error and returns void</td>
+</tr>
+</tbody></table>
+<h2 id='getactiveremotecalls'>getActiveRemoteCalls:</h2><pre class="highlight objective_c tab-objective_c"><code><span class="p">[</span><span class="n">self</span> <span class="nf">getActiveRemoteCalls</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="n">calls</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+<span class="c1">// Code goes here
+</span><span class="p">}];</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="n">client</span><span class="o">.</span><span class="n">getActiveRemoteCalls</span> <span class="p">{</span> <span class="p">(</span><span class="n">call</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+<span class="c1">// Code goes here</span>
+<span class="p">}</span>
+</code></pre>
+<p>Get remote active calls
+Required OAuth2 scopes: CALLS or ALL</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>completion</td>
+<td>callback</td>
+<td>A completion handler that takes either a call or an error and returns void</td>
+</tr>
+</tbody></table>
+<h2 id='getcalls'>getCalls:</h2><pre class="highlight objective_c tab-objective_c"><code><span class="p">[</span><span class="n">self</span> <span class="nf">getCalls</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">NSArray</span> <span class="o">*</span><span class="n">calls</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+<span class="c1">// Code goes here
+</span><span class="p">}];</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="n">client</span><span class="o">.</span><span class="n">getCalls</span> <span class="p">{</span> <span class="p">(</span><span class="n">call</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+<span class="c1">// Code goes here</span>
+<span class="p">}</span>
+</code></pre>
+<p>Get all local and remote calls in progress</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>completion</td>
+<td>callback</td>
+<td>A completion handler that takes either a call or an error and returns void</td>
+</tr>
+</tbody></table>
+<h2 id='gettelephonydata'>getTelephonyData:</h2><pre class="highlight objective_c tab-objective_c"><code><span class="p">[</span><span class="n">self</span> <span class="nf">getTelephonyData</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="n">data</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+<span class="c1">// Code goes here
+</span><span class="p">}];</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="n">client</span><span class="o">.</span><span class="n">getTelephonyData</span> <span class="p">{</span> <span class="p">(</span><span class="n">call</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+<span class="c1">// Code goes here</span>
+<span class="p">}</span>
+</code></pre>
+<p>Get the telephony data such as the connection state and default caller id</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>completion</td>
+<td>callback</td>
+<td>A completion handler that takes either a call or an error and returns void</td>
+</tr>
+</tbody></table>
+<h2 id='makecall-mediatype-completionhandler'>makeCall:mediaType:completionHandler:</h2><pre class="highlight objective_c tab-objective_c"><code><span class="n">NSDictionary</span> <span class="o">*</span><span class="n">mediaType</span> <span class="o">=</span> <span class="p">@{</span><span class="s">@"audio"</span><span class="o">:</span> <span class="s">@"true"</span><span class="p">,</span> <span class="s">@"video"</span><span class="o">:</span> <span class="s">@"false"</span><span class="p">};</span>
+<span class="p">[</span><span class="n">self</span> <span class="nf">makeCall</span><span class="p">:</span><span class="s">@"user"</span> <span class="nf">mediaType</span><span class="p">:</span><span class="n">mediaType</span> <span class="n">completionHandler</span><span class="o">:^</span><span class="p">(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="n">call</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+<span class="c1">// Code goes here
+</span><span class="p">}];</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="k">let</span> <span class="nv">mediaType</span> <span class="o">=</span> <span class="p">[</span><span class="s">"audio"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="s">"video"</span><span class="p">:</span> <span class="kc">false</span><span class="p">]</span>
+<span class="n">client</span><span class="o">.</span><span class="nf">makeCall</span><span class="p">(</span><span class="s">"user"</span><span class="p">,</span> <span class="nv">mediaType</span><span class="p">:</span> <span class="n">mediaType</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">call</span><span class="p">,</span> <span class="kt">ERROR</span><span class="p">)</span> <span class="k">in</span>
+<span class="c1">// Code goes here</span>
+<span class="p">}</span>
+</code></pre>
+<p>Start a direct call with a user by it&#39;s email address or user Id</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>user</td>
+<td>string</td>
+<td>email or userId of the user to call</td>
+</tr>
+<tr>
+<td>mediaType</td>
+<td>dictionary</td>
+<td>Object with boolean attributes: audio, video</td>
+</tr>
+<tr>
+<td>completion</td>
+<td>callback</td>
+<td>A completion handler that takes either a call or an error and returns void</td>
+</tr>
+</tbody></table>
+<h2 id='makecall-mediatype-createifnotexist-completionhandler'>makeCall:mediaType:createIfNotExist:completionHandler:</h2><pre class="highlight objective_c tab-objective_c"><code><span class="n">NSDictionary</span> <span class="o">*</span><span class="n">mediaType</span> <span class="o">=</span> <span class="p">@{</span><span class="s">@"audio"</span><span class="o">:</span> <span class="s">@"true"</span><span class="p">,</span> <span class="s">@"video"</span><span class="o">:</span> <span class="s">@"false"</span><span class="p">};</span>
+<span class="p">[</span><span class="n">self</span> <span class="nf">makeCall</span><span class="p">:</span><span class="s">@"user"</span> <span class="nf">mediaType</span><span class="p">:</span><span class="n">mediaType</span> <span class="n">createIfNotExists</span><span class="o">:</span><span class="nb">YES</span> <span class="n">completionHandler</span><span class="o">:^</span><span class="p">(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="n">call</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+<span class="c1">// Code goes here
+</span><span class="p">}];</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="k">let</span> <span class="nv">mediaType</span> <span class="o">=</span> <span class="p">[</span><span class="s">"audio"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="s">"video"</span><span class="p">:</span> <span class="kc">false</span><span class="p">]</span>
+<span class="n">client</span><span class="o">.</span><span class="nf">makeCall</span><span class="p">(</span><span class="s">"user"</span><span class="p">,</span> <span class="nv">mediaType</span><span class="p">:</span> <span class="n">mediaType</span><span class="p">,</span> <span class="nv">createIfNotExists</span><span class="p">:</span> <span class="kc">true</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">call</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+<span class="c1">// Code goes here</span>
+<span class="p">}</span>
+</code></pre>
+<p>Start a direct call with a user by it&#39;s email address or user Id</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>user</td>
+<td>string</td>
+<td>email or userId of the user to call</td>
+</tr>
+<tr>
+<td>mediaType</td>
+<td>dictionary</td>
+<td>Object with boolean attributes: audio, video</td>
+</tr>
+<tr>
+<td>createIfNotExists</td>
+<td>bool</td>
+<td>Create a conversation with the user if not already existing, default is FALSE.</td>
+</tr>
+<tr>
+<td>completion</td>
+<td>callback</td>
+<td>A completion handler that takes either a call or an error and returns void</td>
+</tr>
+</tbody></table>
+<h2 id='mute-completionhandler'>mute:completionHandler:</h2><pre class="highlight objective_c tab-objective_c"><code><span class="p">[</span><span class="n">self</span> <span class="nf">mute</span><span class="p">:</span><span class="s">@"callId"</span> <span class="nf">completionHandler</span><span class="p">:</span><span class="o">^</span><span class="p">{</span>
+<span class="c1">// Code goes here
+</span><span class="p">}];</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="n">client</span><span class="o">.</span><span class="nf">mute</span><span class="p">(</span><span class="s">"callId"</span><span class="p">)</span> <span class="p">{</span>
+<span class="c1">// Code goes here</span>
+<span class="p">}</span>
+</code></pre>
+<p>Mute an existing call</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>calIId</td>
+<td>string</td>
+<td>callId callId of the call to mute</td>
+</tr>
+<tr>
+<td>completion</td>
+<td>callback</td>
+<td>A completion handler that takes either a call or an error and returns void</td>
+</tr>
+</tbody></table>
+<h2 id='startconference-mediatype-completion'>startConference:mediaType:completion:</h2><pre class="highlight objective_c tab-objective_c"><code><span class="n">NSDictionary</span> <span class="o">*</span><span class="n">mediaType</span> <span class="o">=</span> <span class="p">@{</span><span class="s">@"audio"</span><span class="o">:</span> <span class="s">@"true"</span><span class="p">,</span> <span class="s">@"video"</span><span class="o">:</span> <span class="s">@"false"</span><span class="p">};</span>
+<span class="p">[</span><span class="n">self</span> <span class="nf">startConference</span><span class="p">:</span><span class="s">@"convId"</span> <span class="nf">mediaType</span><span class="p">:</span><span class="n">mediaType</span> <span class="n">completion</span><span class="o">:^</span><span class="p">(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="n">call</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+<span class="c1">// Code goes here
+</span><span class="p">}];</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="k">let</span> <span class="nv">mediaType</span> <span class="o">=</span> <span class="p">[</span><span class="s">"audio"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="s">"video"</span><span class="p">:</span> <span class="kc">false</span><span class="p">]</span>
+<span class="n">client</span><span class="o">.</span><span class="nf">startConference</span><span class="p">(</span><span class="s">"callId"</span><span class="p">,</span> <span class="nv">mediaType</span><span class="p">:</span> <span class="n">mediaType</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">call</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+<span class="c1">// Code goes here</span>
+<span class="p">}</span>
+</code></pre>
+<p>StartConference a conference call
+Required OAuth2 scopes: CALLS or ALL</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>convId</td>
+<td>string</td>
+<td>Conversation ID</td>
+</tr>
+<tr>
+<td>mediaType</td>
+<td>dictionary</td>
+<td>Object with boolean attributes: audio, video</td>
+</tr>
+<tr>
+<td>completion</td>
+<td>callback</td>
+<td>A completion handler that takes either a call or an error and returns void</td>
+</tr>
+</tbody></table>
+<h2 id='joinconference-mediatype-clientid-completion'>joinConference:mediaType:clientId:completion:</h2><pre class="highlight objective_c tab-objective_c"><code><span class="n">NSDictionary</span> <span class="o">*</span><span class="n">mediaType</span> <span class="o">=</span> <span class="p">@{</span><span class="s">@"audio"</span><span class="o">:</span> <span class="s">@"true"</span><span class="p">,</span> <span class="s">@"video"</span><span class="o">:</span> <span class="s">@"false"</span><span class="p">};</span>
+<span class="p">[</span><span class="n">self</span> <span class="nf">joinConference</span><span class="p">:</span><span class="s">@"calIId"</span> <span class="nf">mediaType</span><span class="p">:</span><span class="n">mediaType</span> <span class="n">clientId</span><span class="o">:</span><span class="s">@"clientId"</span> <span class="n">completion</span><span class="o">:^</span><span class="p">{</span>
+<span class="c1">// Code goes here
+</span><span class="p">}];</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="k">let</span> <span class="nv">mediaType</span> <span class="o">=</span> <span class="p">[</span><span class="s">"audio"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="s">"video"</span><span class="p">:</span> <span class="kc">false</span><span class="p">]</span>
+<span class="n">client</span><span class="o">.</span><span class="nf">joinConference</span><span class="p">(</span><span class="s">"callId"</span><span class="p">,</span> <span class="nv">mediaType</span><span class="p">:</span> <span class="n">mediaType</span><span class="p">,</span> <span class="nv">clientId</span><span class="p">:</span><span class="s">"clientId"</span><span class="p">)</span> <span class="p">{</span>
+<span class="c1">// Code goes here</span>
+<span class="p">}</span>
+</code></pre>
+<p>Join a conference call from the current device, or optionally from another logged on device.</p>
+
+<p>Required OAuth2 scopes: CALLS or ALL</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>calIId</td>
+<td>string</td>
+<td>callId callId of the call to mute</td>
+</tr>
+<tr>
+<td>mediaType</td>
+<td>dictionary</td>
+<td>Object with boolean attributes: audio, video</td>
+</tr>
+<tr>
+<td>clientId</td>
+<td>string</td>
+<td>clientId of device where to join the call from</td>
+</tr>
+<tr>
+<td>completion</td>
+<td>callback</td>
+<td>A completion handler that takes either a call or an error and returns void</td>
+</tr>
+</tbody></table>
+<h2 id='unmute-completionhandler'>unmute:completionHandler</h2><pre class="highlight objective_c tab-objective_c"><code><span class="p">[</span><span class="n">self</span> <span class="nf">unmute</span><span class="p">:</span><span class="s">@"convId"</span> <span class="nf">completionHandler</span><span class="p">:</span><span class="o">^</span><span class="p">{</span>
+<span class="c1">// Code goes here
+</span><span class="p">}];</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="n">client</span><span class="o">.</span><span class="nf">unmute</span><span class="p">(</span><span class="s">"callId"</span><span class="p">)</span> <span class="p">{</span>
+<span class="c1">// Code goes here</span>
+<span class="p">}</span>
+</code></pre>
+<p>Unmute an existing call</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>convId</td>
+<td>string</td>
+<td>Conversation ID</td>
+</tr>
+<tr>
+<td>completion</td>
+<td>callback</td>
+<td>A completion handler that takes no arguments and returns void</td>
+</tr>
+</tbody></table>
+<h1 id='cktaudiosessionmanager'>CKTAudioSessionManager</h1><h2 id='setaudiosessionenabled'>setAudioSessionEnabled:</h2><pre class="highlight objective_c tab-objective_c"><code><span class="p">[</span><span class="n">CKTAudioSessionManager</span> <span class="nf">setAudioSessionEnabled</span><span class="p">:</span><span class="nb">YES</span><span class="p">];</span>
+</code></pre><pre class="highlight swift tab-swift"><code><span class="kt">CKTAudioSessionManager</span><span class="o">.</span><span class="nf">setAudioSessionEnabled</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
+</code></pre>
+<p>Disable / Enable the active WebRTC audio session</p>
+
+<p>Application can disable / enable the active WebRTC audio session. It is a system wide parameter.
+If application disabled WebRTC audio then it is the application&#39;s responsibility to enable back it again.
+Until this is enabled by application again, all the calls will have no speech path</p>
+
+<p>It is recommended that application shall use this property only upon events that indicate external
+usage of audio session.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>enabled</td>
+<td>bool</td>
+<td>enabled/disabled active audio session</td>
+</tr>
+</tbody></table>
+<h1 id='event-handling'>Event Handling</h1>
+<p>Event handling is already setup in the SDK. All you have to do to provide
+event handling to your application is add some observers where you want to listen
+to specific events.</p>
+
+<table><thead>
+<tr>
+<th>Event</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>CKTNotificationBasicSearchResults</td>
+<td>string</td>
+<td>Asynchronous search results for startUserSearch or startBasicSearch</td>
+</tr>
+<tr>
+<td>CKTNotificationCallEnded</td>
+<td>string</td>
+<td>Fired when a call is terminated</td>
+</tr>
+<tr>
+<td>CKTNotificationCallIncoming</td>
+<td>string</td>
+<td>Fired when an incoming call is received. I.e. client is alerting</td>
+</tr>
+<tr>
+<td>CKTNotificationCallStatus</td>
+<td>string</td>
+<td>Fired when the call state, or any other call attribute of a local or remote call changes. Use the isRemote property to determine if the call is local or remote. A call is considered remote when a) the call is active on another device, or b) a group call is not joined yet</td>
+</tr>
+<tr>
+<td>CKTNotificationConnectionStateChanged</td>
+<td>string</td>
+<td>Fired when the connection state changes</td>
+</tr>
+<tr>
+<td>CKTNotificationConversationCreated</td>
+<td>string</td>
+<td>Fired when a new conversation is created for this user. This can be a brand new conversation, or being added to a conversation</td>
+</tr>
+<tr>
+<td>CKTNotificationConversationUpdated</td>
+<td>string</td>
+<td>Fired when an existing conversation is updated</td>
+</tr>
+<tr>
+<td>CKTNotificationItemAdded</td>
+<td>string</td>
+<td>Fired when a new conversation item is received. Note that the sender of an item will also receive this event</td>
+</tr>
+<tr>
+<td>CKTNotificationItemUpdated</td>
+<td>string</td>
+<td>Fired when an existing conversation item is updated</td>
+</tr>
+<tr>
+<td>CKTNotificationReconnectFailed</td>
+<td>string</td>
+<td>Fired when automatic reconnecting to the server fails</td>
+</tr>
+<tr>
+<td>CKTNotificationRenewToken</td>
+<td>string</td>
+<td>Fired when token has been renewed after session expiry. Error included on failure</td>
+</tr>
+<tr>
+<td>CKTNotificationSessionExpires</td>
+<td>string</td>
+<td>Fired when session expires</td>
+</tr>
+<tr>
+<td>CKTNotificationUserPresenceChanged</td>
+<td>string</td>
+<td>Fired when the presence of a subscribed user changes</td>
+</tr>
+<tr>
+<td>CKTNotificationUserSettingsChanged</td>
+<td>string</td>
+<td>Fired when one or more user settings for the logged on user change</td>
+</tr>
+<tr>
+<td>CKTNotificationUserUpdated</td>
+<td>string</td>
+<td>Fired when the local user is updated. E.g. I change the jobTitle on my mobile device</td>
+</tr>
+</tbody></table>
+<h2 id='adding-observers'>Adding Observers</h2><pre class="highlight objective_c tab-objective_c"><code><span class="p">[[</span><span class="n">NSNotificationCenter</span> <span class="nf">defaultCenter</span><span class="p">]</span>
+                       <span class="nf">addObserver</span><span class="p">:</span><span class="n">self</span>
+                       <span class="nf">selector</span><span class="p">:</span><span class="k">@selector</span><span class="p">(</span><span class="n">itemAddedToConversation</span><span class="p">)</span>
+                           <span class="n">name</span><span class="o">:</span><span class="n">CKTNotificationItemAdded</span> <span class="n">object</span><span class="o">:</span><span class="nb">nil</span><span class="p">];</span>
+</code></pre><pre class="highlight swift tab-swift"><code> <span class="kt">NSNotificationCenter</span><span class="o">.</span><span class="nf">defaultCenter</span><span class="p">()</span>
+                     <span class="o">.</span><span class="nf">addObserver</span><span class="p">(</span><span class="k">self</span><span class="p">,</span>
+                     <span class="nv">selector</span><span class="p">:</span><span class="kd">#selector(</span><span class="nf">itemAddedToConversation</span><span class="kd">)</span><span class="p">,</span>
+                         <span class="nv">name</span><span class="p">:</span><span class="kt">CKTNotificationItemAdded</span><span class="p">,</span> <span class="nv">object</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span>
+
+</code></pre>
+<p>To listen for events you need to add observers to your application logic. You
+do this using Apple&#39;s Notification Center if you have never used NotificationCenter
+you can find more information on <a href="https://developer.apple.com/documentation/foundation/notificationcenter">NotificationCenter</a></p>
+
+<p>In the example we are watching for an event called <code>CKTNotificationItemAdded</code> which when triggered
+will fire a method called <code>itemAddedToConversation</code></p>
+
+<p>More on event types can be found in the section above.</p>
+<h1 id='sample-application'>Sample Application</h1>
+<p>You can find the sample application in the Example directory.</p>
+
+<aside class="warning">
+If you try to run the application now, you won't be able to logon. You must
+first install the required pods then add your CLIENT_ID and CLIENT_SECRET
+</aside>
+
+<p>In the terminal navigate to the <code>Example</code> folder and run the following command:</p>
+
+<p><strong><code>pod install</code></strong></p>
+
+<p>This will install the required pods and create a CircuitSDK.xcworkspace,
+open that file instaead of the CircuitSDK.xcodeproj.</p>
+
+<p>In the <code>Sample/Resources</code> folder open <code>AppDelegate.swift</code>, here you can add your
+<a href="#authorization"><strong><code>CLIENT_ID</code></strong></a> and <a href="#authorization"><strong><code>CLIENT_SECRET</code></strong></a></p>
+
+<p>Now that you have set your OAuth credentials, and installed the required
+CocoaPods you are ready to run the application.</p>
+
+<p>Press the run button.</p>
+<h1 id='errors'>Errors</h1>
+<p>The CircuitSDK uses the following error codes:</p>
+
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>400</td>
+<td>Bad Request</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found</td>
+</tr>
+<tr>
+<td>429</td>
+<td>Too Many Requests</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error</td>
+</tr>
+<tr>
+<td>503</td>
+<td>Service Unavailable</td>
+</tr>
+</tbody></table>
+
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="objective_c">Objective-C</a>
+                <a href="#" data-language-name="swift">Swift</a>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>
